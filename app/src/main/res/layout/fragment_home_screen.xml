@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/cont">
 
         <Button
             android:id="@+id/newMorningSurveyButton"
@@ -19,6 +20,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/homeText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="home screen"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="150dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

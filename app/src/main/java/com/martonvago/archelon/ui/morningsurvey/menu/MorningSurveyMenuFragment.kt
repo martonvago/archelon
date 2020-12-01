@@ -1,23 +1,13 @@
 package com.martonvago.archelon.ui.morningsurvey.menu
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.martonvago.archelon.R
+import com.martonvago.archelon.ui.morningsurvey.MorningSurveyScreen
 
 /**
  * A simple [Fragment] subclass.
  */
-class MorningSurveyMenuFragment : Fragment() {
+class MorningSurveyMenuFragment: MorningSurveyScreen(R.layout.fragment_morning_survey_menu) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_morning_survey_menu, container, false)
-    }
 
 }

@@ -1,29 +1,28 @@
 package com.martonvago.archelon.ui.morningsurvey.placetime
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.navGraphViewModels
 import com.martonvago.archelon.R
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import com.martonvago.archelon.ui.morningsurvey.MorningSurveyScreen
+import com.martonvago.archelon.ui.morningsurvey.MorningSurveyViewModel
+import kotlinx.android.synthetic.main.fragment_morning_survey_place_time.*
 
 /**
  * A simple [Fragment] subclass.
  */
-@AndroidEntryPoint
-class MorningSurveyPlaceTimeFragment : Fragment() {
+class MorningSurveyPlaceTimeFragment: MorningSurveyScreen(
+    R.layout.fragment_morning_survey_place_time,
+    false
+) {
+    private val viewModel: MorningSurveyViewModel by navGraphViewModels(R.id.morningSurveyNavigation)
 
-    @Inject
-    lateinit var viewModel: MorningSurveyPlaceTimeViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_morning_survey_place_time, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        startMorningSurveyButton.setOnClickListener {
+            it.findNavController().navigate(R.id.action_morningSurveyPlaceTimeFragment_to_morningSurveyObserversWeatherFragment)
+        }
     }
-
 }
