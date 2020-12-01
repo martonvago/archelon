@@ -242,4 +242,23 @@
     <string name="timeline_left">Timeline - Left</string>
     <string name="timeline_center">Timeline - Center</string>
     <string name="timeline_right">Timeline - Right</string>
+
+    <!--Morning Survey Menu-->
+    <string name="newEvent">Add New Event</string>
+    <string name="prevEntry">Check Previous Entry</string>
+    <string name="checkNests">Check Nests</string>
+    <string name="emergencyReloc">Emergency Relocation</string>
+    <string name="addRemark">Add Survey Remark</string>
+    <string name="endSurvey">End Survey</string>
+
+    <!--Events Menu-->
+    <string name="adultEmergence">Adult Emergence</string>
+    <string name="hatching">Hatching</string>
+    <string name="foundByHatching">Found by Hatching</string>
+    <string name="inundation">Inundation/Wash</string>
+    <string name="attPred">Attempted/Predation</string>
+    <string name="foundByPred">Found by Predation</string>
+    <string name="foundByOther">Found by Other</string>
+    <string name="vandalism">Vandalism</string>
+    <string name="otherEvent">Other Event</string>
 </resources>
