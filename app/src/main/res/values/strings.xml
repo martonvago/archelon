@@ -261,4 +261,6 @@
     <string name="foundByOther">Found by Other</string>
     <string name="vandalism">Vandalism</string>
     <string name="otherEvent">Other Event</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 </resources>

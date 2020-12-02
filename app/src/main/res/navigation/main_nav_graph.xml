@@ -16,6 +16,5 @@
     </fragment>
 
     <include app:graph="@navigation/morning_survey_nav_graph" />
-    <action android:id="@+id/action_global_homeScreenFragment" app:destination="@id/homeScreenFragment"/>
 
 </navigation>

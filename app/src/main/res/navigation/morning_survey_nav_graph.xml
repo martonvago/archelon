@@ -36,4 +36,18 @@
         android:name="com.martonvago.archelon.ui.morningsurvey.eventsmenu.MorningSurveyEventsMenuFragment"
         android:label="fragment_morning_survey_events_menu"
         tools:layout="@layout/fragment_morning_survey_events_menu" />
+
+    <dialog
+        android:id="@+id/cancelSurveyDialogFragment"
+        android:name="com.martonvago.archelon.ui.morningsurvey.CancelSurveyDialogFragment"
+        tools:layout="@layout/fragment_cancel_survey_dialog">
+        <action
+            android:id="@+id/cancelSurveyDialogFragment_to_homeScreenFragment"
+            app:destination="@id/mainNavGraph"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/mainNavGraph"/>
+    </dialog>
+
+    <action android:id="@+id/action_global_cancelSurveyDialogFragment" app:destination="@id/cancelSurveyDialogFragment"/>
+
 </navigation>

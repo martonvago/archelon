@@ -34,7 +34,7 @@ abstract class MorningSurveyScreen(
         }
         configureOptionalNavButton(
             cancelButton,
-            if (hasCancelButton) R.id.action_global_homeScreenFragment else null
+            if (hasCancelButton) R.id.action_global_cancelSurveyDialogFragment else null
         )
         configureOptionalNavButton(nextButton, nextActionId)
     }
