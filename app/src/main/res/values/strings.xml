@@ -263,4 +263,8 @@
     <string name="otherEvent">Other Event</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="cancelSurveyDialogTitle">Cancel Survey</string>
+    <string name="cancelSurveyDialogDescription">Are you sure you want to cancel this survey?</string>
+    <string name="endSurveyDialogTitle">End Survey</string>
+    <string name="endSurveyDialogDescription"><![CDATA[Are you sure you want tio end this survey at <time>?]]></string>
 </resources>

@@ -1,4 +1,4 @@
-package com.martonvago.archelon.ui.morningsurvey
+package com.martonvago.archelon.ui.morningsurvey.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,29 +8,36 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.martonvago.archelon.R
-import kotlinx.android.synthetic.main.fragment_cancel_survey_dialog.*
+import kotlinx.android.synthetic.main.fragment_survey_dialog.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class CancelSurveyDialogFragment : DialogFragment() {
+abstract class SurveyDialogFragment(
+    private val dialogTitleId: Int,
+    private val dialogDescriptionId: Int,
+    private val yesButtonActionId: Int
+) : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_cancel_survey_dialog, container, false)
+        return inflater.inflate(R.layout.fragment_survey_dialog, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        dialogTitle.setText(dialogTitleId)
+        dialogDescription.setText(dialogDescriptionId)
 
         noButton.setOnClickListener {
             findNavController().navigateUp()
         }
 
         yesButton.setOnClickListener {
-            findNavController().navigate(R.id.cancelSurveyDialogFragment_to_homeScreenFragment)
+            findNavController().navigate(yesButtonActionId)
         }
     }
 

@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_morningSurveyMenuFragment_to_morningSurveyEventsMenuFragment"
             app:destination="@id/morningSurveyEventsMenuFragment" />
+        <action
+            android:id="@+id/action_morningSurveyMenuFragment_to_endSurveyDialogFragment"
+            app:destination="@id/endSurveyDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/morningSurveyObserversWeatherFragment"
@@ -39,10 +42,21 @@
 
     <dialog
         android:id="@+id/cancelSurveyDialogFragment"
-        android:name="com.martonvago.archelon.ui.morningsurvey.CancelSurveyDialogFragment"
-        tools:layout="@layout/fragment_cancel_survey_dialog">
+        android:name="com.martonvago.archelon.ui.morningsurvey.dialogs.CancelSurveyDialogFragment"
+        tools:layout="@layout/fragment_survey_dialog">
         <action
             android:id="@+id/cancelSurveyDialogFragment_to_homeScreenFragment"
+            app:destination="@id/mainNavGraph"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/mainNavGraph"/>
+    </dialog>
+
+    <dialog
+        android:id="@+id/endSurveyDialogFragment"
+        android:name="com.martonvago.archelon.ui.morningsurvey.dialogs.EndSurveyDialogFragment"
+        tools:layout="@layout/fragment_survey_dialog">
+        <action
+            android:id="@+id/endSurveyDialogFragment_to_homeScreenFragment"
             app:destination="@id/mainNavGraph"
             app:popUpToInclusive="true"
             app:popUpTo="@id/mainNavGraph"/>

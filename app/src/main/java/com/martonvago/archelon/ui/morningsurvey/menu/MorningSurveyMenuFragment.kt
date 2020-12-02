@@ -17,5 +17,9 @@ class MorningSurveyMenuFragment: MorningSurveyScreen(R.layout.fragment_morning_s
         newEventButton.setOnClickListener {
             it.findNavController().navigate(R.id.action_morningSurveyMenuFragment_to_morningSurveyEventsMenuFragment)
         }
+
+        endSurveyButton.setOnClickListener {
+            it.findNavController().navigate(R.id.action_morningSurveyMenuFragment_to_endSurveyDialogFragment)
+        }
     }
 }
