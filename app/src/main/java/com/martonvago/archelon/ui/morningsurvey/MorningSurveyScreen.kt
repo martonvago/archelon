@@ -15,8 +15,8 @@ abstract class MorningSurveyScreen(
     private val nextActionId: Int? = null
 ): Fragment() {
 
-    lateinit var wrapper: View
-    lateinit var content: View
+    private lateinit var wrapper: View
+    private lateinit var content: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

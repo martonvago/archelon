@@ -11,8 +11,7 @@ import com.martonvago.archelon.ui.morningsurvey.MorningSurveyViewModel
  */
 class MorningSurveyObserversWeatherFragment: MorningSurveyScreen(
     R.layout.fragment_morning_survey_observers_weather,
-    true,
-    R.id.action_morningSurveyObserversWeatherFragment_to_morningSurveyMenuFragment
+    nextActionId = R.id.action_morningSurveyObserversWeatherFragment_to_morningSurveyMenuFragment
 ) {
     private val viewModel: MorningSurveyViewModel by navGraphViewModels(R.id.morningSurveyNavigation)
 
