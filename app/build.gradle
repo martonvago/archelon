@@ -48,6 +48,8 @@ dependencies {
     def runner_version = '1.2.0'
     def espresso_version = '3.3.0'
     def truth_version = '1.1'
+    def mockito_kotlin_version = '2.2.0'
+    def mockito_version = '3.6.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -66,14 +68,20 @@ dependencies {
         exclude group: 'androidx.test', module : 'core'
     }
 
-    //Junit5
+    // JUnit5
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
     testImplementation "org.junit.jupiter:junit-jupiter-params:$junit_version"
-    androidTestImplementation("androidx.test:runner:$runner_version")
-    androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junit_version")
-    androidTestImplementation("de.mannodermaus.junit5:android-test-core:$runner_version")
-    androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:$runner_version")
+    androidTestImplementation "org.junit.jupiter:junit-jupiter-params:$junit_version"
+    androidTestImplementation "androidx.test:runner:$runner_version"
+    androidTestImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
+    androidTestImplementation "de.mannodermaus.junit5:android-test-core:$runner_version"
+    androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:$runner_version"
+
+    // Mockito
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
 
     // Navigation dependencies
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
