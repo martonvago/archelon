@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.navGraphViewModels
 import com.martonvago.archelon.R
 import com.martonvago.archelon.ui.morningsurvey.MorningSurveyScreen
-import com.martonvago.archelon.ui.morningsurvey.MorningSurveyViewModel
+import com.martonvago.archelon.viewmodel.MorningSurveyViewModel
 
 /**
  * A simple [Fragment] subclass.

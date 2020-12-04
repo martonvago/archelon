@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.navGraphViewModels
 import com.martonvago.archelon.R
 import com.martonvago.archelon.ui.morningsurvey.MorningSurveyScreen
-import com.martonvago.archelon.ui.morningsurvey.MorningSurveyViewModel
+import com.martonvago.archelon.viewmodel.MorningSurveyViewModel
 import kotlinx.android.synthetic.main.fragment_morning_survey_place_time.*
 
 /**
