@@ -8,23 +8,23 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import com.martonvago.archelon.R
 import com.martonvago.archelon.ui.morningsurvey.placetime.MorningSurveyPlaceTimeFragment
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
 
-@RunWith(AndroidJUnit4::class)
 class SurveyPlaceTimeFragmentTest {
 
-    private lateinit var navController: TestNavHostController
+    companion object {
+        private lateinit var navController: TestNavHostController
 
-    @Before
-    fun setup() {
-        navController = TestNavHostController(ApplicationProvider.getApplicationContext())
-        navController.setGraph(R.navigation.morning_survey_nav_graph)
+        @BeforeAll
+        @JvmStatic
+        fun beforeAll() {
+            navController = TestNavHostController(ApplicationProvider.getApplicationContext())
+            navController.setGraph(R.navigation.morning_survey_nav_graph)
+        }
     }
 
     @Test

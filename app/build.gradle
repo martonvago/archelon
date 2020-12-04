@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
     compileSdkVersion 30
@@ -16,6 +17,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument("runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder")
     }
 
     buildTypes {
@@ -33,13 +35,17 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    packagingOptions {
+        exclude('META-INF/LICENSE*')
+    }
 }
 
 dependencies {
     def fragment_version = '1.2.5'
     def navigation_version = '2.3.2'
-    def junit_version = '4.13.1'
-    def androidx_junit_version = '1.1.2'
+    def junit_version = '5.7.0'
+    def runner_version = '1.2.0'
     def espresso_version = '3.3.0'
     def truth_version = '1.1'
 
@@ -50,8 +56,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
     // Exclude conflicting transitive dependency
     androidTestImplementation ("com.google.truth:truth:$truth_version")  {
@@ -61,6 +65,15 @@ dependencies {
     debugImplementation("androidx.fragment:fragment-testing:$fragment_version") {
         exclude group: 'androidx.test', module : 'core'
     }
+
+    //Junit5
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$junit_version"
+    androidTestImplementation("androidx.test:runner:$runner_version")
+    androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junit_version")
+    androidTestImplementation("de.mannodermaus.junit5:android-test-core:$runner_version")
+    androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:$runner_version")
 
     // Navigation dependencies
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
