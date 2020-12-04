@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/morningSurveyNavigation"
+    app:startDestination="@id/morningSurveyPlaceTimeFragment">
+    <fragment
+        android:id="@+id/morningSurveyPlaceTimeFragment"
+        android:name="com.martonvago.archelon.ui.morningsurvey.placetime.MorningSurveyPlaceTimeFragment"
+        android:label="fragment_morning_survey_place_time"
+        tools:layout="@layout/fragment_morning_survey_place_time">
+        <action
+            android:id="@+id/action_morningSurveyPlaceTimeFragment_to_morningSurveyObserversWeatherFragment"
+            app:destination="@id/morningSurveyObserversWeatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/morningSurveyMenuFragment"
+        android:name="com.martonvago.archelon.ui.morningsurvey.menu.MorningSurveyMenuFragment"
+        android:label="fragment_morning_survey_menu"
+        tools:layout="@layout/fragment_morning_survey_menu">
+        <action
+            android:id="@+id/action_morningSurveyMenuFragment_to_morningSurveyEventsMenuFragment"
+            app:destination="@id/morningSurveyEventsMenuFragment" />
+        <action
+            android:id="@+id/action_morningSurveyMenuFragment_to_endSurveyDialogFragment"
+            app:destination="@id/endSurveyDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/morningSurveyObserversWeatherFragment"
+        android:name="com.martonvago.archelon.ui.morningsurvey.observersweather.MorningSurveyObserversWeatherFragment"
+        android:label="fragment_morning_survey_observers_weather"
+        tools:layout="@layout/fragment_morning_survey_observers_weather">
+        <action
+            android:id="@+id/action_morningSurveyObserversWeatherFragment_to_morningSurveyMenuFragment"
+            app:destination="@id/morningSurveyMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/morningSurveyEventsMenuFragment"
+        android:name="com.martonvago.archelon.ui.morningsurvey.eventsmenu.MorningSurveyEventsMenuFragment"
+        android:label="fragment_morning_survey_events_menu"
+        tools:layout="@layout/fragment_morning_survey_events_menu" />
+
+    <dialog
+        android:id="@+id/cancelSurveyDialogFragment"
+        android:name="com.martonvago.archelon.ui.morningsurvey.dialogs.CancelSurveyDialogFragment"
+        tools:layout="@layout/fragment_survey_dialog">
+        <action
+            android:id="@+id/cancelSurveyDialogFragment_to_homeScreenFragment"
+            app:destination="@id/mainNavGraph"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/mainNavGraph"/>
+    </dialog>
+
+    <dialog
+        android:id="@+id/endSurveyDialogFragment"
+        android:name="com.martonvago.archelon.ui.morningsurvey.dialogs.EndSurveyDialogFragment"
+        tools:layout="@layout/fragment_survey_dialog">
+        <action
+            android:id="@+id/endSurveyDialogFragment_to_homeScreenFragment"
+            app:destination="@id/mainNavGraph"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/mainNavGraph"/>
+    </dialog>
+
+    <action android:id="@+id/action_global_cancelSurveyDialogFragment" app:destination="@id/cancelSurveyDialogFragment"/>
+
+</navigation>
