@@ -1,7 +1,12 @@
-This project implements one feature for the Archelon Morning Survey app.
-Android Gradle Plugin 3.6.4
-Gradle 6.1.1
-JUnit 5
-Hilt?
-Navigation Components
-1 Activity
+This project implements the basic "add new Morning Survey" flow for the Archelon Morning Survey app.
+
+- Android Gradle Plugin 3.6.4
+    - ThreeTenABP
+- Gradle 6.1.1
+- Hilt
+- Navigation Components
+- Room db
+- 1 Activity
+
+- JUnit 5
+- Mockito
