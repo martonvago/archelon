@@ -1,7 +1,7 @@
 package com.martonvago.archelon.navigation
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.testing.launchFragmentInContainer
+import androidx.lifecycle.ViewModelStore
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
@@ -10,6 +10,7 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import com.google.common.truth.Truth.assertThat
 import com.martonvago.archelon.R
+import com.martonvago.archelon.launchFragmentInHiltContainer
 import com.martonvago.archelon.ui.morningsurvey.eventsmenu.MorningSurveyEventsMenuFragment
 import com.martonvago.archelon.ui.morningsurvey.menu.MorningSurveyMenuFragment
 import com.martonvago.archelon.ui.morningsurvey.observersweather.MorningSurveyObserversWeatherFragment
@@ -153,6 +154,7 @@ class SurveyNavigationTest {
         @JvmStatic
         fun beforeAll() {
             navController = TestNavHostController(ApplicationProvider.getApplicationContext())
+            navController.setViewModelStore(ViewModelStore())
             navController.setGraph(R.navigation.morning_survey_nav_graph)
         }
 
@@ -173,9 +175,8 @@ class SurveyNavigationTest {
         }
 
         inline fun <reified T : Fragment> setupScenarioForFragment() {
-            val scenario = launchFragmentInContainer<T>(themeResId = R.style.AppTheme)
-            scenario.onFragment { fragment ->
-                Navigation.setViewNavController(fragment.requireView(), navController)
+            launchFragmentInHiltContainer<T>(themeResId = R.style.AppTheme) {
+                Navigation.setViewNavController(this.view!!, navController)
             }
         }
     }

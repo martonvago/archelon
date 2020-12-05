@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_morning_survey_menu.*
 /**
  * A simple [Fragment] subclass.
  */
-class MorningSurveyMenuFragment: MorningSurveyScreen(R.layout.fragment_morning_survey_menu) {
+class MorningSurveyMenuFragment: MorningSurveyScreen(R.layout.fragment_morning_survey_menu, true, null) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         newEventButton.setOnClickListener {

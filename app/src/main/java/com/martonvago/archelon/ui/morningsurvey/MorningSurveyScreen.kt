@@ -9,9 +9,16 @@ import androidx.navigation.findNavController
 import com.martonvago.archelon.R
 import kotlinx.android.synthetic.main.survey_screen_wrapper.*
 
+/**
+ * This is the base fragment for all morning survey screens. It provides customisable in-survey
+ * navigation controls (prev, cancel, next) and uniform wrapper container styling.
+ *
+ * We avoid using default parameters in the constructor of a class which is the base class
+ * for @AndroidEntryPoint classes; see https://github.com/google/dagger/issues/1904
+ */
 abstract class MorningSurveyScreen(
     private val contentLayoutId: Int,
-    private val hasCancelButton: Boolean = true,
+    private val hasCancelButton: Boolean,
     private val nextActionId: Int? = null
 ): Fragment() {
 
