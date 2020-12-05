@@ -1,4 +1,4 @@
-package com.martonvago.archelon.ui.morningsurvey.dialogs
+package com.martonvago.archelon.ui.createsurvey.dialogs
 
 import com.martonvago.archelon.R
 

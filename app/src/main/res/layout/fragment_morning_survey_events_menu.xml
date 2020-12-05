@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.morningsurvey.eventsmenu.MorningSurveyEventsMenuFragment">
+    tools:context=".ui.createsurvey.eventsmenu.MorningSurveyEventsMenuFragment">
 
     <Button
         android:id="@+id/adultEmergenceButton"

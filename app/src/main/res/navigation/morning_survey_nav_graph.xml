@@ -2,11 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/morningSurveyNavigation"
+    android:id="@+id/morningSurveyNavGraph"
     app:startDestination="@id/morningSurveyPlaceTimeFragment">
     <fragment
         android:id="@+id/morningSurveyPlaceTimeFragment"
-        android:name="com.martonvago.archelon.ui.morningsurvey.placetime.MorningSurveyPlaceTimeFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.placetime.MorningSurveyPlaceTimeFragment"
         android:label="fragment_morning_survey_place_time"
         tools:layout="@layout/fragment_morning_survey_place_time">
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/morningSurveyMenuFragment"
-        android:name="com.martonvago.archelon.ui.morningsurvey.menu.MorningSurveyMenuFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.menu.MorningSurveyMenuFragment"
         android:label="fragment_morning_survey_menu"
         tools:layout="@layout/fragment_morning_survey_menu">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/morningSurveyObserversWeatherFragment"
-        android:name="com.martonvago.archelon.ui.morningsurvey.observersweather.MorningSurveyObserversWeatherFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.observersweather.MorningSurveyObserversWeatherFragment"
         android:label="fragment_morning_survey_observers_weather"
         tools:layout="@layout/fragment_morning_survey_observers_weather">
         <action
@@ -36,13 +36,13 @@
     </fragment>
     <fragment
         android:id="@+id/morningSurveyEventsMenuFragment"
-        android:name="com.martonvago.archelon.ui.morningsurvey.eventsmenu.MorningSurveyEventsMenuFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.eventsmenu.MorningSurveyEventsMenuFragment"
         android:label="fragment_morning_survey_events_menu"
         tools:layout="@layout/fragment_morning_survey_events_menu" />
 
     <dialog
         android:id="@+id/cancelSurveyDialogFragment"
-        android:name="com.martonvago.archelon.ui.morningsurvey.dialogs.CancelSurveyDialogFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.dialogs.CancelSurveyDialogFragment"
         tools:layout="@layout/fragment_survey_dialog">
         <action
             android:id="@+id/cancelSurveyDialogFragment_to_homeScreenFragment"
@@ -53,7 +53,7 @@
 
     <dialog
         android:id="@+id/endSurveyDialogFragment"
-        android:name="com.martonvago.archelon.ui.morningsurvey.dialogs.EndSurveyDialogFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.dialogs.EndSurveyDialogFragment"
         tools:layout="@layout/fragment_survey_dialog">
         <action
             android:id="@+id/endSurveyDialogFragment_to_homeScreenFragment"

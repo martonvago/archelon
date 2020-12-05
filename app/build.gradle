@@ -63,12 +63,12 @@ dependencies {
 
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
     // Exclude conflicting transitive dependency
-    androidTestImplementation ("com.google.truth:truth:$truth_version")  {
+    androidTestImplementation("com.google.truth:truth:$truth_version") {
         exclude group: "com.google.code.findbugs", module: "jsr305"
     }
     // Exclude conflicting transitive dependency
     debugImplementation("androidx.fragment:fragment-testing:$fragment_version") {
-        exclude group: 'androidx.test', module : 'core'
+        exclude group: 'androidx.test', module: 'core'
     }
 
     // Room

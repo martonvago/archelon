@@ -1,8 +1,8 @@
-package com.martonvago.archelon.ui.morningsurvey.eventsmenu
+package com.martonvago.archelon.ui.createsurvey.eventsmenu
 
 import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
-import com.martonvago.archelon.ui.morningsurvey.MorningSurveyScreen
+import com.martonvago.archelon.ui.createsurvey.MorningSurveyScreen
 
 /**
  * A simple [Fragment] subclass.

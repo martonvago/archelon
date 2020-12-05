@@ -1,10 +1,10 @@
-package com.martonvago.archelon.ui.morningsurvey.observersweather
+package com.martonvago.archelon.ui.createsurvey.observersweather
 
 import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.di.hiltNavGraphViewModels
-import com.martonvago.archelon.ui.morningsurvey.MorningSurveyScreen
-import com.martonvago.archelon.viewmodel.MorningSurveyViewModel
+import com.martonvago.archelon.ui.createsurvey.MorningSurveyScreen
+import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -16,6 +16,6 @@ class MorningSurveyObserversWeatherFragment: MorningSurveyScreen(
     true,
     R.id.action_morningSurveyObserversWeatherFragment_to_morningSurveyMenuFragment
 ) {
-    private val viewModel by hiltNavGraphViewModels<MorningSurveyViewModel>(R.id.morningSurveyNavigation)
+    private val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.morningSurveyNavGraph)
 
 }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/parent"
-    android:name="com.martonvago.archelon.ui.morningsurvey.MorningSurveyScreen"
+    android:name="com.martonvago.archelon.ui.createsurvey.MorningSurveyScreen"
     android:background="?attr/colorBgPrimary">
 
     <ScrollView

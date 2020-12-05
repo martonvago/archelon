@@ -1,7 +1,6 @@
 package com.martonvago.archelon.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.martonvago.archelon.entity.*
@@ -9,11 +8,11 @@ import com.martonvago.archelon.repository.ArchelonRepository
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDateTime
 
-class MorningSurveyViewModel @ViewModelInject constructor(
+class CreateSurveyViewModel @ViewModelInject constructor(
     private val archelonRepository: ArchelonRepository
-): ViewModel(), LifecycleObserver {
+): ViewModel() {
 
-    fun addTestSurvey() {
+    fun submitSurvey() {
         viewModelScope.launch {
             val survey = Survey(
                 LocalDateTime.now(),

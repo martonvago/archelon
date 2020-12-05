@@ -11,10 +11,10 @@ import androidx.test.espresso.matcher.ViewMatchers
 import com.google.common.truth.Truth.assertThat
 import com.martonvago.archelon.R
 import com.martonvago.archelon.launchFragmentInHiltContainer
-import com.martonvago.archelon.ui.morningsurvey.eventsmenu.MorningSurveyEventsMenuFragment
-import com.martonvago.archelon.ui.morningsurvey.menu.MorningSurveyMenuFragment
-import com.martonvago.archelon.ui.morningsurvey.observersweather.MorningSurveyObserversWeatherFragment
-import com.martonvago.archelon.ui.morningsurvey.placetime.MorningSurveyPlaceTimeFragment
+import com.martonvago.archelon.ui.createsurvey.eventsmenu.MorningSurveyEventsMenuFragment
+import com.martonvago.archelon.ui.createsurvey.menu.MorningSurveyMenuFragment
+import com.martonvago.archelon.ui.createsurvey.observersweather.MorningSurveyObserversWeatherFragment
+import com.martonvago.archelon.ui.createsurvey.placetime.MorningSurveyPlaceTimeFragment
 import org.junit.jupiter.api.*
 
 class SurveyNavigationTest {

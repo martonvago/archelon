@@ -1,4 +1,4 @@
-package com.martonvago.archelon.ui.morningsurvey.dialogs
+package com.martonvago.archelon.ui.createsurvey.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -37,8 +37,12 @@ abstract class SurveyDialogFragment(
         }
 
         yesButton.setOnClickListener {
-            findNavController().navigate(yesButtonActionId)
+            yesButtonClicked()
         }
+    }
+
+    open fun yesButtonClicked() {
+        findNavController().navigate(yesButtonActionId)
     }
 
 }
