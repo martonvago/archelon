@@ -6,26 +6,26 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.martonvago.archelon.R
 import com.martonvago.archelon.di.hiltNavGraphViewModels
-import com.martonvago.archelon.ui.createsurvey.MorningSurveyScreen
+import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
 import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_morning_survey_place_time.*
+import kotlinx.android.synthetic.main.fragment_create_survey_place_time.*
 
 /**
  * A simple [Fragment] subclass.
  */
 @AndroidEntryPoint
-class MorningSurveyPlaceTimeFragment: MorningSurveyScreen(
-    R.layout.fragment_morning_survey_place_time,
+class CreateSurveyPlaceTimeFragment: CreateSurveyBaseFragment(
+    R.layout.fragment_create_survey_place_time,
     false,
     null
 ) {
-    private val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.morningSurveyNavGraph)
+    private val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.createSurveyNavGraph)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         startMorningSurveyButton.setOnClickListener {
-            it.findNavController().navigate(R.id.action_morningSurveyPlaceTimeFragment_to_morningSurveyObserversWeatherFragment)
+            it.findNavController().navigate(R.id.action_createSurveyPlaceTimeFragment_to_createSurveyObserversFragment)
         }
     }
 }

@@ -5,22 +5,22 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.martonvago.archelon.R
-import com.martonvago.archelon.ui.createsurvey.MorningSurveyScreen
-import kotlinx.android.synthetic.main.fragment_morning_survey_menu.*
+import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
+import kotlinx.android.synthetic.main.fragment_create_survey_menu.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class MorningSurveyMenuFragment: MorningSurveyScreen(R.layout.fragment_morning_survey_menu, true, null) {
+class CreateSurveyMenuFragment: CreateSurveyBaseFragment(R.layout.fragment_create_survey_menu, true, null) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         newEventButton.setOnClickListener {
-            it.findNavController().navigate(R.id.action_morningSurveyMenuFragment_to_morningSurveyEventsMenuFragment)
+            it.findNavController().navigate(R.id.action_createSurveyMenuFragment_to_createSurveyEventsMenuFragment)
         }
 
         endSurveyButton.setOnClickListener {
-            it.findNavController().navigate(R.id.action_morningSurveyMenuFragment_to_endSurveyDialogFragment)
+            it.findNavController().navigate(R.id.action_createSurveyMenuFragment_to_endSurveyDialogFragment)
         }
     }
 }

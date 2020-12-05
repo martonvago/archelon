@@ -2,11 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:name="com.martonvago.archelon.ui.createsurvey.placetime.MorningSurveyPlaceTimeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.createsurvey.placetime.MorningSurveyPlaceTimeFragment">
+    tools:context=".ui.createsurvey.placetime.CreateSurveyPlaceTimeFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

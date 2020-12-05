@@ -2,43 +2,43 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/morningSurveyNavGraph"
-    app:startDestination="@id/morningSurveyPlaceTimeFragment">
+    android:id="@+id/createSurveyNavGraph"
+    app:startDestination="@id/createSurveyPlaceTimeFragment">
     <fragment
-        android:id="@+id/morningSurveyPlaceTimeFragment"
-        android:name="com.martonvago.archelon.ui.createsurvey.placetime.MorningSurveyPlaceTimeFragment"
+        android:id="@+id/createSurveyPlaceTimeFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.placetime.CreateSurveyPlaceTimeFragment"
         android:label="fragment_morning_survey_place_time"
-        tools:layout="@layout/fragment_morning_survey_place_time">
+        tools:layout="@layout/fragment_create_survey_place_time">
         <action
-            android:id="@+id/action_morningSurveyPlaceTimeFragment_to_morningSurveyObserversWeatherFragment"
-            app:destination="@id/morningSurveyObserversWeatherFragment" />
+            android:id="@+id/action_createSurveyPlaceTimeFragment_to_createSurveyObserversFragment"
+            app:destination="@id/createSurveyObserversFragment" />
     </fragment>
     <fragment
-        android:id="@+id/morningSurveyMenuFragment"
-        android:name="com.martonvago.archelon.ui.createsurvey.menu.MorningSurveyMenuFragment"
+        android:id="@+id/createSurveyMenuFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.menu.CreateSurveyMenuFragment"
         android:label="fragment_morning_survey_menu"
-        tools:layout="@layout/fragment_morning_survey_menu">
+        tools:layout="@layout/fragment_create_survey_menu">
         <action
-            android:id="@+id/action_morningSurveyMenuFragment_to_morningSurveyEventsMenuFragment"
-            app:destination="@id/morningSurveyEventsMenuFragment" />
+            android:id="@+id/action_createSurveyMenuFragment_to_createSurveyEventsMenuFragment"
+            app:destination="@id/createSurveyEventsMenuFragment" />
         <action
-            android:id="@+id/action_morningSurveyMenuFragment_to_endSurveyDialogFragment"
+            android:id="@+id/action_createSurveyMenuFragment_to_endSurveyDialogFragment"
             app:destination="@id/endSurveyDialogFragment" />
     </fragment>
     <fragment
-        android:id="@+id/morningSurveyObserversWeatherFragment"
-        android:name="com.martonvago.archelon.ui.createsurvey.observersweather.MorningSurveyObserversWeatherFragment"
+        android:id="@+id/createSurveyObserversFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.observers.CreateSurveyObserversFragment"
         android:label="fragment_morning_survey_observers_weather"
-        tools:layout="@layout/fragment_morning_survey_observers_weather">
+        tools:layout="@layout/fragment_create_survey_observers">
         <action
-            android:id="@+id/action_morningSurveyObserversWeatherFragment_to_morningSurveyMenuFragment"
-            app:destination="@id/morningSurveyMenuFragment" />
+            android:id="@+id/action_createSurveyObserversFragment_to_createSurveyMenuFragment"
+            app:destination="@id/createSurveyMenuFragment" />
     </fragment>
     <fragment
-        android:id="@+id/morningSurveyEventsMenuFragment"
-        android:name="com.martonvago.archelon.ui.createsurvey.eventsmenu.MorningSurveyEventsMenuFragment"
+        android:id="@+id/createSurveyEventsMenuFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.eventsmenu.CreateSurveyEventsMenuFragment"
         android:label="fragment_morning_survey_events_menu"
-        tools:layout="@layout/fragment_morning_survey_events_menu" />
+        tools:layout="@layout/fragment_create_survey_events_menu" />
 
     <dialog
         android:id="@+id/cancelSurveyDialogFragment"

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.martonvago.archelon.R
-import kotlinx.android.synthetic.main.survey_screen_wrapper.*
+import kotlinx.android.synthetic.main.create_survey_wrapper.*
 
 /**
  * This is the base fragment for all morning survey screens. It provides customisable in-survey
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.survey_screen_wrapper.*
  * We avoid using default parameters in the constructor of a class which is the base class
  * for @AndroidEntryPoint classes; see https://github.com/google/dagger/issues/1904
  */
-abstract class MorningSurveyScreen(
+abstract class CreateSurveyBaseFragment(
     private val contentLayoutId: Int,
     private val hasCancelButton: Boolean,
     private val nextActionId: Int? = null
@@ -29,7 +29,7 @@ abstract class MorningSurveyScreen(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        wrapper = inflater.inflate(R.layout.survey_screen_wrapper, container, false)
+        wrapper = inflater.inflate(R.layout.create_survey_wrapper, container, false)
         content = inflater.inflate(contentLayoutId, wrapper as ViewGroup)
         return wrapper
     }

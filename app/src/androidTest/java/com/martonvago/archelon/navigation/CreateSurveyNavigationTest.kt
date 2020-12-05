@@ -1,10 +1,10 @@
 package com.martonvago.archelon.navigation
 
 import com.martonvago.archelon.R
-import com.martonvago.archelon.ui.createsurvey.eventsmenu.MorningSurveyEventsMenuFragment
-import com.martonvago.archelon.ui.createsurvey.menu.MorningSurveyMenuFragment
-import com.martonvago.archelon.ui.createsurvey.observersweather.MorningSurveyObserversWeatherFragment
-import com.martonvago.archelon.ui.createsurvey.placetime.MorningSurveyPlaceTimeFragment
+import com.martonvago.archelon.ui.createsurvey.eventsmenu.CreateSurveyEventsMenuFragment
+import com.martonvago.archelon.ui.createsurvey.menu.CreateSurveyMenuFragment
+import com.martonvago.archelon.ui.createsurvey.observers.CreateSurveyObserversFragment
+import com.martonvago.archelon.ui.createsurvey.placetime.CreateSurveyPlaceTimeFragment
 import org.junit.jupiter.api.*
 
 class CreateSurveyNavigationTest: NavigationTestBase() {
@@ -13,7 +13,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
         @BeforeAll
         @JvmStatic
         fun beforeAll(){
-            setUpNavController(R.navigation.morning_survey_nav_graph)
+            setUpNavController(R.navigation.create_survey_nav_graph)
         }
     }
 
@@ -24,8 +24,8 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
         @BeforeEach
         fun beforeEach() {
             // given
-            setupScenarioForFragment<MorningSurveyPlaceTimeFragment>()
-            navController.setCurrentDestination(R.id.morningSurveyPlaceTimeFragment)
+            setupScenarioForFragment<CreateSurveyPlaceTimeFragment>()
+            navController.setCurrentDestination(R.id.createSurveyPlaceTimeFragment)
         }
 
         @Test
@@ -34,7 +34,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
             clickElementWithId(R.id.startMorningSurveyButton)
 
             // then
-            assertThatCurrentDestinationIs(R.id.morningSurveyObserversWeatherFragment)
+            assertThatCurrentDestinationIs(R.id.createSurveyObserversFragment)
         }
 
         @Test
@@ -46,7 +46,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
             clickElementWithId(R.id.prevButton)
 
             // then
-            assertThatCurrentDestinationIs(R.id.morningSurveyPlaceTimeFragment)
+            assertThatCurrentDestinationIs(R.id.createSurveyPlaceTimeFragment)
         }
     }
 
@@ -57,8 +57,8 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
         @BeforeEach
         fun beforeEach() {
             // given
-            setupScenarioForFragment<MorningSurveyObserversWeatherFragment>()
-            navController.setCurrentDestination(R.id.morningSurveyObserversWeatherFragment)
+            setupScenarioForFragment<CreateSurveyObserversFragment>()
+            navController.setCurrentDestination(R.id.createSurveyObserversFragment)
         }
 
         @Test
@@ -67,7 +67,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
             clickElementWithId(R.id.nextButton)
 
             // then
-            assertThatCurrentDestinationIs(R.id.morningSurveyMenuFragment)
+            assertThatCurrentDestinationIs(R.id.createSurveyMenuFragment)
         }
 
         @Test
@@ -84,7 +84,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
             clickElementWithId(R.id.prevButton)
 
             // then
-            assertThatCurrentDestinationIs(R.id.morningSurveyObserversWeatherFragment)
+            assertThatCurrentDestinationIs(R.id.createSurveyObserversFragment)
         }
     }
 
@@ -95,8 +95,8 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
         @BeforeEach
         fun beforeEach() {
             // given
-            setupScenarioForFragment<MorningSurveyMenuFragment>()
-            navController.setCurrentDestination(R.id.morningSurveyMenuFragment)
+            setupScenarioForFragment<CreateSurveyMenuFragment>()
+            navController.setCurrentDestination(R.id.createSurveyMenuFragment)
         }
 
         @Test
@@ -105,7 +105,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
             clickElementWithId(R.id.newEventButton)
 
             // then
-            assertThatCurrentDestinationIs(R.id.morningSurveyEventsMenuFragment)
+            assertThatCurrentDestinationIs(R.id.createSurveyEventsMenuFragment)
         }
 
         @Test
@@ -131,15 +131,15 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
             clickElementWithId(R.id.prevButton)
 
             // then
-            assertThatCurrentDestinationIs(R.id.morningSurveyMenuFragment)
+            assertThatCurrentDestinationIs(R.id.createSurveyMenuFragment)
         }
     }
 
     @Test
     fun opensCancelDialogFromEventsMenuScreen() {
         // given
-        setupScenarioForFragment<MorningSurveyEventsMenuFragment>()
-        navController.setCurrentDestination(R.id.morningSurveyEventsMenuFragment)
+        setupScenarioForFragment<CreateSurveyEventsMenuFragment>()
+        navController.setCurrentDestination(R.id.createSurveyEventsMenuFragment)
 
         // then
         assertThatCancelDialogOpens()

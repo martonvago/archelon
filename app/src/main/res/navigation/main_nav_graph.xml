@@ -12,13 +12,13 @@
         tools:layout="@layout/fragment_home_screen" >
         <action
             android:id="@+id/action_homeScreenFragment_to_morning_survey"
-            app:destination="@id/morningSurveyNavGraph" />
+            app:destination="@id/createSurveyNavGraph" />
         <action
             android:id="@+id/action_homeScreenFragment_to_viewSurveysFragment"
             app:destination="@id/viewSurveysFragment" />
     </fragment>
 
-    <include app:graph="@navigation/morning_survey_nav_graph" />
+    <include app:graph="@navigation/create_survey_nav_graph" />
     <fragment
         android:id="@+id/viewSurveysFragment"
         android:name="com.martonvago.archelon.ui.viewsurveys.ViewSurveysFragment"

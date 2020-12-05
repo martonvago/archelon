@@ -11,7 +11,7 @@ class EndSurveyDialogFragment: SurveyDialogFragment(
     R.string.endSurveyDialogDescription,
     R.id.endSurveyDialogFragment_to_homeScreenFragment
 ) {
-    private val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.morningSurveyNavGraph)
+    private val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.createSurveyNavGraph)
 
     override fun yesButtonClicked() {
         viewModel.submitSurvey()
