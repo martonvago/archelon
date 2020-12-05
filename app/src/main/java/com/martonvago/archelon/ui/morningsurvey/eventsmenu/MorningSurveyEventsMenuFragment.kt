@@ -7,7 +7,7 @@ import com.martonvago.archelon.ui.morningsurvey.MorningSurveyScreen
 /**
  * A simple [Fragment] subclass.
  */
-class MorningSurveyEventsMenuFragment: MorningSurveyScreen(R.layout.fragment_morning_survey_events_menu) {
+class MorningSurveyEventsMenuFragment: MorningSurveyScreen(R.layout.fragment_morning_survey_events_menu, true, null) {
 
 
 }
