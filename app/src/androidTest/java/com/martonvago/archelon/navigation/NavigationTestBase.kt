@@ -2,14 +2,12 @@ package com.martonvago.archelon.navigation
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelStore
-import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import com.google.common.truth.Truth.assertThat
-import com.martonvago.archelon.R
 import com.martonvago.archelon.launchFragmentInHiltContainer
 
 abstract class NavigationTestBase {
@@ -36,8 +34,6 @@ abstract class NavigationTestBase {
     }
 
     inline fun <reified T : Fragment> setupScenarioForFragment() {
-        launchFragmentInHiltContainer<T>(themeResId = R.style.AppTheme) {
-            Navigation.setViewNavController(this.view!!, navController)
-        }
+        launchFragmentInHiltContainer<T>(navController)
     }
 }

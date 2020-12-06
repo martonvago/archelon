@@ -12,6 +12,10 @@ class CreateSurveyViewModel @ViewModelInject constructor(
     private val archelonRepository: ArchelonRepository
 ): ViewModel() {
 
+    // Not using live data here as info flow is user > system
+    // Would be an idea to do something like that to turn this into an edit or create sequence
+    var leader = "Hello"
+
     fun submitSurvey() {
         viewModelScope.launch {
             val survey = Survey(
@@ -23,17 +27,10 @@ class CreateSurveyViewModel @ViewModelInject constructor(
                 WindIntensity.CALM,
                 CompassDirection.NORTH,
                 Surf.MEDIUM,
-                "Mr Bean",
+                leader,
                 emptyList()
             )
             archelonRepository.saveSurvey(survey)
-        }
-    }
-
-    fun dumpSurveyData() {
-        viewModelScope.launch {
-            val s = archelonRepository.getAllSurveys()
-            println(s.value.toString())
         }
     }
 }

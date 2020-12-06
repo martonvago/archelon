@@ -23,6 +23,8 @@ import androidx.annotation.StyleRes
 import androidx.core.util.Preconditions
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.testing.FragmentScenario.EmptyFragmentActivity
+import androidx.navigation.NavHostController
+import androidx.navigation.Navigation
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 
@@ -36,9 +38,10 @@ import androidx.test.core.app.ApplicationProvider
  *
  * See https://github.com/google/dagger/issues/1953
  */
-inline fun <reified T : Fragment> launchFragmentInHiltContainer(
+inline fun <reified T: Fragment> launchFragmentInHiltContainer(
+    navHostController: NavHostController,
     fragmentArgs: Bundle? = null,
-    @StyleRes themeResId: Int = R.style.FragmentScenarioEmptyFragmentActivityTheme,
+    @StyleRes themeResId: Int = R.style.AppTheme,
     crossinline action: Fragment.() -> Unit = {}
 ) {
     val startActivityIntent = Intent.makeMainActivity(
@@ -54,6 +57,16 @@ inline fun <reified T : Fragment> launchFragmentInHiltContainer(
             T::class.java.name
         )
         fragment.arguments = fragmentArgs
+
+        // We set the nav controller for the fragment once we have a view
+        navHostController.let {
+            fragment.viewLifecycleOwnerLiveData.observeForever { viewLifecycleOwner ->
+                if (viewLifecycleOwner != null) {
+                    Navigation.setViewNavController(fragment.requireView(), it)
+                }
+            }
+        }
+
         activity.supportFragmentManager
             .beginTransaction()
             .add(android.R.id.content, fragment, "")

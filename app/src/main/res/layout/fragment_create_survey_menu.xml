@@ -1,63 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.createsurvey.menu.CreateSurveyMenuFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="viewModel" type="com.martonvago.archelon.viewmodel.CreateSurveyViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.createsurvey.menu.CreateSurveyMenuFragment">
 
-    <Button
-        android:id="@+id/newEventButton"
-        style="@style/ButtonStyle"
-        android:text="@string/newEvent"
-        app:layout_constraintBottom_toTopOf="@id/prevEntryButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/newEventButton"
+            style="@style/ButtonStyle"
+            android:text="@string/newEvent"
+            app:layout_constraintBottom_toTopOf="@id/prevEntryButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/prevEntryButton"
-        style="@style/ButtonStyle"
-        android:text="@string/prevEntry"
-        app:layout_constraintBottom_toTopOf="@id/checkNestsButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/newEventButton" />
+        <Button
+            android:id="@+id/prevEntryButton"
+            style="@style/ButtonStyle"
+            android:text="@string/prevEntry"
+            app:layout_constraintBottom_toTopOf="@id/checkNestsButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/newEventButton" />
 
-    <Button
-        android:id="@+id/checkNestsButton"
-        style="@style/ButtonStyle"
-        android:text="@string/checkNests"
-        app:layout_constraintBottom_toTopOf="@id/emergenceByRelocButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/prevEntryButton" />
+        <Button
+            android:id="@+id/checkNestsButton"
+            style="@style/ButtonStyle"
+            android:text="@string/checkNests"
+            app:layout_constraintBottom_toTopOf="@id/emergenceByRelocButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/prevEntryButton" />
 
-    <Button
-        android:id="@+id/emergenceByRelocButton"
-        style="@style/ButtonStyle"
-        android:text="@string/emergencyReloc"
-        app:layout_constraintBottom_toTopOf="@id/addRemarkButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkNestsButton" />
+        <Button
+            android:id="@+id/emergenceByRelocButton"
+            style="@style/ButtonStyle"
+            android:text="@string/emergencyReloc"
+            app:layout_constraintBottom_toTopOf="@id/addRemarkButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/checkNestsButton" />
 
-    <Button
-        android:id="@+id/addRemarkButton"
-        style="@style/ButtonStyle"
-        android:text="@string/addRemark"
-        app:layout_constraintBottom_toTopOf="@id/endSurveyButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emergenceByRelocButton" />
+        <Button
+            android:id="@+id/addRemarkButton"
+            style="@style/ButtonStyle"
+            android:text="@string/addRemark"
+            app:layout_constraintBottom_toTopOf="@id/endSurveyButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emergenceByRelocButton" />
 
-    <Button
-        android:id="@+id/endSurveyButton"
-        style="@style/ButtonStyle"
-        android:text="@string/endSurvey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addRemarkButton" />
+        <Button
+            android:id="@+id/endSurveyButton"
+            style="@style/ButtonStyle"
+            android:text="@string/endSurvey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addRemarkButton" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

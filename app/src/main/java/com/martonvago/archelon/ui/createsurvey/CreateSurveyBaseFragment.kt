@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.martonvago.archelon.R
+import com.martonvago.archelon.databinding.CreateSurveyWrapperBinding
 import kotlinx.android.synthetic.main.create_survey_wrapper.*
 
 /**
@@ -17,25 +18,30 @@ import kotlinx.android.synthetic.main.create_survey_wrapper.*
  * for @AndroidEntryPoint classes; see https://github.com/google/dagger/issues/1904
  */
 abstract class CreateSurveyBaseFragment(
-    private val contentLayoutId: Int,
     private val hasCancelButton: Boolean,
-    private val nextActionId: Int? = null
+    private val nextActionId: Int
 ): Fragment() {
-
-    private lateinit var wrapper: View
-    private lateinit var content: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        wrapper = inflater.inflate(R.layout.create_survey_wrapper, container, false)
-        content = inflater.inflate(contentLayoutId, wrapper as ViewGroup)
-        return wrapper
+        val binding = CreateSurveyWrapperBinding.inflate(inflater, container, false)
+
+        initialiseContentBinding(inflater, binding.surveyContent, true)
+
+        return binding.root
     }
+
+    abstract fun initialiseContentBinding(inflater: LayoutInflater, wrapper: ViewGroup, attachToRoot: Boolean)
+
+    abstract fun populateContentBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        populateContentBinding()
+
         prevButton.setOnClickListener {
             it.findNavController().popBackStack()
         }
