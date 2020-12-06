@@ -7,14 +7,22 @@
 
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.martonvago.archelon.ui.home.HomeScreenFragment"
+        android:name="com.martonvago.archelon.ui.viewsurveys.HomeScreenFragment"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" >
         <action
             android:id="@+id/action_homeScreenFragment_to_morning_survey"
-            app:destination="@id/morningSurveyNavigation" />
+            app:destination="@id/createSurveyNavGraph" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_viewSurveysFragment"
+            app:destination="@id/viewSurveysFragment" />
     </fragment>
 
-    <include app:graph="@navigation/morning_survey_nav_graph" />
+    <include app:graph="@navigation/create_survey_nav_graph" />
+    <fragment
+        android:id="@+id/viewSurveysFragment"
+        android:name="com.martonvago.archelon.ui.viewsurveys.ViewSurveysFragment"
+        android:label="fragment_view_surveys"
+        tools:layout="@layout/fragment_view_surveys" />
 
 </navigation>

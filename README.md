@@ -7,6 +7,8 @@ This project implements the basic "add new Morning Survey" flow for the Archelon
 - Navigation Components
 - Room db
 - 1 Activity
+- data binding
+- LiveData
 
 - JUnit 5
 - Mockito

@@ -1,41 +1,54 @@
-package com.martonvago.archelon.ui.morningsurvey
+package com.martonvago.archelon.ui.createsurvey
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.martonvago.archelon.R
-import kotlinx.android.synthetic.main.survey_screen_wrapper.*
+import com.martonvago.archelon.databinding.CreateSurveyWrapperBinding
+import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.create_survey_wrapper.*
 
 /**
  * This is the base fragment for all morning survey screens. It provides customisable in-survey
  * navigation controls (prev, cancel, next) and uniform wrapper container styling.
  *
- * We avoid using default parameters in the constructor of a class which is the base class
- * for @AndroidEntryPoint classes; see https://github.com/google/dagger/issues/1904
+ * We also use this class to set up data binding for the individual survey screens as well as
+ * the shared view model, which is scoped to [R.id.createSurveyNavGraph].
  */
-abstract class MorningSurveyScreen(
-    private val contentLayoutId: Int,
+@AndroidEntryPoint
+abstract class CreateSurveyBaseFragment(
     private val hasCancelButton: Boolean,
-    private val nextActionId: Int? = null
+    @IdRes private val nextActionId: Int? = null
 ): Fragment() {
 
-    private lateinit var wrapper: View
-    private lateinit var content: View
+    val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.createSurveyNavGraph)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        wrapper = inflater.inflate(R.layout.survey_screen_wrapper, container, false)
-        content = inflater.inflate(contentLayoutId, wrapper as ViewGroup)
-        return wrapper
+        val binding = CreateSurveyWrapperBinding.inflate(inflater, container, false)
+
+        initialiseContentBinding(inflater, binding.surveyContent, true)
+
+        return binding.root
     }
+
+    abstract fun initialiseContentBinding(inflater: LayoutInflater, wrapper: ViewGroup, attachToRoot: Boolean)
+
+    abstract fun populateContentBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        populateContentBinding()
+
         prevButton.setOnClickListener {
             it.findNavController().popBackStack()
         }
@@ -46,7 +59,7 @@ abstract class MorningSurveyScreen(
         configureOptionalNavButton(nextButton, nextActionId)
     }
 
-    private fun configureOptionalNavButton(button: View, navigationActionId: Int?) {
+    private fun configureOptionalNavButton(button: View, @IdRes navigationActionId: Int?) {
         if (navigationActionId != null) {
             button.setOnClickListener {
                 it.findNavController().navigate(navigationActionId)

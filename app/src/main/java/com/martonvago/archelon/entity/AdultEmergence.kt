@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class AdultEmergence(
     @ColumnInfo(name = "survey_id")
     var surveyId: Int
-) {
+): ArchelonEvent {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Int? = null

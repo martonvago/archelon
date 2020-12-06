@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewModel" type="com.martonvago.archelon.viewmodel.CreateSurveyViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.createsurvey.placetime.CreateSurveyPlaceTimeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+        <TextView
+            android:id="@+id/testText"
+            android:layout_width="162dp"
+            android:layout_height="40dp"
+            android:text="@={viewModel.leader}"
+            app:layout_constraintBottom_toTopOf="@+id/startMorningSurveyButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/startMorningSurveyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="start MS"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.849" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
