@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.martonvago.archelon.R
@@ -23,7 +24,7 @@ import kotlinx.android.synthetic.main.create_survey_wrapper.*
 @AndroidEntryPoint
 abstract class CreateSurveyBaseFragment(
     private val hasCancelButton: Boolean,
-    private val nextActionId: Int? = null
+    @IdRes private val nextActionId: Int? = null
 ): Fragment() {
 
     val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.createSurveyNavGraph)
@@ -58,7 +59,7 @@ abstract class CreateSurveyBaseFragment(
         configureOptionalNavButton(nextButton, nextActionId)
     }
 
-    private fun configureOptionalNavButton(button: View, navigationActionId: Int?) {
+    private fun configureOptionalNavButton(button: View, @IdRes navigationActionId: Int?) {
         if (navigationActionId != null) {
             button.setOnClickListener {
                 it.findNavController().navigate(navigationActionId)

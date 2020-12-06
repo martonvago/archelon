@@ -1,27 +1,39 @@
 package com.martonvago.archelon.ui.viewsurveys
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.martonvago.archelon.R
+import com.martonvago.archelon.databinding.FragmentViewSurveysBinding
 import com.martonvago.archelon.di.hiltNavGraphViewModels
-import com.martonvago.archelon.entity.SurveyWithAdultEmergences
 import com.martonvago.archelon.viewmodel.ViewSurveysViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_view_surveys.*
 
 /**
  * A simple [Fragment] subclass.
  */
 @AndroidEntryPoint
-class ViewSurveysFragment : Fragment(R.layout.fragment_view_surveys) {
+class ViewSurveysFragment : Fragment() {
     private val viewModel by hiltNavGraphViewModels<ViewSurveysViewModel>(R.id.mainNavGraph)
+    lateinit var binding: FragmentViewSurveysBinding
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val surveysObserver = Observer<List<SurveyWithAdultEmergences>> {
-            surveyCount.text = it.size.toString()
-        }
-        viewModel.surveys.observe(viewLifecycleOwner, surveysObserver)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentViewSurveysBinding.inflate(inflater)
+
+        // We define the scope of the LiveData object bound to the fragment
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
     }
 }
