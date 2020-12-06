@@ -8,19 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentCreateSurveyMenuBinding
-import com.martonvago.archelon.di.hiltNavGraphViewModels
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
-import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_create_survey_menu.*
 
 /**
  * A simple [Fragment] subclass.
  */
-@AndroidEntryPoint
-class CreateSurveyMenuFragment: CreateSurveyBaseFragment(true, 0) {
+class CreateSurveyMenuFragment: CreateSurveyBaseFragment(true) {
 
-    val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.createSurveyNavGraph)
     lateinit var binding: FragmentCreateSurveyMenuBinding
 
     override fun initialiseContentBinding(

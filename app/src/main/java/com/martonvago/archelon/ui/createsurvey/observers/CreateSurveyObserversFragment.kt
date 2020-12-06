@@ -8,21 +8,16 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentCreateSurveyObserversBinding
-import com.martonvago.archelon.di.hiltNavGraphViewModels
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
-import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_create_survey_observers.*
 
 /**
  * A simple [Fragment] subclass.
  */
-@AndroidEntryPoint
 class CreateSurveyObserversFragment: CreateSurveyBaseFragment(
     true,
     R.id.action_createSurveyObserversFragment_to_createSurveyMenuFragment
 ) {
-    val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.createSurveyNavGraph)
     lateinit var binding: FragmentCreateSurveyObserversBinding
 
     override fun initialiseContentBinding(inflater: LayoutInflater, wrapper: ViewGroup, attachToRoot: Boolean) {

@@ -8,19 +8,25 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.CreateSurveyWrapperBinding
+import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.create_survey_wrapper.*
 
 /**
  * This is the base fragment for all morning survey screens. It provides customisable in-survey
  * navigation controls (prev, cancel, next) and uniform wrapper container styling.
  *
- * We avoid using default parameters in the constructor of a class which is the base class
- * for @AndroidEntryPoint classes; see https://github.com/google/dagger/issues/1904
+ * We also use this class to set up data binding for the individual survey screens as well as
+ * the shared view model, which is scoped to [R.id.createSurveyNavGraph].
  */
+@AndroidEntryPoint
 abstract class CreateSurveyBaseFragment(
     private val hasCancelButton: Boolean,
-    private val nextActionId: Int
+    private val nextActionId: Int? = null
 ): Fragment() {
+
+    val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.createSurveyNavGraph)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
