@@ -39,7 +39,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/leaderInput"
                         style="@style/LoginEditTextStyle"
-                        android:text="@={viewModel.leader}"
+                        android:text="@={viewModel.leader.content}"
                         android:inputType="text"/>
                 </com.google.android.material.textfield.TextInputLayout>
 

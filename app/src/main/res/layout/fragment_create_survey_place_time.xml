@@ -5,37 +5,34 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.martonvago.archelon.util.ExtensionsKt" />
         <variable name="viewModel" type="com.martonvago.archelon.viewmodel.CreateSurveyViewModel"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".ui.createsurvey.placetime.CreateSurveyPlaceTimeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+        <include
+            android:id="@+id/dateField"
+            layout="@layout/date_form_field"
+            app:label="@{@string/date}"
+            app:text="@{ExtensionsKt.displayDate(viewModel.dateTime.content)}" />
 
-        <TextView
-            android:id="@+id/testText"
-            android:layout_width="162dp"
-            android:layout_height="40dp"
-            android:text="@={viewModel.leader}"
-            app:layout_constraintBottom_toTopOf="@+id/startMorningSurveyButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <include
+            android:id="@+id/timeField"
+            layout="@layout/date_form_field"
+            app:label="@{@string/time}"
+            app:text="@{ExtensionsKt.displayTime(viewModel.dateTime.content)}"/>
 
         <Button
             android:id="@+id/startMorningSurveyButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="start MS"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.849" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="start MS" />
+
+    </LinearLayout>
 </layout>

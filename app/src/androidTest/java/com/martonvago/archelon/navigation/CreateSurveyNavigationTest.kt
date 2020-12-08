@@ -5,7 +5,10 @@ import com.martonvago.archelon.ui.createsurvey.eventsmenu.CreateSurveyEventsMenu
 import com.martonvago.archelon.ui.createsurvey.menu.CreateSurveyMenuFragment
 import com.martonvago.archelon.ui.createsurvey.observers.CreateSurveyObserversFragment
 import com.martonvago.archelon.ui.createsurvey.placetime.CreateSurveyPlaceTimeFragment
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
 
 class CreateSurveyNavigationTest: NavigationTestBase() {
 
@@ -18,7 +21,6 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     }
 
     @Nested
-    @DisplayName("Test navigation from and back to place/time screen")
     inner class PlaceTimeScreenNavigation {
 
         @BeforeEach
@@ -38,6 +40,24 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
         }
 
         @Test
+        fun opensDatePickerFromPlaceTimeScreen() {
+            // when
+            clickElementWithId(R.id.dateField)
+
+            // then
+            assertThatCurrentDestinationIs(R.id.datePickerFragment)
+        }
+
+        @Test
+        fun opensTimePickerFromPlaceTimeScreen() {
+            // when
+            clickElementWithId(R.id.timeField)
+
+            // then
+            assertThatCurrentDestinationIs(R.id.timePickerFragment)
+        }
+
+        @Test
         fun navigatesFromObserversScreenToPlaceTimeScreen() {
             // given we have moved to the observers screen
             clickElementWithId(R.id.startMorningSurveyButton)
@@ -51,7 +71,6 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     }
 
     @Nested
-    @DisplayName("Test navigation from and back to observers screen")
     inner class ObserversScreenNavigation {
 
         @BeforeEach
@@ -89,7 +108,6 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     }
 
     @Nested
-    @DisplayName("Test navigation from and back to survey menu screen")
     inner class SurveyMenuScreenNavigation {
 
         @BeforeEach

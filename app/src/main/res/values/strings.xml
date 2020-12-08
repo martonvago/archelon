@@ -274,4 +274,5 @@
     <string name="viewSurveys">View your morning surveys</string>
     <string name="addSurvey">Add new morning survey</string>
     <string name="leader">Leader</string>
+    <string name="time">Time</string>
 </resources>

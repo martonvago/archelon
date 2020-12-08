@@ -21,6 +21,7 @@ class CreateSurveyPlaceTimeFragment: CreateSurveyBaseFragment(
 
     override fun initialiseContentBinding(inflater: LayoutInflater, wrapper: ViewGroup, attachToRoot: Boolean) {
         binding = FragmentCreateSurveyPlaceTimeBinding.inflate(inflater, wrapper, attachToRoot)
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun populateContentBinding() {
@@ -29,6 +30,15 @@ class CreateSurveyPlaceTimeFragment: CreateSurveyBaseFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        dateField.setOnClickListener {
+            it.findNavController().navigate(R.id.action_createSurveyPlaceTimeFragment_to_datePickerFragment)
+        }
+
+        timeField.setOnClickListener {
+            it.findNavController().navigate(R.id.action_createSurveyPlaceTimeFragment_to_timePickerFragment)
+        }
+
         startMorningSurveyButton.setOnClickListener {
             it.findNavController().navigate(R.id.action_createSurveyPlaceTimeFragment_to_createSurveyObserversFragment)
         }
