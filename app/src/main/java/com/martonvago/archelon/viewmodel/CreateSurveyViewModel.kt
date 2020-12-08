@@ -4,7 +4,8 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.martonvago.archelon.entity.*
+import com.martonvago.archelon.entity.Survey
+import com.martonvago.archelon.entity.enums.*
 import com.martonvago.archelon.repository.ArchelonRepository
 import com.martonvago.archelon.ui.createsurvey.FormField
 import com.martonvago.archelon.util.atDate
@@ -19,11 +20,12 @@ class CreateSurveyViewModel @ViewModelInject constructor(
 
     val dateTime: FormField<LocalDateTime> = FormField(LocalDateTime.now())
     val leader: FormField<String> = FormField("")
+    val beach: FormField<Beach> = FormField(Beach.MAVROVOUNI)
 
     val formValid = MediatorLiveData<Boolean>()
 
     init {
-        val fields = listOf<FormField<*>>(dateTime, leader)
+        val fields = listOf<FormField<*>>(beach, dateTime, leader)
         fields.forEach { field ->
             formValid.addSource(field.valid) {
                 formValid.value = fields

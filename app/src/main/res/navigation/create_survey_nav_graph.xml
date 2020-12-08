@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_createSurveyPlaceTimeFragment_to_datePickerFragment"
             app:destination="@id/datePickerFragment" />
+        <action
+            android:id="@+id/action_createSurveyPlaceTimeFragment_to_selectBottomSheetDialogFragment"
+            app:destination="@id/selectBottomSheetDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/createSurveyMenuFragment"
@@ -77,5 +80,9 @@
         android:id="@+id/datePickerFragment"
         android:name="com.martonvago.archelon.ui.createsurvey.placetime.DatePickerFragment"
         android:label="DatePickerFragment" />
+    <dialog
+        android:id="@+id/selectBottomSheetDialogFragment"
+        android:name="com.martonvago.archelon.ui.shared.SelectBottomSheetDialogFragment"
+        android:label="SelectBottomSheetDialogFragment" />
 
 </navigation>

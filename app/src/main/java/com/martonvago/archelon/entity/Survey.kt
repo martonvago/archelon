@@ -3,6 +3,7 @@ package com.martonvago.archelon.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.martonvago.archelon.entity.enums.*
 import org.threeten.bp.LocalDateTime
 
 @Entity(tableName = "survey")

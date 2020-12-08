@@ -1,6 +1,8 @@
-package com.martonvago.archelon.entity
+package com.martonvago.archelon.entity.enums
 
-enum class CompassDirection(val displayName: String) {
+import com.martonvago.archelon.entity.Displayable
+
+enum class CompassDirection(override val displayName: String): Displayable {
     NORTH("North"),
     SOUTH("South"),
     EAST("East"),

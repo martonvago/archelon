@@ -16,6 +16,12 @@
     tools:context=".ui.createsurvey.placetime.CreateSurveyPlaceTimeFragment">
 
         <include
+            android:id="@+id/beachField"
+            layout="@layout/select_field"
+            app:label="@{@string/beach}"
+            app:text="@{viewModel.beach.content.displayName}"/>
+
+        <include
             android:id="@+id/dateField"
             layout="@layout/date_form_field"
             app:label="@{@string/date}"
@@ -32,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="start MS" />
+            android:text="STARTh" />
 
     </LinearLayout>
 </layout>

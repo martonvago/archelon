@@ -31,6 +31,10 @@ class CreateSurveyPlaceTimeFragment: CreateSurveyBaseFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        beachField.setOnClickListener {
+            it.findNavController().navigate(R.id.action_createSurveyPlaceTimeFragment_to_selectBottomSheetDialogFragment)
+        }
+
         dateField.setOnClickListener {
             it.findNavController().navigate(R.id.action_createSurveyPlaceTimeFragment_to_datePickerFragment)
         }
