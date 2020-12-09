@@ -1,9 +1,12 @@
 package com.martonvago.archelon.ui.createsurvey
 
+import android.os.Parcelable
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import com.martonvago.archelon.entity.Displayable
+import kotlinx.android.parcel.Parcelize
 
-class FormField<T>(
+open class FormField<T>(
     default: T,
     checkIfValid: (content: T) -> Boolean = {it != null}
 ){
@@ -24,3 +27,10 @@ class FormField<T>(
         content.value = newValue
     }
 }
+
+/**
+ * A subclass of [FormField] specifically for select fields, which we can pass in the [SelectArgs]
+ * navarg between navigation components.
+ */
+@Parcelize
+class SelectField(val default: Displayable): FormField<Displayable>(default), Parcelable

@@ -8,6 +8,7 @@ import com.martonvago.archelon.entity.Survey
 import com.martonvago.archelon.entity.enums.*
 import com.martonvago.archelon.repository.ArchelonRepository
 import com.martonvago.archelon.ui.createsurvey.FormField
+import com.martonvago.archelon.ui.createsurvey.SelectField
 import com.martonvago.archelon.util.atDate
 import com.martonvago.archelon.util.atTime
 import kotlinx.coroutines.launch
@@ -20,7 +21,7 @@ class CreateSurveyViewModel @ViewModelInject constructor(
 
     val dateTime: FormField<LocalDateTime> = FormField(LocalDateTime.now())
     val leader: FormField<String> = FormField("")
-    val beach: FormField<Beach> = FormField(Beach.MAVROVOUNI)
+    val beach = SelectField(Beach.MAVROVOUNI)
 
     val formValid = MediatorLiveData<Boolean>()
 

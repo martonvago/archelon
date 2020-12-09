@@ -1,7 +1,10 @@
 package com.martonvago.archelon.entity.enums
 
 import com.martonvago.archelon.entity.Displayable
+import com.martonvago.archelon.entity.DisplayableCompanion
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 enum class CompassDirection(override val displayName: String): Displayable {
     NORTH("North"),
     SOUTH("South"),
@@ -10,5 +13,7 @@ enum class CompassDirection(override val displayName: String): Displayable {
     NORTHEAST("Northeast"),
     SOUTHEAST("Southeast"),
     SOUTHWEST("Southwest"),
-    NORTHWEST("Northwest")
+    NORTHWEST("Northwest");
+
+    companion object : DisplayableCompanion<CompassDirection>
 }

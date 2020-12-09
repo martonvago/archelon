@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentCreateSurveyPlaceTimeBinding
+import com.martonvago.archelon.entity.enums.Beach
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
+import com.martonvago.archelon.ui.createsurvey.SelectArgs
+import com.martonvago.archelon.util.enumValuesAsDisplayable
 import kotlinx.android.synthetic.main.fragment_create_survey_place_time.*
 
 /**
@@ -31,8 +34,10 @@ class CreateSurveyPlaceTimeFragment: CreateSurveyBaseFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        beachField.setOnClickListener {
-            it.findNavController().navigate(R.id.action_createSurveyPlaceTimeFragment_to_selectBottomSheetDialogFragment)
+        beachField.setOnClickListener { view ->
+            val args = SelectArgs(viewModel.beach, Beach.enumValuesAsDisplayable(), "Choose beach")
+            val action = CreateSurveyPlaceTimeFragmentDirections.actionCreateSurveyPlaceTimeFragmentToSelectBottomSheetDialogFragment(args)
+            view.findNavController().navigate(action)
         }
 
         dateField.setOnClickListener {

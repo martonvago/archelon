@@ -83,6 +83,10 @@
     <dialog
         android:id="@+id/selectBottomSheetDialogFragment"
         android:name="com.martonvago.archelon.ui.shared.SelectBottomSheetDialogFragment"
-        android:label="SelectBottomSheetDialogFragment" />
+        android:label="SelectBottomSheetDialogFragment" >
+        <argument
+            android:name="selectContent"
+            app:argType="com.martonvago.archelon.ui.createsurvey.SelectArgs" />
+    </dialog>
 
 </navigation>
