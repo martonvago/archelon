@@ -22,6 +22,12 @@ class CreateSurveyViewModel @ViewModelInject constructor(
     val dateTime: FormField<LocalDateTime> = FormField(LocalDateTime.now())
     val leader: FormField<String> = FormField("")
     val beach = SelectField(Beach.MAVROVOUNI)
+    val beachSector = SelectField(CompassDirection.EAST)
+    val sky = SelectField(Sky.SUNNY)
+    val precipitation = SelectField(Precipitation.NONE)
+    val windIntensity = SelectField(WindIntensity.CALM)
+    val windDirection = SelectField(CompassDirection.EAST)
+    val surf = SelectField(Surf.CALM)
 
     val formValid = MediatorLiveData<Boolean>()
 

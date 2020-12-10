@@ -1,6 +1,7 @@
 package com.martonvago.archelon.ui.createsurvey
 
 import android.os.Parcelable
+import androidx.annotation.StringRes
 import com.martonvago.archelon.entity.Displayable
 import kotlinx.android.parcel.Parcelize
 
@@ -12,5 +13,5 @@ import kotlinx.android.parcel.Parcelize
 data class SelectArgs(
     val targetField: SelectField,
     val selectOptions: List<Displayable>,
-    val title: String
+   @StringRes val title: Int
 ): Parcelable

@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentHomeScreenBinding
 import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.ui.shared.setNavigateOnClickListener
 import com.martonvago.archelon.viewmodel.ViewSurveysViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home_screen.*
@@ -35,13 +35,9 @@ class HomeScreenFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        newMorningSurveyButton.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeScreenFragment_to_morning_survey)
-        }
-
-        viewSurveysButton.setOnClickListener {
+        newMorningSurveyButton.setNavigateOnClickListener(R.id.action_homeScreenFragment_to_morning_survey)
+        viewSurveysButton.setNavigateOnClickListener(R.id.action_homeScreenFragment_to_viewSurveysFragment) {
             viewModel.fetchSurveys()
-            it.findNavController().navigate(R.id.action_homeScreenFragment_to_viewSurveysFragment)
         }
     }
 }

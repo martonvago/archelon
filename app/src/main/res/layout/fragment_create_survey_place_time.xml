@@ -22,6 +22,12 @@
             app:text="@{viewModel.beach.content.displayName}"/>
 
         <include
+            android:id="@+id/beachSectorField"
+            layout="@layout/select_field"
+            app:label="@{@string/beachSector}"
+            app:text="@{viewModel.beachSector.content.displayName}"/>
+
+        <include
             android:id="@+id/dateField"
             layout="@layout/date_form_field"
             app:label="@{@string/date}"
@@ -38,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="STARTh" />
+            android:text="START" />
 
     </LinearLayout>
 </layout>

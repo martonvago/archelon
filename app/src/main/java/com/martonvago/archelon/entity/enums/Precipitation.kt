@@ -9,6 +9,7 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 enum class Precipitation(override val displayName: String): Displayable {
+    NONE("None"),
     RAIN("Rain"),
     HAIL("Hail"),
     SNOW("Snow"),

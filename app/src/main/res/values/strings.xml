@@ -273,7 +273,21 @@
     <!--Home Screen-->
     <string name="viewSurveys">View your morning surveys</string>
     <string name="addSurvey">Add new morning survey</string>
+
     <string name="leader">Leader</string>
     <string name="time">Time</string>
     <string name="beach">Beach</string>
+    <string name="beachSector">Beach sector</string>
+    <string name="sky">Sky</string>
+    <string name="precipitation">Precipitation</string>
+    <string name="windIntensity">Wind intensity</string>
+    <string name="windDirection">Wind direction</string>
+    <string name="surf">Surf</string>
+    <string name="beachSelectTitle">Choose beach</string>
+    <string name="beachSectorSelectTitle">Choose beach sector</string>
+    <string name="skySelectTitle">Choose sky type</string>
+    <string name="precipitationSelectTitle">Choose precipitation type</string>
+    <string name="windIntensitySelectTitle">Choose wind intensity</string>
+    <string name="windDirectionSelectTitle">Choose wind direction</string>
+    <string name="surfSelectTitle">Choose surf type</string>
 </resources>

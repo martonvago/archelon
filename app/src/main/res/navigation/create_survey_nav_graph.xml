@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_createSurveyObserversFragment_to_createSurveyMenuFragment"
             app:destination="@id/createSurveyMenuFragment" />
+        <action
+            android:id="@+id/action_createSurveyObserversFragment_to_selectBottomSheetDialogFragment"
+            app:destination="@id/selectBottomSheetDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/createSurveyEventsMenuFragment"

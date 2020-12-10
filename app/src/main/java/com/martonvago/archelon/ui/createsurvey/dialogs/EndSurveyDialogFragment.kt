@@ -7,9 +7,8 @@ class EndSurveyDialogFragment: SurveyDialogFragment(
     R.string.endSurveyDialogDescription,
     R.id.endSurveyDialogFragment_to_homeScreenFragment
 ) {
-    override fun yesButtonClicked() {
-        viewModel.submitSurvey()
-        super.yesButtonClicked()
-    }
 
+    override fun beforeYesButtonClicked() {
+        viewModel.submitSurvey()
+    }
 }
