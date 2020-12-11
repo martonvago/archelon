@@ -34,3 +34,9 @@ open class FormField<T>(
  */
 @Parcelize
 class SelectField(val default: Displayable): FormField<Displayable>(default), Parcelable
+
+/**
+ * A subclass of [FormField] specifically for text input fields, which we can pass to included
+ * XML layouts while preserving two-way data binding
+ */
+class TextInputField(default: String): FormField<String>(default)

@@ -66,5 +66,6 @@ class CreateSurveyObserversFragment: CreateSurveyBaseFragment(
             Surf.enumValuesAsDisplayable(),
             R.string.surfSelectTitle
         )
+
     }
 }
