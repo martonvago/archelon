@@ -15,17 +15,10 @@
     android:orientation="vertical"
     tools:context=".ui.createsurvey.placetime.CreateSurveyPlaceTimeFragment">
 
-        <include
-            android:id="@+id/beachField"
-            layout="@layout/select_field"
-            app:label="@{@string/beach}"
-            app:text="@{viewModel.beach.content.displayName}"/>
-
-        <include
-            android:id="@+id/beachSectorField"
-            layout="@layout/select_field"
-            app:label="@{@string/beachSector}"
-            app:text="@{viewModel.beachSector.content.displayName}"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectFieldsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <include
             android:id="@+id/dateField"

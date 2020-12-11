@@ -12,8 +12,10 @@ import com.martonvago.archelon.entity.enums.Beach
 import com.martonvago.archelon.entity.enums.CompassDirection
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
 import com.martonvago.archelon.ui.createsurvey.SelectArgs
+import com.martonvago.archelon.ui.shared.SelectComponent
 import com.martonvago.archelon.ui.shared.WithSelectField
 import com.martonvago.archelon.ui.shared.setNavigateOnClickListener
+import com.martonvago.archelon.ui.shared.setUpSelectAdapter
 import kotlinx.android.synthetic.main.fragment_create_survey_place_time.*
 
 /**
@@ -35,18 +37,14 @@ class CreateSurveyPlaceTimeFragment : CreateSurveyBaseFragment(false), WithSelec
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setSelectFieldOnCLickListener(
-            beachField,
-            viewModel.beach,
-            Beach.enumValuesAsDisplayable(),
-            R.string.beachSelectTitle
+        val selectComponents = listOf(
+            SelectComponent(viewModel.beach, R.string.beach, R.string.beachSelectTitle, Beach.enumValuesAsDisplayable()),
+            SelectComponent(viewModel.beachSector, R.string.beachSector, R.string.beachSectorSelectTitle, CompassDirection.enumValuesAsDisplayable())
         )
-        setSelectFieldOnCLickListener(
-            beachSectorField,
-            viewModel.beachSector,
-            CompassDirection.enumValuesAsDisplayable(),
-            R.string.beachSectorSelectTitle
-        )
+
+        selectFieldsContainer.setUpSelectAdapter(selectComponents, viewLifecycleOwner) { selectArgs: SelectArgs ->
+            CreateSurveyPlaceTimeFragmentDirections.actionCreateSurveyPlaceTimeFragmentToSelectBottomSheetDialogFragment(selectArgs)
+        }
 
         dateField.setNavigateOnClickListener(R.id.action_createSurveyPlaceTimeFragment_to_datePickerFragment)
         timeField.setNavigateOnClickListener(R.id.action_createSurveyPlaceTimeFragment_to_timePickerFragment)

@@ -20,35 +20,10 @@
             app:label="@{@string/leader}"
             app:text="@{viewModel.leader}"/>
 
-        <include
-            android:id="@+id/skyField"
-            layout="@layout/select_field"
-            app:label="@{@string/sky}"
-            app:text="@{viewModel.sky.content.displayName}"/>
-
-        <include
-            android:id="@+id/precipitationField"
-            layout="@layout/select_field"
-            app:label="@{@string/precipitation}"
-            app:text="@{viewModel.precipitation.content.displayName}"/>
-
-        <include
-            android:id="@+id/windIntensityField"
-            layout="@layout/select_field"
-            app:label="@{@string/windIntensity}"
-            app:text="@{viewModel.windIntensity.content.displayName}"/>
-
-        <include
-            android:id="@+id/windDirectionField"
-            layout="@layout/select_field"
-            app:label="@{@string/windDirection}"
-            app:text="@{viewModel.windDirection.content.displayName}"/>
-
-        <include
-            android:id="@+id/surfField"
-            layout="@layout/select_field"
-            app:label="@{@string/surf}"
-            app:text="@{viewModel.surf.content.displayName}"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectFieldsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </layout>
