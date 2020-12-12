@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="label" type="String" />
-        <variable name="text" type="com.martonvago.archelon.ui.createsurvey.TextInputField" />
+        <variable name="textInputComponent" type="com.martonvago.archelon.ui.shared.TextInputComponent" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -22,7 +21,7 @@
 
             <TextView
                 style="@style/LoginLabelStyle"
-                android:text="@{label}"/>
+                android:text="@{textInputComponent.label}"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -32,7 +31,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInput"
                     style="@style/LoginEditTextStyle"
-                    android:text="@={text.content}"
+                    android:text="@={textInputComponent.targetField.content}"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 

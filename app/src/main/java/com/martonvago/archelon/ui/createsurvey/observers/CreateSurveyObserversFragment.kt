@@ -12,7 +12,10 @@ import com.martonvago.archelon.entity.enums.*
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
 import com.martonvago.archelon.ui.createsurvey.SelectArgs
 import com.martonvago.archelon.ui.shared.SelectComponent
+import com.martonvago.archelon.ui.shared.TextInputComponent
 import com.martonvago.archelon.ui.shared.setUpSelectAdapter
+import com.martonvago.archelon.ui.shared.setUpTextInputAdapter
+import com.martonvago.archelon.util.asEnglishOrdinal
 import kotlinx.android.synthetic.main.fragment_create_survey_observers.*
 
 /**
@@ -43,6 +46,15 @@ class CreateSurveyObserversFragment: CreateSurveyBaseFragment(
             SelectComponent(viewModel.windIntensity, R.string.windIntensity, R.string.windIntensitySelectTitle, WindIntensity.enumValuesAsDisplayable()),
             SelectComponent(viewModel.surf, R.string.surf, R.string.surfSelectTitle, Surf.enumValuesAsDisplayable())
         )
+
+        val inputComponents = listOf(TextInputComponent(viewModel.leader, resources.getString(R.string.leader))) +
+                viewModel.observers.mapIndexed { i, field ->
+                    // The leader counts as the first observer
+                    val ordinalStr = (i + 2).asEnglishOrdinal()
+                    TextInputComponent(field, resources.getString(R.string.observer, ordinalStr))
+                }
+
+        inputFieldsContainer.setUpTextInputAdapter(inputComponents, viewLifecycleOwner)
 
         selectFieldsContainer.setUpSelectAdapter(selectComponents, viewLifecycleOwner) { selectArgs: SelectArgs ->
             CreateSurveyObserversFragmentDirections.actionCreateSurveyObserversFragmentToSelectBottomSheetDialogFragment(selectArgs)

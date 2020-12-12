@@ -22,9 +22,9 @@ import kotlinx.android.synthetic.main.fragment_survey_dialog.*
  */
 @AndroidEntryPoint
 abstract class SurveyDialogFragment(
+    @IdRes private val yesButtonActionId: Int,
     @StringRes private val dialogTitleId: Int,
-    @StringRes private val dialogDescriptionId: Int,
-    @IdRes private val yesButtonActionId: Int
+    @StringRes private val dialogDescriptionId: Int? = null
 ) : DialogFragment() {
 
     val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.createSurveyNavGraph)
@@ -43,12 +43,17 @@ abstract class SurveyDialogFragment(
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewModel = viewModel
+        binding.title = dialogTitleId
 
         dialogTitle.setText(dialogTitleId)
-        dialogDescription.setText(dialogDescriptionId)
+        bind(binding)
 
         yesButton.setNavigateOnClickListener(yesButtonActionId, this) { beforeYesButtonClicked() }
         noButton.setNavigateUpOnClickListener(this)
+    }
+
+    open fun bind(binding: FragmentSurveyDialogBinding) {
+        binding.description = dialogDescriptionId?.let { resources.getString(it) }
     }
 
     open fun beforeYesButtonClicked() {}

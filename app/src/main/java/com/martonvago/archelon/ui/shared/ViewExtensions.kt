@@ -62,3 +62,11 @@ fun RecyclerView.setUpSelectAdapter(
     this.layoutManager = LinearLayoutManager(context)
     this.adapter = SelectFieldsAdapter(selectFields, navActionToSelectDialog, lifecycleOwner)
 }
+
+fun RecyclerView.setUpTextInputAdapter(
+    textInputFields: List<TextInputComponent>,
+    lifecycleOwner: LifecycleOwner,
+) {
+    this.layoutManager = LinearLayoutManager(context)
+    this.adapter = TextInputFieldsAdapter(textInputFields, lifecycleOwner)
+}

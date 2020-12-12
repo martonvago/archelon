@@ -22,8 +22,7 @@ class CreateSurveyViewModel @ViewModelInject constructor(
 
     val dateTime: FormField<LocalDateTime> = FormField(LocalDateTime.now())
     val leader: TextInputField = TextInputField("")
-    val observer1: TextInputField = TextInputField("")
-    val observer2: TextInputField = TextInputField("")
+    val observers = (0 until 3).map { TextInputField("") }
     val beach = SelectField(Beach.MAVROVOUNI)
     val beachSector = SelectField(CompassDirection.EAST)
     val sky = SelectField(Sky.SUNNY)
