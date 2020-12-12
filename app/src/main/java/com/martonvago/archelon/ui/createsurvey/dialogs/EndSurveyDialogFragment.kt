@@ -1,15 +1,23 @@
 package com.martonvago.archelon.ui.createsurvey.dialogs
 
 import com.martonvago.archelon.R
+import com.martonvago.archelon.databinding.FragmentSurveyDialogBinding
+import com.martonvago.archelon.util.displayTime
+import org.threeten.bp.LocalTime
 
 class EndSurveyDialogFragment: SurveyDialogFragment(
-    R.string.endSurveyDialogTitle,
-    R.string.endSurveyDialogDescription,
-    R.id.endSurveyDialogFragment_to_homeScreenFragment
+    R.id.endSurveyDialogFragment_to_homeScreenFragment,
+    R.string.endSurveyDialogTitle
 ) {
-    override fun yesButtonClicked() {
-        viewModel.submitSurvey()
-        super.yesButtonClicked()
+
+    override fun bind(binding: FragmentSurveyDialogBinding) {
+        binding.description = resources.getString(
+            R.string.endSurveyDialogDescription,
+            LocalTime.now().displayTime()
+        )
     }
 
+    override fun beforeYesButtonClicked() {
+        viewModel.submitSurvey()
+    }
 }

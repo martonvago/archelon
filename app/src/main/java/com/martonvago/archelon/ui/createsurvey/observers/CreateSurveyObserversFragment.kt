@@ -4,11 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentCreateSurveyObserversBinding
+import com.martonvago.archelon.entity.enumValuesAsDisplayable
+import com.martonvago.archelon.entity.enums.*
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
+import com.martonvago.archelon.ui.createsurvey.SelectArgs
+import com.martonvago.archelon.ui.shared.SelectComponent
+import com.martonvago.archelon.ui.shared.TextInputComponent
+import com.martonvago.archelon.ui.shared.setUpSelectAdapter
+import com.martonvago.archelon.ui.shared.setUpTextInputAdapter
+import com.martonvago.archelon.util.asEnglishOrdinal
 import kotlinx.android.synthetic.main.fragment_create_survey_observers.*
 
 /**
@@ -22,6 +29,7 @@ class CreateSurveyObserversFragment: CreateSurveyBaseFragment(
 
     override fun initialiseContentBinding(inflater: LayoutInflater, wrapper: ViewGroup, attachToRoot: Boolean) {
         binding = FragmentCreateSurveyObserversBinding.inflate(inflater, wrapper, attachToRoot)
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun populateContentBinding() {
@@ -30,8 +38,26 @@ class CreateSurveyObserversFragment: CreateSurveyBaseFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        leaderInput.doOnTextChanged { text, _, _, _ ->
-            viewModel.leader = text.toString()
+
+        val selectComponents = listOf(
+            SelectComponent(viewModel.sky, R.string.sky, R.string.skySelectTitle, Sky.enumValuesAsDisplayable()),
+            SelectComponent(viewModel.precipitation, R.string.precipitation, R.string.precipitationSelectTitle, Precipitation.enumValuesAsDisplayable()),
+            SelectComponent(viewModel.windDirection, R.string.windDirection, R.string.windDirectionSelectTitle, CompassDirection.enumValuesAsDisplayable()),
+            SelectComponent(viewModel.windIntensity, R.string.windIntensity, R.string.windIntensitySelectTitle, WindIntensity.enumValuesAsDisplayable()),
+            SelectComponent(viewModel.surf, R.string.surf, R.string.surfSelectTitle, Surf.enumValuesAsDisplayable())
+        )
+
+        val inputComponents = listOf(TextInputComponent(viewModel.leader, resources.getString(R.string.leader))) +
+                viewModel.observers.mapIndexed { i, field ->
+                    // The leader counts as the first observer
+                    val ordinalStr = (i + 2).asEnglishOrdinal()
+                    TextInputComponent(field, resources.getString(R.string.observer, ordinalStr))
+                }
+
+        inputFieldsContainer.setUpTextInputAdapter(inputComponents, viewLifecycleOwner)
+
+        selectFieldsContainer.setUpSelectAdapter(selectComponents, viewLifecycleOwner) { selectArgs: SelectArgs ->
+            CreateSurveyObserversFragmentDirections.actionCreateSurveyObserversFragmentToSelectBottomSheetDialogFragment(selectArgs)
         }
     }
 }

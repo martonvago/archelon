@@ -8,10 +8,11 @@ import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentSurveyDialogBinding
 import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.ui.shared.setNavigateOnClickListener
+import com.martonvago.archelon.ui.shared.setNavigateUpOnClickListener
 import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_survey_dialog.*
@@ -21,9 +22,9 @@ import kotlinx.android.synthetic.main.fragment_survey_dialog.*
  */
 @AndroidEntryPoint
 abstract class SurveyDialogFragment(
+    @IdRes private val yesButtonActionId: Int,
     @StringRes private val dialogTitleId: Int,
-    @StringRes private val dialogDescriptionId: Int,
-    @IdRes private val yesButtonActionId: Int
+    @StringRes private val dialogDescriptionId: Int? = null
 ) : DialogFragment() {
 
     val viewModel by hiltNavGraphViewModels<CreateSurveyViewModel>(R.id.createSurveyNavGraph)
@@ -42,21 +43,18 @@ abstract class SurveyDialogFragment(
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewModel = viewModel
+        binding.title = dialogTitleId
 
         dialogTitle.setText(dialogTitleId)
-        dialogDescription.setText(dialogDescriptionId)
+        bind(binding)
 
-        noButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
-
-        yesButton.setOnClickListener {
-            yesButtonClicked()
-        }
+        yesButton.setNavigateOnClickListener(yesButtonActionId, this) { beforeYesButtonClicked() }
+        noButton.setNavigateUpOnClickListener(this)
     }
 
-    open fun yesButtonClicked() {
-        findNavController().navigate(yesButtonActionId)
+    open fun bind(binding: FragmentSurveyDialogBinding) {
+        binding.description = dialogDescriptionId?.let { resources.getString(it) }
     }
 
+    open fun beforeYesButtonClicked() {}
 }

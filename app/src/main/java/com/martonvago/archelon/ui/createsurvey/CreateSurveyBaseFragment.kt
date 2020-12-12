@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.CreateSurveyWrapperBinding
 import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.ui.shared.configureOptionalNavButton
+import com.martonvago.archelon.ui.shared.setNavigateUpOnClickListener
 import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.create_survey_wrapper.*
@@ -49,23 +50,8 @@ abstract class CreateSurveyBaseFragment(
 
         populateContentBinding()
 
-        prevButton.setOnClickListener {
-            it.findNavController().popBackStack()
-        }
-        configureOptionalNavButton(
-            cancelButton,
-            if (hasCancelButton) R.id.action_global_cancelSurveyDialogFragment else null
-        )
-        configureOptionalNavButton(nextButton, nextActionId)
-    }
-
-    private fun configureOptionalNavButton(button: View, @IdRes navigationActionId: Int?) {
-        if (navigationActionId != null) {
-            button.setOnClickListener {
-                it.findNavController().navigate(navigationActionId)
-            }
-        } else {
-            button.visibility = View.GONE
-        }
+        prevButton.setNavigateUpOnClickListener()
+        cancelButton.configureOptionalNavButton(if (hasCancelButton) R.id.action_global_cancelSurveyDialogFragment else null)
+        nextButton.configureOptionalNavButton(nextActionId)
     }
 }

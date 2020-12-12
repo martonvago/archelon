@@ -1,7 +1,7 @@
 package com.martonvago.archelon.database.local
 
 import androidx.room.TypeConverter
-import com.martonvago.archelon.entity.*
+import com.martonvago.archelon.entity.enums.*
 import com.martonvago.archelon.util.toEnum
 import com.martonvago.archelon.util.toName
 import org.threeten.bp.LocalDateTime

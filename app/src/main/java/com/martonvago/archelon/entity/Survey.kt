@@ -2,13 +2,12 @@ package com.martonvago.archelon.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import com.martonvago.archelon.entity.enums.*
 import org.threeten.bp.LocalDateTime
 
-// @JvmOverloads needed because we have an @Ignore-ed parameter
 @Entity(tableName = "survey")
-data class Survey @JvmOverloads constructor(
+data class Survey(
     @ColumnInfo(name = "date")
     var datetime: LocalDateTime,
 
@@ -37,11 +36,7 @@ data class Survey @JvmOverloads constructor(
     var leader: String,
 
     @ColumnInfo(name = "observers")
-    var observers: List<String>,
-
-    // Each event type has its own table
-    @Ignore
-    val events: List<ArchelonEvent> = emptyList()
+    var observers: List<String>
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

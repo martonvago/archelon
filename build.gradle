@@ -3,6 +3,10 @@
 buildscript {
     ext.kotlin_version = '1.4.10'
     ext.hilt_version = '2.29-alpha'
+
+    // The latest version compatible with Android Studio 3.6
+    ext.navigation_version = '2.3.0'
+
     repositories {
         google()
         jcenter()
@@ -15,6 +19,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
         classpath "de.mannodermaus.gradle.plugins:android-junit5:$junit5_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
     }
 }
 

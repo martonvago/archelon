@@ -12,6 +12,15 @@
         <action
             android:id="@+id/action_createSurveyPlaceTimeFragment_to_createSurveyObserversFragment"
             app:destination="@id/createSurveyObserversFragment" />
+        <action
+            android:id="@+id/action_createSurveyPlaceTimeFragment_to_timePickerFragment"
+            app:destination="@id/timePickerFragment" />
+        <action
+            android:id="@+id/action_createSurveyPlaceTimeFragment_to_datePickerFragment"
+            app:destination="@id/datePickerFragment" />
+        <action
+            android:id="@+id/action_createSurveyPlaceTimeFragment_to_selectBottomSheetDialogFragment"
+            app:destination="@id/selectBottomSheetDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/createSurveyMenuFragment"
@@ -33,6 +42,9 @@
         <action
             android:id="@+id/action_createSurveyObserversFragment_to_createSurveyMenuFragment"
             app:destination="@id/createSurveyMenuFragment" />
+        <action
+            android:id="@+id/action_createSurveyObserversFragment_to_selectBottomSheetDialogFragment"
+            app:destination="@id/selectBottomSheetDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/createSurveyEventsMenuFragment"
@@ -63,5 +75,21 @@
     </dialog>
 
     <action android:id="@+id/action_global_cancelSurveyDialogFragment" app:destination="@id/cancelSurveyDialogFragment"/>
+    <dialog
+        android:id="@+id/timePickerFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.placetime.TimePickerFragment"
+        android:label="TimePickerFragment" />
+    <dialog
+        android:id="@+id/datePickerFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.placetime.DatePickerFragment"
+        android:label="DatePickerFragment" />
+    <dialog
+        android:id="@+id/selectBottomSheetDialogFragment"
+        android:name="com.martonvago.archelon.ui.shared.SelectBottomSheetDialogFragment"
+        android:label="SelectBottomSheetDialogFragment" >
+        <argument
+            android:name="selectContent"
+            app:argType="com.martonvago.archelon.ui.createsurvey.SelectArgs" />
+    </dialog>
 
 </navigation>
