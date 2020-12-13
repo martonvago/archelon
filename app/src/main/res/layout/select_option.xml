@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="option"
             type="com.martonvago.archelon.entity.Displayable" />
     </data>
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
         android:id="@+id/selectItem"
-        style="@style/SpinnerAddressStyle"
+        style="@style/SelectOptionStyle"
         android:text="@{option.displayName}" />
 </layout>

@@ -12,9 +12,7 @@
         android:padding="@dimen/padding_normal">
 
         <TextView
-            style="@style/CardStyledTitle"
-            android:padding="@dimen/padding_normal"
-            android:textStyle="bold"
+            style="@style/BottomSheetDialogTitleStyle"
             android:text="@{selectTitle}" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -24,9 +22,7 @@
 
         <TextView
             android:id="@+id/closeSelect"
-            style="@style/CardStyledTitle"
-            android:text="@string/cancel"
-            android:textStyle="bold"
-            android:padding="@dimen/padding_normal" />
+            style="@style/BottomSheetDialogTitleStyle"
+            android:text="@string/cancel"/>
     </LinearLayout>
 </layout>

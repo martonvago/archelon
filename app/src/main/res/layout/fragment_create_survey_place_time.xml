@@ -9,35 +9,47 @@
         <variable name="viewModel" type="com.martonvago.archelon.viewmodel.CreateSurveyViewModel"/>
     </data>
 
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".ui.createsurvey.placetime.CreateSurveyPlaceTimeFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/selectFieldsContainer"
+        <LinearLayout
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <include
-            android:id="@+id/dateField"
-            layout="@layout/date_form_field"
-            app:label="@{@string/date}"
-            app:text="@{ExtensionsKt.displayDate(viewModel.dateTime.content)}" />
-
-        <include
-            android:id="@+id/timeField"
-            layout="@layout/date_form_field"
-            app:label="@{@string/time}"
-            app:text="@{ExtensionsKt.displayTime(viewModel.dateTime.content)}"/>
-
-        <Button
-            android:id="@+id/startMorningSurveyButton"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".ui.createsurvey.placetime.CreateSurveyPlaceTimeFragment">
 
-            android:text="START" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selectFieldsContainer"
+                android:layout_width="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+            <include
+                android:id="@+id/dateField"
+                layout="@layout/date_form_field"
+                app:label="@{@string/date}"
+                app:text="@{ExtensionsKt.displayDate(viewModel.dateTime.content)}" />
+
+            <include
+                android:id="@+id/timeField"
+                layout="@layout/date_form_field"
+                app:label="@{@string/time}"
+                app:text="@{ExtensionsKt.displayTime(viewModel.dateTime.content)}"/>
+
+            <Button
+                style="@style/StartButtonStyle"
+                android:id="@+id/startMorningSurveyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:text="@string/startMorningSurvey" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -157,8 +157,8 @@
     <string name="wizard_e_commerce">eCommerce</string>
     <string name="wizard_profiles">Profiles</string>
     <string name="wizard_social">Social</string>
-    <string name="wizard_prev">Prev</string>
-    <string name="wizard_next">Next</string>
+    <string name="prev">Prev</string>
+    <string name="next">Next</string>
     <string name="wizard_finish">Finish</string>
     <string name="wizard_title_one"><b>Atom</b> UI Kit</string>
     <string name="wizard_subtitle_one">Lorem ipsum dolor sit amet, consectetur \nadipiscing elit. Suspendisse a aliquam</string>
@@ -291,4 +291,5 @@
     <string name="windIntensitySelectTitle">Choose wind intensity</string>
     <string name="windDirectionSelectTitle">Choose wind direction</string>
     <string name="surfSelectTitle">Choose surf type</string>
+    <string name="startMorningSurvey">Start</string>
 </resources>

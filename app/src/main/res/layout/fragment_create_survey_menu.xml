@@ -14,7 +14,7 @@
 
         <Button
             android:id="@+id/newEventButton"
-            style="@style/ButtonStyle"
+            style="@style/MenuButtonStyle"
             android:text="@string/newEvent"
             app:layout_constraintBottom_toTopOf="@id/prevEntryButton"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -23,7 +23,7 @@
 
         <Button
             android:id="@+id/prevEntryButton"
-            style="@style/ButtonStyle"
+            style="@style/MenuButtonStyle"
             android:text="@string/prevEntry"
             app:layout_constraintBottom_toTopOf="@id/checkNestsButton"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -32,7 +32,7 @@
 
         <Button
             android:id="@+id/checkNestsButton"
-            style="@style/ButtonStyle"
+            style="@style/MenuButtonStyle"
             android:text="@string/checkNests"
             app:layout_constraintBottom_toTopOf="@id/emergenceByRelocButton"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -41,7 +41,7 @@
 
         <Button
             android:id="@+id/emergenceByRelocButton"
-            style="@style/ButtonStyle"
+            style="@style/MenuButtonStyle"
             android:text="@string/emergencyReloc"
             app:layout_constraintBottom_toTopOf="@id/addRemarkButton"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -50,7 +50,7 @@
 
         <Button
             android:id="@+id/addRemarkButton"
-            style="@style/ButtonStyle"
+            style="@style/MenuButtonStyle"
             android:text="@string/addRemark"
             app:layout_constraintBottom_toTopOf="@id/endSurveyButton"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -59,7 +59,7 @@
 
         <Button
             android:id="@+id/endSurveyButton"
-            style="@style/ButtonStyle"
+            style="@style/MenuButtonDarkStyle"
             android:text="@string/endSurvey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
