@@ -6,16 +6,23 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.martonvago.archelon.dao.local.AdultEmergenceDao
+import com.martonvago.archelon.dao.local.HatchingDao
 import com.martonvago.archelon.dao.local.SurveyDao
 import com.martonvago.archelon.entity.AdultEmergence
+import com.martonvago.archelon.entity.Hatching
 import com.martonvago.archelon.entity.Survey
 
-@Database(entities = [Survey::class, AdultEmergence::class], version = 1, exportSchema = false)
+@Database(entities = [
+    Survey::class,
+    AdultEmergence::class,
+    Hatching::class
+], version = 3, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class ArchelonDatabase: RoomDatabase() {
 
     abstract val surveyDao: SurveyDao
     abstract val adultEmergenceDao: AdultEmergenceDao
+    abstract val hatchingDao: HatchingDao
 
     companion object {
         @Volatile

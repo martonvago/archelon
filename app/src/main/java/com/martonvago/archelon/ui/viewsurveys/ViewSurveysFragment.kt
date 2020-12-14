@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentViewSurveysBinding
 import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.ui.shared.SavedSurveysAdapter
 import com.martonvago.archelon.viewmodel.ViewSurveysViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ViewSurveysFragment : Fragment() {
     private val viewModel by hiltNavGraphViewModels<ViewSurveysViewModel>(R.id.mainNavGraph)
     lateinit var binding: FragmentViewSurveysBinding
+    private val adapter = SavedSurveysAdapter(emptyList())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,5 +37,9 @@ class ViewSurveysFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
+        binding.savedSurveysContainer.adapter = adapter
+        viewModel.surveys.observe(viewLifecycleOwner) {
+            adapter.setSurveys(it)
+        }
     }
 }

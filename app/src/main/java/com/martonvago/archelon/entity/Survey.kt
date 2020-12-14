@@ -40,5 +40,5 @@ data class Survey(
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Int? = null
+    var id: Long? = null
 }

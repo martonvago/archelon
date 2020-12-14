@@ -7,7 +7,7 @@ import com.martonvago.archelon.entity.Displayable
 import kotlinx.android.parcel.Parcelize
 
 open class FormField<T>(
-    default: T,
+    private val default: T,
     checkIfValid: (content: T) -> Boolean = {it != null}
 ){
     val content: MutableLiveData<T> = MutableLiveData(default)
@@ -19,8 +19,8 @@ open class FormField<T>(
         }
     }
 
-    fun getContentValue(): T? {
-        return content.value
+    fun getContentValue(): T {
+        return content.value ?: default
     }
 
     fun setContentValue(newValue: T) {

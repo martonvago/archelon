@@ -2,8 +2,9 @@ package com.martonvago.archelon.di
 
 import android.content.Context
 import com.martonvago.archelon.dao.local.AdultEmergenceDao
-import com.martonvago.archelon.database.local.ArchelonDatabase
+import com.martonvago.archelon.dao.local.HatchingDao
 import com.martonvago.archelon.dao.local.SurveyDao
+import com.martonvago.archelon.database.local.ArchelonDatabase
 import com.martonvago.archelon.repository.ArchelonRepository
 import dagger.Module
 import dagger.Provides
@@ -31,5 +32,18 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideArchelonRepository(surveyDao: SurveyDao, adultEmergenceDao: AdultEmergenceDao) = ArchelonRepository(surveyDao, adultEmergenceDao)
+    fun provideHatchingDao(@ApplicationContext appContext: Context): HatchingDao {
+        return ArchelonDatabase.getInstance(appContext).hatchingDao
+    }
+
+    @Provides
+    fun provideArchelonRepository(
+        surveyDao: SurveyDao,
+        adultEmergenceDao: AdultEmergenceDao,
+        hatchingDao: HatchingDao
+    ) = ArchelonRepository(
+        surveyDao,
+        adultEmergenceDao,
+        hatchingDao
+    )
 }

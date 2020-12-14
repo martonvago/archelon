@@ -55,4 +55,6 @@
     <string name="windDirectionSelectTitle">Choose wind direction</string>
     <string name="surfSelectTitle">Choose surf type</string>
     <string name="startMorningSurvey">Start</string>
+    <string name="adult_emergence_events_title">Adult Emergence events: %1$d</string>
+    <string name="hatching_events_title">Hatching events: %1$d</string>
 </resources>
