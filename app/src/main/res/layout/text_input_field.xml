@@ -6,36 +6,28 @@
         <variable name="textInputComponent" type="com.martonvago.archelon.ui.shared.TextInputComponent" />
     </data>
 
-    <androidx.cardview.widget.CardView
-        style="@style/BaseCardViewStyle"
-        app:cardElevation="@dimen/elevation_extra_small"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:paddingStart="@dimen/padding_large"
+        android:paddingEnd="@dimen/padding_large">
 
-        <LinearLayout
+        <TextView
+            style="@style/LabelStyle"
+            android:text="@{textInputComponent.label}"/>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_large">
+            app:hintEnabled="false">
 
-            <TextView
-                style="@style/LoginLabelStyle"
-                android:text="@{textInputComponent.label}"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hintEnabled="false">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInput"
-                    style="@style/LoginEditTextStyle"
-                    android:text="@={textInputComponent.targetField.content}"
-                    android:inputType="text"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/EditTextStyle"
+                android:text="@={textInputComponent.targetField.content}"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 </layout>

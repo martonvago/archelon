@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -10,44 +9,47 @@
         android:id="@+id/parent"
         android:background="?attr/colorBgPrimary">
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/surveyContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/padding_extra_larger"
+            android:paddingTop="@dimen/padding_extra_larger"
+            android:paddingEnd="@dimen/padding_extra_larger"
+            app:layout_constraintBottom_toTopOf="@id/createSurveyControls"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:fillViewport="true"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout"
+        <FrameLayout
+            android:id="@+id/createSurveyControls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?attr/colorButtonDark"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="-16dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
 
             <TextView
                 android:id="@+id/prevButton"
-                style="@style/WizardTextButton"
-                android:text="@string/wizard_prev"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                style="@style/CreateSurveyControlsTextButton"
+                android:text="@string/prev" />
 
-            <Button
+            <TextView
                 android:id="@+id/cancelButton"
-                style="@style/ButtonStyle"
-                android:layout_marginBottom="8dp"
+                style="@style/CreateSurveyControlsTextButton"
                 android:text="@string/cancel"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/nextButton"
-                app:layout_constraintStart_toEndOf="@+id/prevButton" />
+                android:layout_gravity="center_horizontal" />
 
             <TextView
                 android:id="@+id/nextButton"
-                style="@style/WizardTextButton"
-                android:text="@string/wizard_next"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                style="@style/CreateSurveyControlsTextButton"
+                android:layout_gravity="end"
+                android:text="@string/next" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

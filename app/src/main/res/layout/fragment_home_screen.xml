@@ -1,52 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable name="viewModel" type="com.martonvago.archelon.viewmodel.ViewSurveysViewModel"/>
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
         tools:context=".ui.viewsurveys.HomeScreenFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/cont">
-
             <Button
+                style="@style/MenuButtonDarkStyle"
                 android:id="@+id/viewSurveysButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/viewSurveys"
-                app:layout_constraintBottom_toTopOf="@id/newMorningSurveyButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@string/viewSurveys"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_extra_extra_large"/>
 
             <Button
+                style="@style/MenuButtonDarkStyle"
                 android:id="@+id/newMorningSurveyButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/addSurvey"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewSurveysButton" />
+                android:text="@string/addSurvey" />
 
-            <TextView
-                android:id="@+id/homeText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="home screen"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                tools:layout_editor_absoluteX="79dp"
-                tools:layout_editor_absoluteY="150dp" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </FrameLayout>
+    </LinearLayout>
 </layout>
