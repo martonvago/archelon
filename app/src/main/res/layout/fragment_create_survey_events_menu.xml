@@ -20,7 +20,8 @@
             app:layout_constraintBottom_toTopOf="@id/foundByHatchingButton"
             app:layout_constraintEnd_toStartOf="@+id/hatchingButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{() -> viewModel.addAdultEmergence()}"/>
 
         <Button
             android:id="@+id/hatchingButton"
@@ -29,7 +30,8 @@
             app:layout_constraintBottom_toTopOf="@id/inundationButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/adultEmergenceButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{() -> viewModel.addHatching()}"/>
 
         <Button
             android:id="@+id/foundByHatchingButton"

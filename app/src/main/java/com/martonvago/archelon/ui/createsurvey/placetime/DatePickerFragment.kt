@@ -19,9 +19,9 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         return DatePickerDialog(
             requireContext(),
             this,
-            viewModel.dateTime.getContentValue()!!.year,
-            viewModel.dateTime.getContentValue()!!.monthValue - 1,
-            viewModel.dateTime.getContentValue()!!.dayOfMonth
+            viewModel.dateTime.getContentValue().year,
+            viewModel.dateTime.getContentValue().monthValue - 1,
+            viewModel.dateTime.getContentValue().dayOfMonth
             )
     }
 

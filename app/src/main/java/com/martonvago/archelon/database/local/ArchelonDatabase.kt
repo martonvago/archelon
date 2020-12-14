@@ -16,7 +16,7 @@ import com.martonvago.archelon.entity.Survey
     Survey::class,
     AdultEmergence::class,
     Hatching::class
-], version = 2, exportSchema = false)
+], version = 3, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class ArchelonDatabase: RoomDatabase() {
 

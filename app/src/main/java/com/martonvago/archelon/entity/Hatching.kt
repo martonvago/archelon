@@ -7,9 +7,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "hatching")
 data class Hatching(
     @ColumnInfo(name = "survey_id")
-    var surveyId: Int
+    override var surveyId: Long? = null
 ): ArchelonEvent {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Int? = null
+    var id: Long? = null
 }
