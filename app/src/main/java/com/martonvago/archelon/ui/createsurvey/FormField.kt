@@ -6,16 +6,22 @@ import androidx.lifecycle.MutableLiveData
 import com.martonvago.archelon.entity.Displayable
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * A class representing a field on a form. Its [MutableLiveData] content can be bound to variables
+ * in layout files using data binding. Its [MediatorLiveData] validity can be used to provide
+ * feedback to the user and to keep track of the validity of the form as a whole, as it is done in
+ * [FormViewModel].
+ */
 open class FormField<T>(
     private val default: T,
-    checkIfValid: (content: T) -> Boolean = {it != null}
+    private val required: Boolean = true
 ){
     val content: MutableLiveData<T> = MutableLiveData(default)
     val valid = MediatorLiveData<Boolean>()
 
     init {
-        valid.addSource(content) { contentValue ->
-            valid.value = checkIfValid(contentValue)
+        valid.addSource(content) {
+            valid.value = checkIfValid()
         }
     }
 
@@ -25,6 +31,10 @@ open class FormField<T>(
 
     fun setContentValue(newValue: T) {
         content.value = newValue
+    }
+
+    open fun checkIfValid(): Boolean {
+        return !required || getContentValue() != null
     }
 }
 
@@ -37,6 +47,10 @@ class SelectField(val default: Displayable): FormField<Displayable>(default), Pa
 
 /**
  * A subclass of [FormField] specifically for text input fields, which we can pass to included
- * XML layouts while preserving two-way data binding
+ * XML layouts while preserving two-way data binding.
  */
-class TextInputField(default: String): FormField<String>(default)
+class TextInputField(default: String, private val required: Boolean = true): FormField<String>(default, required) {
+    override fun checkIfValid(): Boolean {
+        return !required || getContentValue() != ""
+    }
+}
