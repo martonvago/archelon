@@ -27,6 +27,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/EditTextStyle"
                 android:text="@={textInputComponent.targetField.content}"
+                android:imeOptions="actionDone"
                 android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
