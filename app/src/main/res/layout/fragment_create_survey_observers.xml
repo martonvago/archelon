@@ -15,13 +15,12 @@
 
         <androidx.cardview.widget.CardView
             style="@style/BaseCardViewStyle"
-            android:layout_marginTop="@dimen/margin_large"
-            android:layout_marginBottom="@dimen/margin_large"
             app:cardCornerRadius="@dimen/elevation_small"
             app:cardElevation="@dimen/elevation_extra_small">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/inputFieldsContainer"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_normal"
@@ -32,6 +31,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/selectFieldsContainer"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:paddingBottom="@dimen/padding_giant"
             android:nestedScrollingEnabled="false"

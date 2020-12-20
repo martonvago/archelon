@@ -27,6 +27,7 @@ class HomeScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeScreenBinding.inflate(inflater)
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -36,8 +37,6 @@ class HomeScreenFragment : Fragment() {
         binding.viewModel = viewModel
 
         newMorningSurveyButton.setNavigateOnClickListener(R.id.action_homeScreenFragment_to_morning_survey)
-        viewSurveysButton.setNavigateOnClickListener(R.id.action_homeScreenFragment_to_viewSurveysFragment) {
-            viewModel.fetchSurveys()
-        }
+        viewSurveysButton.setNavigateOnClickListener(R.id.action_homeScreenFragment_to_viewSurveysFragment)
     }
 }

@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="@dimen/padding_large"
-        tools:context=".ui.createsurvey.dialogs.SurveyDialogFragment">
+        tools:context=".ui.createsurvey.dialogs.SurveyDialogFragment"
+        android:background="?attr/colorBgPrimaryLight">
 
             <TextView
                 android:id="@+id/dialogTitle"

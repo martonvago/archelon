@@ -14,7 +14,11 @@ class ViewSurveysViewModel @ViewModelInject constructor(
 
     lateinit var surveys: LiveData<List<SurveyWithEvents>>
 
-    fun fetchSurveys() {
+    init {
+        fetchSurveys()
+    }
+
+    private fun fetchSurveys() {
         viewModelScope.launch {
             surveys = archelonRepository.getAllSurveys()
         }
