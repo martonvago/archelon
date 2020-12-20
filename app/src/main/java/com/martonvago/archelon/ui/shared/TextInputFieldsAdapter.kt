@@ -20,7 +20,7 @@ class TextInputFieldsAdapter(
     // A view holder for holding the individual text input fields
     inner class ViewHolder(val binding: TextInputFieldBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(textInputComponent: TextInputComponent, position: Int) {
+        fun bind(textInputComponent: TextInputComponent) {
             binding.textInputComponent = textInputComponent
             binding.executePendingBindings()
         }
@@ -36,7 +36,7 @@ class TextInputFieldsAdapter(
 
     // Bind the input field at the given position to the view holder
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(textInputs[position], position)
+        viewHolder.bind(textInputs[position])
     }
 
     override fun getItemCount() = textInputs.size

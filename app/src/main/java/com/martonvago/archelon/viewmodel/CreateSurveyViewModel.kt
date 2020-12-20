@@ -1,8 +1,6 @@
 package com.martonvago.archelon.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.ViewModel
 import com.martonvago.archelon.entity.AdultEmergence
 import com.martonvago.archelon.entity.Hatching
 import com.martonvago.archelon.entity.Survey
@@ -10,6 +8,7 @@ import com.martonvago.archelon.entity.SurveyWithEvents
 import com.martonvago.archelon.entity.enums.*
 import com.martonvago.archelon.repository.ArchelonRepository
 import com.martonvago.archelon.ui.createsurvey.FormField
+import com.martonvago.archelon.ui.createsurvey.FormViewModel
 import com.martonvago.archelon.ui.createsurvey.SelectField
 import com.martonvago.archelon.ui.createsurvey.TextInputField
 import com.martonvago.archelon.util.atDate
@@ -21,11 +20,11 @@ import org.threeten.bp.LocalDateTime
 
 class CreateSurveyViewModel @ViewModelInject constructor(
     private val archelonRepository: ArchelonRepository
-): ViewModel() {
+): FormViewModel() {
 
     val dateTime: FormField<LocalDateTime> = FormField(LocalDateTime.now())
     val leader: TextInputField = TextInputField("")
-    val observers = (0 until 3).map { TextInputField("") }
+    val observers = (0 until 3).map { TextInputField("", false) }
     val beach = SelectField(Beach.MAVROVOUNI)
     val beachSector = SelectField(CompassDirection.EAST)
     val sky = SelectField(Sky.SUNNY)
@@ -37,17 +36,18 @@ class CreateSurveyViewModel @ViewModelInject constructor(
     private val adultEmergenceEvents: MutableList<AdultEmergence> = mutableListOf()
     private val hatchingEvents: MutableList<Hatching> = mutableListOf()
 
-    private val formValid = MediatorLiveData<Boolean>()
-
     init {
-        val fields = listOf<FormField<*>>(beach, dateTime, leader)
-        fields.forEach { field ->
-            formValid.addSource(field.valid) {
-                formValid.value = fields
-                    .map { field -> field.valid.value }
-                    .reduce { otherFieldsValid, fieldValid -> otherFieldsValid!!.and(fieldValid as Boolean) }
-            }
-        }
+        observeFieldValidity(listOf(
+            beach,
+            dateTime,
+            leader,
+            beachSector,
+            sky,
+            precipitation,
+            windIntensity,
+            windDirection,
+            surf
+        ) + observers)
     }
 
     fun updateTime(hour: Int, minute: Int) {

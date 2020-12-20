@@ -24,6 +24,7 @@ class CreateSurveyMenuFragment: CreateSurveyBaseFragment(true) {
         attachToRoot: Boolean
     ) {
         binding = FragmentCreateSurveyMenuBinding.inflate(inflater, wrapper, attachToRoot)
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun populateContentBinding() {
