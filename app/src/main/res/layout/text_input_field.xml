@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="textInputComponent" type="com.martonvago.archelon.ui.shared.TextInputComponent" />
+        <variable name="textInputComponent" type="com.martonvago.archelon.ui.createsurvey.TextInputComponent" />
     </data>
 
     <LinearLayout

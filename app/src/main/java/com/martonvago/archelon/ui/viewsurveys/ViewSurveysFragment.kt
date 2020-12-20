@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentViewSurveysBinding
 import com.martonvago.archelon.di.hiltNavGraphViewModels
-import com.martonvago.archelon.ui.shared.SavedSurveysAdapter
 import com.martonvago.archelon.viewmodel.ViewSurveysViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

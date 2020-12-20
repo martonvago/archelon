@@ -1,4 +1,4 @@
-package com.martonvago.archelon.ui.shared
+package com.martonvago.archelon.ui.viewsurveys
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

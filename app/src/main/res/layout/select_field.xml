@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="selectComponent" type="com.martonvago.archelon.ui.shared.SelectComponent" />
+        <variable name="selectComponent" type="com.martonvago.archelon.ui.createsurvey.SelectComponent" />
     </data>
 
     <androidx.cardview.widget.CardView
