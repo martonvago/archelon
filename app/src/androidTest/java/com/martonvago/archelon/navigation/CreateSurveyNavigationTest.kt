@@ -29,7 +29,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     // Place - time screen navigation
 
     @Test
-    fun navigatesFromPlaceTimeScreenToObserversScreen() {
+    fun startSurveyClicked_navigatesFromPlaceTimeScreenToObserversScreen() {
         // given
         setupScenarioForFragment<CreateSurveyPlaceTimeFragment>()
         navController.setCurrentDestination(R.id.createSurveyPlaceTimeFragment)
@@ -42,7 +42,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     }
 
     @Test
-    fun opensDatePickerFromPlaceTimeScreen() {
+    fun dateFieldClicked_opensDatePickerFromPlaceTimeScreen() {
         // given
         setupScenarioForFragment<CreateSurveyPlaceTimeFragment>()
         navController.setCurrentDestination(R.id.createSurveyPlaceTimeFragment)
@@ -55,7 +55,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     }
 
     @Test
-    fun opensTimePickerFromPlaceTimeScreen() {
+    fun timeFieldClicked_opensTimePickerFromPlaceTimeScreen() {
         // given
         setupScenarioForFragment<CreateSurveyPlaceTimeFragment>()
         navController.setCurrentDestination(R.id.createSurveyPlaceTimeFragment)
@@ -68,7 +68,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     }
 
     @Test
-    fun navigatesFromObserversScreenToPlaceTimeScreen() {
+    fun prevClicked_navigatesFromObserversScreenToPlaceTimeScreen() {
         // given we have moved to the observers screen
         setupScenarioForFragment<CreateSurveyPlaceTimeFragment>()
         navController.setCurrentDestination(R.id.createSurveyPlaceTimeFragment)
@@ -84,7 +84,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
    // Observers screen navigation
 
     @Test
-    fun navigatesFromObserversScreenToSurveyMenuScreen() {
+    fun nextClicked_navigatesFromObserversScreenToSurveyMenuScreen() {
         // given
         setupScenarioForFragment<CreateSurveyObserversFragment>()
         navController.setCurrentDestination(R.id.createSurveyObserversFragment)
@@ -97,7 +97,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     }
 
     @Test
-    fun opensCancelDialogFromObserversScreen() {
+    fun cancelClicked_opensCancelDialogFromObserversScreen() {
         // given
         setupScenarioForFragment<CreateSurveyObserversFragment>()
         navController.setCurrentDestination(R.id.createSurveyObserversFragment)
@@ -107,7 +107,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     }
 
     @Test
-    fun navigatesFromSurveyMenuScreenToObserversScreen() {
+    fun prevClicked_navigatesFromSurveyMenuScreenToObserversScreen() {
         // given we have moved to the survey menu screen
         setupScenarioForFragment<CreateSurveyObserversFragment>()
         navController.setCurrentDestination(R.id.createSurveyObserversFragment)
@@ -123,7 +123,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     // Survey menu screen navigation
 
     @Test
-    fun navigatesFromSurveyMenuScreenToEventsMenuScreen() {
+    fun newEventClicked_navigatesFromSurveyMenuScreenToEventsMenuScreen() {
         // given
         setupScenarioForFragment<CreateSurveyMenuFragment>()
         navController.setCurrentDestination(R.id.createSurveyMenuFragment)
@@ -137,7 +137,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
 
     @Ignore("TODO: mock form valid")
     @Test
-    fun opensEndSurveyDialogFromSurveyMenuScreen() {
+    fun endSurveyClicked_opensEndSurveyDialogFromSurveyMenuScreen() {
         // given
         setupScenarioForFragment<CreateSurveyMenuFragment>()
         navController.setCurrentDestination(R.id.createSurveyMenuFragment)
@@ -150,7 +150,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     }
 
     @Test
-    fun opensCancelDialogFromSurveyMenuScreen() {
+    fun cancelClicked_opensCancelDialogFromSurveyMenuScreen() {
         // given
         setupScenarioForFragment<CreateSurveyMenuFragment>()
         navController.setCurrentDestination(R.id.createSurveyMenuFragment)
@@ -160,7 +160,7 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     }
 
     @Test
-    fun navigatesFromEventsMenuScreenToSurveyMenuScreen() {
+    fun prevClicked_navigatesFromEventsMenuScreenToSurveyMenuScreen() {
         // given we have moved to the events menu screen
         setupScenarioForFragment<CreateSurveyMenuFragment>()
         navController.setCurrentDestination(R.id.createSurveyMenuFragment)
@@ -176,12 +176,12 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     // Events menu screen navigation
 
     @Test
-    fun opensCancelDialogFromEventsMenuScreen() {
+    fun cancelClicked_opensCancelDialogFromEventsMenuScreen() {
         // given
         setupScenarioForFragment<CreateSurveyEventsMenuFragment>()
         navController.setCurrentDestination(R.id.createSurveyEventsMenuFragment)
 
-        // then
+        // when + then
         assertThatCancelDialogOpens()
     }
 

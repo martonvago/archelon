@@ -39,15 +39,15 @@ class MainNavigationTest: NavigationTestBase() {
 
     @Before
     fun before() {
-        setUpNavController(R.navigation.main_nav_graph)
         hiltRule.inject()
         val surveysWithEvents = listOf(surveyWithEventsBuilder.build())
         every { archelonRepository.getAllSurveys().value } returns surveysWithEvents
         setupScenarioForFragment<HomeScreenFragment>()
+        navController.setCurrentDestination(R.id.homeScreenFragment)
     }
 
     @Test
-    fun navigatesFromHomeScreenToViewSurveysScreen() {
+    fun viewSurveysClicked_navigatesFromHomeScreenToViewSurveysScreen() {
         // when
         clickElementWithId(R.id.viewSurveysButton)
 
@@ -56,7 +56,7 @@ class MainNavigationTest: NavigationTestBase() {
     }
 
     @Test
-    fun navigatesFromViewSurveysScreenToHomeScreen() {
+    fun backNavigation_navigatesFromViewSurveysScreenToHomeScreen() {
         // given we have moved to the view surveys screen
         clickElementWithId(R.id.viewSurveysButton)
 
