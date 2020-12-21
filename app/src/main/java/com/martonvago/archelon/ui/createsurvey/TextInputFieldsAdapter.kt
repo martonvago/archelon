@@ -1,11 +1,10 @@
-package com.martonvago.archelon.ui.shared
+package com.martonvago.archelon.ui.createsurvey
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.martonvago.archelon.databinding.TextInputFieldBinding
-import com.martonvago.archelon.ui.createsurvey.TextInputField
 
 data class TextInputComponent(
     val targetField: TextInputField,

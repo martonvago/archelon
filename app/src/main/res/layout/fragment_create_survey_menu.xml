@@ -59,7 +59,7 @@
 
         <Button
             android:id="@+id/endSurveyButton"
-            style="@style/MenuButtonDarkStyle"
+            style="@style/MenuButtonAccentStyle"
             android:text="@string/endSurvey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

@@ -7,16 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/parent"
-        android:background="?attr/colorBgPrimary">
+        android:background="?attr/colorBgDark">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/surveyContent"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:paddingStart="@dimen/padding_extra_larger"
             android:paddingTop="@dimen/padding_extra_larger"
-            android:paddingEnd="@dimen/padding_extra_larger"
             app:layout_constraintBottom_toTopOf="@id/createSurveyControls"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +25,7 @@
             android:id="@+id/createSurveyControls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorButtonDark"
+            android:background="?attr/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">

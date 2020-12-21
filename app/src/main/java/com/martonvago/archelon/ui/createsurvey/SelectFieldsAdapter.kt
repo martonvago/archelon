@@ -1,4 +1,4 @@
-package com.martonvago.archelon.ui.shared
+package com.martonvago.archelon.ui.createsurvey
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,8 +8,7 @@ import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.RecyclerView
 import com.martonvago.archelon.databinding.SelectFieldBinding
 import com.martonvago.archelon.entity.Displayable
-import com.martonvago.archelon.ui.createsurvey.SelectArgs
-import com.martonvago.archelon.ui.createsurvey.SelectField
+import com.martonvago.archelon.ui.shared.setNavigateOnClickListener
 
 data class SelectComponent(
     val targetField: SelectField,

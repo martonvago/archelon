@@ -11,7 +11,7 @@
         <item name="colorButtonPrimaryClicked">@color/colorButtonPrimaryClicked</item>
         <item name="colorButtonDark">@color/colorButtonDark</item>
         <item name="colorButtonDarkClicked">@color/colorButtonDarkClicked</item>
-        <item name="colorBgPrimaryLight">@color/colorTag3</item>
+        <item name="colorBgPrimaryLight">@color/colorWhite</item>
         <item name="colorButtonLight">@color/colorTag2</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -169,14 +169,22 @@
         <item name="android:paddingEnd">@dimen/padding_normal</item>
     </style>
 
-    <style name="MenuButtonDarkStyle" parent="MenuButtonStyle">
-        <item name="android:background">@drawable/rounded_button_dark</item>
+    <style name="HomeButtonStyle" parent="MenuButtonStyle">
+        <item name="android:layout_width">@dimen/home_button_width</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="MenuButtonAccentStyle" parent="MenuButtonStyle">
+        <item name="android:background">@drawable/rounded_button_accent</item>
     </style>
 
     <style name="BaseCardViewStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/margin_extra_large</item>
+        <item name="android:layout_marginTop">@dimen/margin_large</item>
+        <item name="android:layout_marginBottom">@dimen/margin_large</item>
+        <item name="android:layout_marginStart">@dimen/margin_extra_extra_large</item>
+        <item name="android:layout_marginEnd">@dimen/margin_extra_extra_large</item>
     </style>
 
     <style name="LabelStyle">

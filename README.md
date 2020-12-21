@@ -10,5 +10,5 @@ This project implements the basic "add new Morning Survey" flow for the Archelon
 - data binding
 - LiveData
 
-- JUnit 5
-- Mockito
+- JUnit 4
+- MockK

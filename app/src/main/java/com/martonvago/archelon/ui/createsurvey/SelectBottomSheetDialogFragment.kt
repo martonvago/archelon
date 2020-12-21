@@ -1,4 +1,4 @@
-package com.martonvago.archelon.ui.shared
+package com.martonvago.archelon.ui.createsurvey
 
 import android.os.Bundle
 import android.view.LayoutInflater

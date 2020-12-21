@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.martonvago.archelon.ui.createsurvey.SelectArgs
+import com.martonvago.archelon.ui.createsurvey.*
 
 fun View.setNavigateOnClickListener(directions: NavDirections, doBeforeNavigate: () -> Unit = {}) {
     this.setOnClickListener {
@@ -59,7 +59,6 @@ fun RecyclerView.setUpSelectAdapter(
     lifecycleOwner: LifecycleOwner,
     navActionToSelectDialog: (SelectArgs) -> NavDirections
 ) {
-    this.layoutManager = LinearLayoutManager(context)
     this.adapter = SelectFieldsAdapter(selectFields, navActionToSelectDialog, lifecycleOwner)
 }
 
@@ -67,6 +66,5 @@ fun RecyclerView.setUpTextInputAdapter(
     textInputFields: List<TextInputComponent>,
     lifecycleOwner: LifecycleOwner,
 ) {
-    this.layoutManager = LinearLayoutManager(context)
     this.adapter = TextInputFieldsAdapter(textInputFields, lifecycleOwner)
 }

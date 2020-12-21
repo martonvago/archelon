@@ -1,4 +1,4 @@
-package com.martonvago.archelon.ui.shared
+package com.martonvago.archelon.ui.createsurvey
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.martonvago.archelon.databinding.SelectOptionBinding
 import com.martonvago.archelon.entity.Displayable
-import com.martonvago.archelon.ui.createsurvey.SelectArgs
 
 class OptionsAdapter(
     val selectArgs: SelectArgs,

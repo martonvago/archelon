@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/colorBgPrimary"
         android:gravity="center"
         android:orientation="vertical"
         tools:context=".ui.viewsurveys.ViewSurveysFragment">
@@ -20,13 +21,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="@dimen/text_size_ultra_large"
-            android:text="@{Integer.toString(viewModel.surveys.size())}" />
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_extra_extra_large"
+            android:textSize="@dimen/text_size_extra_large"
+            android:textColor="@color/colorTextWhite"
+            android:text="@{@string/savedSurveys(viewModel.surveys.size())}" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:paddingBottom="@dimen/padding_giant"
             android:id="@+id/savedSurveysContainer"
             android:layout_width="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:clipToPadding="false"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>

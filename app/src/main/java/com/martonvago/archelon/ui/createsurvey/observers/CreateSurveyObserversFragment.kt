@@ -11,8 +11,8 @@ import com.martonvago.archelon.entity.enumValuesAsDisplayable
 import com.martonvago.archelon.entity.enums.*
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
 import com.martonvago.archelon.ui.createsurvey.SelectArgs
-import com.martonvago.archelon.ui.shared.SelectComponent
-import com.martonvago.archelon.ui.shared.TextInputComponent
+import com.martonvago.archelon.ui.createsurvey.SelectComponent
+import com.martonvago.archelon.ui.createsurvey.TextInputComponent
 import com.martonvago.archelon.ui.shared.setUpSelectAdapter
 import com.martonvago.archelon.ui.shared.setUpTextInputAdapter
 import com.martonvago.archelon.util.asEnglishOrdinal

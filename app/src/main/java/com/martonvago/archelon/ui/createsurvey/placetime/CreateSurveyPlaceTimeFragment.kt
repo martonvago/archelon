@@ -12,8 +12,7 @@ import com.martonvago.archelon.entity.enums.Beach
 import com.martonvago.archelon.entity.enums.CompassDirection
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
 import com.martonvago.archelon.ui.createsurvey.SelectArgs
-import com.martonvago.archelon.ui.shared.SelectComponent
-import com.martonvago.archelon.ui.shared.WithSelectField
+import com.martonvago.archelon.ui.createsurvey.SelectComponent
 import com.martonvago.archelon.ui.shared.setNavigateOnClickListener
 import com.martonvago.archelon.ui.shared.setUpSelectAdapter
 import kotlinx.android.synthetic.main.fragment_create_survey_place_time.*
@@ -21,8 +20,7 @@ import kotlinx.android.synthetic.main.fragment_create_survey_place_time.*
 /**
  * A simple [Fragment] subclass.
  */
-class CreateSurveyPlaceTimeFragment : CreateSurveyBaseFragment(false), WithSelectField {
-    override val navActionToSelectDialog = { selectArgs: SelectArgs -> CreateSurveyPlaceTimeFragmentDirections.actionCreateSurveyPlaceTimeFragmentToSelectBottomSheetDialogFragment(selectArgs)}
+class CreateSurveyPlaceTimeFragment : CreateSurveyBaseFragment(false) {
     lateinit var binding: FragmentCreateSurveyPlaceTimeBinding
 
     override fun initialiseContentBinding(inflater: LayoutInflater, wrapper: ViewGroup, attachToRoot: Boolean) {
