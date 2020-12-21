@@ -57,7 +57,7 @@ class ArchelonDatabaseTest {
     }
 
     @Test
-    fun saveSurvey() = runBlocking {
+    fun save_savesSurvey() = runBlocking {
         // when
         val surveyId = surveyDao.save(surveyBuilder.build())
 
@@ -68,7 +68,26 @@ class ArchelonDatabaseTest {
     }
 
     @Test
-    fun getSurveysWithEvents() = runBlocking {
+    fun getSurveysWithEvents_noEvents_returnsSurveysWithEmptyEvents() = runBlocking {
+        // given
+        val surveyId1 = surveyDao.save(surveyBuilder.build())
+        val surveyId2 = surveyDao.save(surveyBuilder.build())
+
+        // when
+        val surveys = surveyDao.getSurveysWithEvents().getOrAwaitValue()
+
+        // then
+        assertThat(surveys.size).isEqualTo(2)
+        assertThat(surveys.map { it.survey.id }).isEqualTo(listOf(surveyId1, surveyId2))
+        surveys.forEach {
+            assertThat(it.events.size).isEqualTo(0)
+            assertThat(it.adultEmergence.size).isEqualTo(0)
+            assertThat(it.hatching.size).isEqualTo(0)
+        }
+    }
+
+    @Test
+    fun getSurveysWithEvents_withEvents_returnsSurveysWithEvents() = runBlocking {
         // given
         val surveyId1 = surveyDao.save(surveyBuilder.build())
         val surveyId2 = surveyDao.save(surveyBuilder.build())
@@ -84,13 +103,13 @@ class ArchelonDatabaseTest {
         assertThat(surveys.size).isEqualTo(2)
         assertThat(surveys.map { it.survey.id }).isEqualTo(listOf(surveyId1, surveyId2))
         assertThat(surveys[0].events.size).isEqualTo(2)
-        assertThat(surveys[1].events.size).isEqualTo(0)
         assertThat(surveys[0].adultEmergence.size).isEqualTo(1)
         assertThat(surveys[0].hatching.size).isEqualTo(1)
+        assertThat(surveys[1].events.size).isEqualTo(0)
     }
 
     @Test
-    fun saveAdultEmergence() = runBlocking {
+    fun save_savesAdultEmergence() = runBlocking {
         // given
         val surveyId = surveyDao.save(surveyBuilder.build())
         val adultEmergence = adultEmergenceBuilder.surveyId(surveyId).build()
@@ -105,7 +124,7 @@ class ArchelonDatabaseTest {
     }
 
     @Test
-    fun saveHatching() = runBlocking {
+    fun save_savesHatching() = runBlocking {
         // given
         val surveyId = surveyDao.save(surveyBuilder.build())
         val hatching = hatchingBuilder.surveyId(surveyId).build()

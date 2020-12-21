@@ -39,7 +39,6 @@ class MainNavigationTest: NavigationTestBase() {
 
     @Before
     fun before() {
-        setUpNavController(R.navigation.main_nav_graph)
         hiltRule.inject()
         val surveysWithEvents = listOf(surveyWithEventsBuilder.build())
         every { archelonRepository.getAllSurveys().value } returns surveysWithEvents
