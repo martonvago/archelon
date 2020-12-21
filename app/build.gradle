@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: 'de.mannodermaus.android-junit5'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
@@ -17,8 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunnerArgument("runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder")
+        testInstrumentationRunner "com.martonvago.archelon.CustomTestRunner"
     }
 
     buildTypes {
@@ -40,24 +38,17 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-    packagingOptions {
-        exclude('META-INF/LICENSE*')
-    }
 }
 
 dependencies {
     def fragment_version = '1.2.5'
-    def junit_version = '5.7.0'
-    def runner_version = '1.2.0'
     def espresso_version = '3.3.0'
     def truth_version = '1.1'
-    def mockito_kotlin_version = '2.2.0'
-    def mockito_version = '3.6.0'
     def room_version = '2.2.5'
     def androidx_hilt_version = '1.0.0-alpha02'
     def threetenabp_version = '1.3.0'
     def material_version = '1.2.1'
+    def mockk_version = '1.10.3-jdk8'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -85,21 +76,18 @@ dependencies {
     // ThreeTenABP added to be able to use java.time without bumping the minSdkVersion
     // or the gradle plugin version (gradle plugin 4.0.0+ needed for desugaring).
     implementation "com.jakewharton.threetenabp:threetenabp:$threetenabp_version"
+    // https://github.com/JakeWharton/ThreeTenABP/issues/14
+    androidTestImplementation("org.threeten:threetenbp:1.5.0") {
+        exclude group: 'com.jakewharton.threetenabp', module:'threetenabp'
+    }
 
-    // JUnit5
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
-    testImplementation "org.junit.jupiter:junit-jupiter-params:$junit_version"
-    androidTestImplementation "org.junit.jupiter:junit-jupiter-params:$junit_version"
-    androidTestImplementation "androidx.test:runner:$runner_version"
-    androidTestImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
-    androidTestImplementation "de.mannodermaus.junit5:android-test-core:$runner_version"
-    androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:$runner_version"
+    // JUnit 4
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation "androidx.test.ext:junit:1.1.2"
 
-    // Mockito
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
-    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
-    testImplementation "org.mockito:mockito-core:$mockito_version"
+    // MockK
+    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
+    testImplementation "io.mockk:mockk:$mockk_version"
 
     // Navigation dependencies
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
@@ -111,4 +99,7 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$androidx_hilt_version"
     kapt "androidx.hilt:hilt-compiler:$androidx_hilt_version"
+
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 }

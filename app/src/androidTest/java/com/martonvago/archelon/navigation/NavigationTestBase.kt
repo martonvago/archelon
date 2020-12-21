@@ -12,7 +12,7 @@ import com.martonvago.archelon.launchFragmentInHiltContainer
 
 abstract class NavigationTestBase {
 
-    // The nav controller is set up in @BeforeAll in the inheriting class, which has to be
+    // The nav controller is set up in @BeforeClass in the inheriting class, which has to be
     // enclosed in a companion object. So we have to enclose the shared setup logic
     // in a companion object here as well.
     companion object {
