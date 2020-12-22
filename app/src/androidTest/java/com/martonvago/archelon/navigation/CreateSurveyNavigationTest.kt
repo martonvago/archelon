@@ -179,20 +179,6 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
         assertThatCurrentDestinationIs(R.id.createSurveyEventsMenuFragment)
     }
 
-    @Ignore("TODO: mock form valid")
-    @Test
-    fun endSurveyClicked_opensEndSurveyDialogFromSurveyMenuScreen() {
-        // given
-        setupScenarioForFragment<CreateSurveyMenuFragment>()
-        navController.setCurrentDestination(R.id.createSurveyMenuFragment)
-
-        // when
-        clickElementWithId(R.id.endSurveyButton)
-
-        // then
-        assertThatCurrentDestinationIs(R.id.endSurveyDialogFragment)
-    }
-
     @Test
     fun cancelClicked_opensCancelDialogFromSurveyMenuScreen() {
         // given
