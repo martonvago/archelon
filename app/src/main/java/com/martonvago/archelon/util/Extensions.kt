@@ -3,6 +3,7 @@ package com.martonvago.archelon.util
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.LocalTime
 import org.threeten.bp.format.DateTimeFormatter
+import kotlin.math.abs
 
 /**
  * Adapted from: https://stackoverflow.com/questions/51102431/android-room-type-convert-multiple-enum-types
@@ -19,10 +20,10 @@ fun LocalDateTime.displayDate(): String = this.format(DateTimeFormatter.ofPatter
 fun LocalTime.displayTime(): String = this.format(DateTimeFormatter.ofPattern("HH:mm"))
 
 fun Int.asEnglishOrdinal(): String {
-    val ordinal = if (this % 100 in 11..14) {
+    val ordinal = if (abs(this) % 100 in 11..14) {
         "th"
     } else {
-        when (this % 10) {
+        when (abs(this) % 10) {
             1 -> "st"
             2 -> "nd"
             3 -> "rd"
