@@ -43,8 +43,12 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    testOptions.unitTests {
-        includeAndroidResources = true
+    testOptions {
+        animationsDisabled = true
+
+        unitTests {
+            includeAndroidResources = true
+        }
     }
 
     sourceSets {
@@ -80,6 +84,8 @@ dependencies {
     implementation "com.google.android.material:material:$material_version"
 
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+
     // Exclude conflicting transitive dependency
     androidTestImplementation("com.google.truth:truth:$truth_version") {
         exclude group: "com.google.code.findbugs", module: "jsr305"
