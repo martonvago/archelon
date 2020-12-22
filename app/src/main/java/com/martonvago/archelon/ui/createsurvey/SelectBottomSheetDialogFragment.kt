@@ -29,7 +29,6 @@ class SelectBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        optionsContainer.layoutManager = LinearLayoutManager(context)
         optionsContainer.adapter = OptionsAdapter(args.selectContent, findNavController())
 
         closeSelect.setOnClickListener {
