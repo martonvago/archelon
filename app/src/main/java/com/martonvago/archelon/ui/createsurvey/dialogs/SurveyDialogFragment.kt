@@ -45,7 +45,6 @@ abstract class SurveyDialogFragment(
         binding.viewModel = viewModel
         binding.title = dialogTitleId
 
-        dialogTitle.setText(dialogTitleId)
         bind(binding)
 
         yesButton.setNavigateOnClickListener(yesButtonActionId, this) { beforeYesButtonClicked() }

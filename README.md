@@ -11,4 +11,5 @@ This project implements the basic "add new Morning Survey" flow for the Archelon
 - LiveData
 
 - JUnit 4
+  - We have decided not to use JUnitParams because those tests can't be run in isolation. Instead of @Parameterised tests, we loop over test scenarios to cut down on code repetition.
 - MockK

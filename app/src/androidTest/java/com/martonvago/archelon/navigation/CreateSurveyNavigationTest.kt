@@ -1,6 +1,19 @@
 package com.martonvago.archelon.navigation
 
+import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.scrollTo
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.matcher.ViewMatchers
+import com.google.common.truth.Truth.assertThat
 import com.martonvago.archelon.R
+import com.martonvago.archelon.entity.Displayable
+import com.martonvago.archelon.entity.enumValuesAsDisplayable
+import com.martonvago.archelon.entity.enums.*
+import com.martonvago.archelon.ui.createsurvey.SelectArgs
+import com.martonvago.archelon.ui.createsurvey.SelectFieldsAdapter
 import com.martonvago.archelon.ui.createsurvey.eventsmenu.CreateSurveyEventsMenuFragment
 import com.martonvago.archelon.ui.createsurvey.menu.CreateSurveyMenuFragment
 import com.martonvago.archelon.ui.createsurvey.observers.CreateSurveyObserversFragment
@@ -81,6 +94,20 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
         assertThatCurrentDestinationIs(R.id.createSurveyPlaceTimeFragment)
     }
 
+    @Test
+    fun selectFieldClicked_onPlaceTimeScreen_opensBottomSheetDialog() {
+        // given
+        setupScenarioForFragment<CreateSurveyPlaceTimeFragment>()
+
+        // when + then
+        listOf(
+            SelectTestArgs(0, R.string.beachSelectTitle, Beach.enumValuesAsDisplayable()),
+            SelectTestArgs(1, R.string.beachSectorSelectTitle, CompassDirection.enumValuesAsDisplayable())
+        ).forEach {
+            testSelectField(it, R.id.createSurveyPlaceTimeFragment)
+        }
+    }
+
    // Observers screen navigation
 
     @Test
@@ -120,6 +147,23 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
         assertThatCurrentDestinationIs(R.id.createSurveyObserversFragment)
     }
 
+    @Test
+    fun selectFieldClicked_onObserversScreen_opensBottomSheetDialog() {
+        // given
+        setupScenarioForFragment<CreateSurveyObserversFragment>()
+
+        // when + then
+        listOf(
+            SelectTestArgs(0, R.string.skySelectTitle, Sky.enumValuesAsDisplayable()),
+            SelectTestArgs(1, R.string.precipitationSelectTitle, Precipitation.enumValuesAsDisplayable()),
+            SelectTestArgs(2, R.string.windDirectionSelectTitle, CompassDirection.enumValuesAsDisplayable()),
+            SelectTestArgs(3, R.string.windIntensitySelectTitle, WindIntensity.enumValuesAsDisplayable()),
+            SelectTestArgs(4, R.string.surfSelectTitle, Surf.enumValuesAsDisplayable())
+        ).forEach {
+            testSelectField(it, R.id.createSurveyObserversFragment)
+        }
+    }
+
     // Survey menu screen navigation
 
     @Test
@@ -133,20 +177,6 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
 
         // then
         assertThatCurrentDestinationIs(R.id.createSurveyEventsMenuFragment)
-    }
-
-    @Ignore("TODO: mock form valid")
-    @Test
-    fun endSurveyClicked_opensEndSurveyDialogFromSurveyMenuScreen() {
-        // given
-        setupScenarioForFragment<CreateSurveyMenuFragment>()
-        navController.setCurrentDestination(R.id.createSurveyMenuFragment)
-
-        // when
-        clickElementWithId(R.id.endSurveyButton)
-
-        // then
-        assertThatCurrentDestinationIs(R.id.endSurveyDialogFragment)
     }
 
     @Test
@@ -191,5 +221,34 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
 
         // then
         assertThatCurrentDestinationIs(R.id.cancelSurveyDialogFragment)
+    }
+
+    private data class SelectTestArgs(
+        val position: Int,
+        @StringRes val titleId: Int,
+        val options: List<Displayable>
+    )
+
+    private fun testSelectField(args: SelectTestArgs, @LayoutRes layoutId: Int) {
+        navController.setCurrentDestination(layoutId)
+        clickSelectFieldAtPosition(args.position)
+        assertThatSelectDialogOpenedCorrectly(args.titleId, args.options)
+        navController.popBackStack()
+    }
+
+    private fun clickSelectFieldAtPosition(position: Int) {
+        Espresso.onView(ViewMatchers.withId(R.id.selectFieldsContainer))
+            .perform(actionOnItemAtPosition<SelectFieldsAdapter.ViewHolder>(position, scrollTo()))
+            .perform(actionOnItemAtPosition<SelectFieldsAdapter.ViewHolder>(position, click()))
+    }
+
+    private fun assertThatSelectDialogOpenedCorrectly(@StringRes titleId: Int, options: List<Displayable>) {
+        val args = navController.backStack.last().arguments
+        assertThat(args).isNotNull()
+        val selectArgs: SelectArgs = args!!.get("selectContent") as SelectArgs
+        assertThat(selectArgs).isNotNull()
+        assertThat(selectArgs.title).isEqualTo(titleId)
+        assertThat(selectArgs.selectOptions).isEqualTo(options)
+        assertThatCurrentDestinationIs(R.id.selectBottomSheetDialogFragment)
     }
 }

@@ -1,14 +1,15 @@
 package com.martonvago.archelon.repository
 
+import android.os.Build
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import com.martonvago.archelon.builders.SurveyWithEventsBuilder
 import com.martonvago.archelon.dao.local.AdultEmergenceDao
 import com.martonvago.archelon.dao.local.HatchingDao
 import com.martonvago.archelon.dao.local.SurveyDao
 import com.martonvago.archelon.entity.SurveyWithEvents
+import dagger.hilt.android.testing.HiltTestApplication
 import getOrAwaitValue
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -20,8 +21,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
-@RunWith(AndroidJUnit4::class)
+@Config(application = HiltTestApplication::class, sdk = [Build.VERSION_CODES.O_MR1])
+@RunWith(RobolectricTestRunner::class)
 class ArchelonRepositoryTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
