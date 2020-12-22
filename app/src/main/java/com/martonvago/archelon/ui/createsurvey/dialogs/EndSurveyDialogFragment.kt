@@ -13,7 +13,7 @@ class EndSurveyDialogFragment: SurveyDialogFragment(
     override fun bind(binding: FragmentSurveyDialogBinding) {
         binding.description = resources.getString(
             R.string.endSurveyDialogDescription,
-            LocalTime.now().displayTime()
+            LocalTime.now(viewModel.clock).displayTime()
         )
     }
 

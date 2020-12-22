@@ -1,5 +1,3 @@
-package com.martonvago.archelon
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import java.util.concurrent.CountDownLatch
@@ -7,7 +5,7 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
 
 /**
- * From: https://gist.github.com/JoseAlcerreca/35828c25fca123c8a115d6251cf3f45b#file-livedatatestutil-kt
+ * From: https://github.com/android/architecture-components-samples/blob/master/LiveDataSample/app/src/test/java/com/android/example/livedatabuilder/util/LiveDataTestUtil.kt
  * Copyright 2019 Google LLC.
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -38,4 +36,17 @@ fun <T> LiveData<T>.getOrAwaitValue(
 
     @Suppress("UNCHECKED_CAST")
     return data as T
+}
+
+/**
+ * Observes a [LiveData] until the `block` is done executing.
+ */
+fun <T> LiveData<T>.observeForTesting(block: () -> Unit) {
+    val observer = Observer<T> { }
+    try {
+        observeForever(observer)
+        block()
+    } finally {
+        removeObserver(observer)
+    }
 }

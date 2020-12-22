@@ -12,7 +12,7 @@ import com.martonvago.archelon.dao.local.AdultEmergenceDao
 import com.martonvago.archelon.dao.local.HatchingDao
 import com.martonvago.archelon.dao.local.SurveyDao
 import com.martonvago.archelon.database.local.ArchelonDatabase
-import com.martonvago.archelon.getOrAwaitValue
+import getOrAwaitValue
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before

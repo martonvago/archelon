@@ -25,7 +25,7 @@ open class FormField<T>(
         }
     }
 
-    fun getContentValue(): T {
+    fun getContentValueOrDefault(): T {
         return content.value ?: default
     }
 
@@ -34,7 +34,7 @@ open class FormField<T>(
     }
 
     open fun checkIfValid(): Boolean {
-        return !required || getContentValue() != null
+        return !required || content.value != null
     }
 }
 
@@ -51,6 +51,6 @@ class SelectField(val default: Displayable): FormField<Displayable>(default), Pa
  */
 class TextInputField(default: String, private val required: Boolean = true): FormField<String>(default, required) {
     override fun checkIfValid(): Boolean {
-        return !required || getContentValue() != ""
+        return !required || content.value != ""
     }
 }
