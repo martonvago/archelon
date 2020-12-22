@@ -9,7 +9,7 @@ import com.martonvago.archelon.dao.local.AdultEmergenceDao
 import com.martonvago.archelon.dao.local.HatchingDao
 import com.martonvago.archelon.dao.local.SurveyDao
 import com.martonvago.archelon.entity.SurveyWithEvents
-import com.martonvago.archelon.getOrAwaitValue
+import getOrAwaitValue
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify

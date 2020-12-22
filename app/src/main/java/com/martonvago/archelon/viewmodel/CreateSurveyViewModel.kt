@@ -15,14 +15,15 @@ import com.martonvago.archelon.util.atDate
 import com.martonvago.archelon.util.atTime
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.threeten.bp.Clock
 import org.threeten.bp.LocalDateTime
 
-
 class CreateSurveyViewModel @ViewModelInject constructor(
-    private val archelonRepository: ArchelonRepository
+    private val archelonRepository: ArchelonRepository,
+    val clock: Clock
 ): FormViewModel() {
 
-    val dateTime: FormField<LocalDateTime> = FormField(LocalDateTime.now())
+    val dateTime: FormField<LocalDateTime> = FormField(LocalDateTime.now(clock))
     val leader: TextInputField = TextInputField("")
     val observers = (0 until 3).map { TextInputField("", false) }
     val beach = SelectField(Beach.MAVROVOUNI)
@@ -33,8 +34,8 @@ class CreateSurveyViewModel @ViewModelInject constructor(
     val windDirection = SelectField(CompassDirection.EAST)
     val surf = SelectField(Surf.CALM)
 
-    private val adultEmergenceEvents: MutableList<AdultEmergence> = mutableListOf()
-    private val hatchingEvents: MutableList<Hatching> = mutableListOf()
+    val adultEmergenceEvents: MutableList<AdultEmergence> = mutableListOf()
+    val hatchingEvents: MutableList<Hatching> = mutableListOf()
 
     init {
         observeFieldValidity(listOf(
@@ -51,12 +52,12 @@ class CreateSurveyViewModel @ViewModelInject constructor(
     }
 
     fun updateTime(hour: Int, minute: Int) {
-        val oldDate = dateTime.getContentValue()
+        val oldDate = dateTime.getContentValueOrDefault()
         dateTime.setContentValue(oldDate.atTime(hour, minute))
     }
 
     fun updateDate(year: Int, month: Int, day: Int) {
-        val oldDate = dateTime.getContentValue()
+        val oldDate = dateTime.getContentValueOrDefault()
         dateTime.setContentValue(oldDate.atDate(year, month, day))
     }
 
@@ -72,16 +73,16 @@ class CreateSurveyViewModel @ViewModelInject constructor(
 
     fun submitSurvey() {
         val survey = Survey(
-            dateTime.getContentValue(),
-            beach.getContentValue() as Beach,
-            beachSector.getContentValue() as CompassDirection,
-            sky.getContentValue() as Sky,
-            precipitation.getContentValue() as Precipitation,
-            windIntensity.getContentValue() as WindIntensity,
-            windDirection.getContentValue() as CompassDirection,
-            surf.getContentValue() as Surf,
-            leader.getContentValue(),
-            observers.map { it.getContentValue() }
+            dateTime.getContentValueOrDefault(),
+            beach.getContentValueOrDefault() as Beach,
+            beachSector.getContentValueOrDefault() as CompassDirection,
+            sky.getContentValueOrDefault() as Sky,
+            precipitation.getContentValueOrDefault() as Precipitation,
+            windIntensity.getContentValueOrDefault() as WindIntensity,
+            windDirection.getContentValueOrDefault() as CompassDirection,
+            surf.getContentValueOrDefault() as Surf,
+            leader.getContentValueOrDefault(),
+            observers.map { it.getContentValueOrDefault() }
         )
         val surveyWithEvents = SurveyWithEvents(
             survey,

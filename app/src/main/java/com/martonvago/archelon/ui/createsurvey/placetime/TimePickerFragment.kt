@@ -20,8 +20,8 @@ class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
         return TimePickerDialog(
             activity,
             this,
-            viewModel.dateTime.getContentValue().hour,
-            viewModel.dateTime.getContentValue().minute,
+            viewModel.dateTime.getContentValueOrDefault().hour,
+            viewModel.dateTime.getContentValueOrDefault().minute,
             is24HourFormat(activity)
         )
     }
