@@ -3,20 +3,20 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion '30.0.2'
 
     defaultConfig {
-        applicationId "com.martonvago.archelon"
+        applicationId 'com.martonvago.archelon'
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName '1.0'
 
-        testInstrumentationRunner "com.martonvago.archelon.CustomTestRunner"
+        testInstrumentationRunner 'com.martonvago.archelon.CustomTestRunner'
     }
 
     buildTypes {
@@ -53,10 +53,10 @@ android {
 
     sourceSets {
         androidTest {
-            java.srcDirs += "src/sharedTest/java"
+            java.srcDirs += 'src/sharedTest/java'
         }
         test {
-            java.srcDirs += "src/sharedTest/java"
+            java.srcDirs += 'src/sharedTest/java'
         }
     }
 }
