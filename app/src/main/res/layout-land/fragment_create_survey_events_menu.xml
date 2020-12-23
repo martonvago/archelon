@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewModel" type="com.martonvago.archelon.viewmodel.CreateSurveyViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.createsurvey.eventsmenu.CreateSurveyEventsMenuFragment">
+
+        <Button
+            android:id="@+id/adultEmergenceButton"
+            style="@style/MenuButtonStyle"
+            android:text="@string/adultEmergence"
+            app:layout_constraintBottom_toTopOf="@id/inundationButton"
+            app:layout_constraintEnd_toStartOf="@+id/hatchingButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{() -> viewModel.addAdultEmergence()}"/>
+
+        <Button
+            android:id="@+id/hatchingButton"
+            style="@style/MenuButtonStyle"
+            android:text="@string/hatching"
+            app:layout_constraintBottom_toTopOf="@id/attPredationButton"
+            app:layout_constraintEnd_toStartOf="@id/foundByHatchingButton"
+            app:layout_constraintStart_toEndOf="@id/adultEmergenceButton"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{() -> viewModel.addHatching()}"/>
+
+        <Button
+            android:id="@+id/foundByHatchingButton"
+            style="@style/MenuButtonStyle"
+            android:text="@string/foundByHatching"
+            app:layout_constraintBottom_toTopOf="@id/foundByPredButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/hatchingButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/inundationButton"
+            style="@style/MenuButtonStyle"
+            android:text="@string/inundation"
+            app:layout_constraintBottom_toTopOf="@id/foundByOtherButton"
+            app:layout_constraintEnd_toStartOf="@id/attPredationButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/adultEmergenceButton" />
+
+        <Button
+            android:id="@+id/attPredationButton"
+            style="@style/MenuButtonStyle"
+            android:text="@string/attPred"
+            app:layout_constraintBottom_toTopOf="@id/vandalismButton"
+            app:layout_constraintEnd_toStartOf="@id/foundByPredButton"
+            app:layout_constraintStart_toEndOf="@id/inundationButton"
+            app:layout_constraintTop_toBottomOf="@id/hatchingButton" />
+
+        <Button
+            android:id="@+id/foundByPredButton"
+            style="@style/MenuButtonStyle"
+            android:text="@string/foundByPred"
+            app:layout_constraintBottom_toTopOf="@id/otherEventButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/attPredationButton"
+            app:layout_constraintTop_toBottomOf="@id/foundByHatchingButton" />
+
+        <Button
+            android:id="@+id/foundByOtherButton"
+            style="@style/MenuButtonStyle"
+            android:text="@string/foundByOther"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/vandalismButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inundationButton" />
+
+        <Button
+            android:id="@+id/vandalismButton"
+            style="@style/MenuButtonStyle"
+            android:text="@string/vandalism"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/otherEventButton"
+            app:layout_constraintStart_toEndOf="@id/foundByOtherButton"
+            app:layout_constraintTop_toBottomOf="@id/attPredationButton" />
+
+        <Button
+            android:id="@+id/otherEventButton"
+            style="@style/MenuButtonStyle"
+            android:text="@string/otherEvent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/vandalismButton"
+            app:layout_constraintTop_toBottomOf="@id/foundByPredButton"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

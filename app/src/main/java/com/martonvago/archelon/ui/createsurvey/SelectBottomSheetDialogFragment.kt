@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.martonvago.archelon.databinding.FragmentSelectBottomSheetDialogBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,5 +34,12 @@ class SelectBottomSheetDialogFragment : BottomSheetDialogFragment() {
         closeSelect.setOnClickListener {
             findNavController().navigateUp()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Forces the sheet to appear at max height even on landscape
+        val behavior = BottomSheetBehavior.from(requireView().parent as View)
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 }
