@@ -1,0 +1,10 @@
+<resources>
+    <style name="BaseCardViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_large</item>
+        <item name="android:layout_marginBottom">@dimen/margin_large</item>
+        <item name="android:layout_marginStart">@dimen/margin_ultra_ultra_large</item>
+        <item name="android:layout_marginEnd">@dimen/margin_ultra_ultra_large</item>
+    </style>
+</resources>
