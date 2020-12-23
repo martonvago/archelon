@@ -8,34 +8,43 @@ import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.RecyclerView
 import com.martonvago.archelon.databinding.SelectFieldBinding
 import com.martonvago.archelon.entity.Displayable
+import com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs
 import com.martonvago.archelon.ui.shared.setNavigateOnClickListener
 
-data class SelectComponent(
+/**
+ * Passed from fragments with select input fields to [SelectFieldsAdapter].
+ */
+data class SelectFieldArgs(
     val targetField: SelectField,
     @StringRes val label: Int,
     @StringRes val selectTitle: Int,
     val selectOptions: List<Displayable>,
 ) {
-    val selectArgs: SelectArgs = SelectArgs(targetField, selectOptions, selectTitle)
+    val selectOptionArgs: SelectOptionArgs = SelectOptionArgs(targetField, selectOptions, selectTitle)
 }
 
+/**
+ * A [RecyclerView] adapter for displaying a list of select input fields.
+ */
 class SelectFieldsAdapter(
-    private val selectComponents: List<SelectComponent>,
-    val navAction: (SelectArgs) -> NavDirections,
+    private val selectFieldArgs: List<SelectFieldArgs>,
+    val navAction: (SelectOptionArgs) -> NavDirections,
     private val lifecycleOwner: LifecycleOwner
 ): RecyclerView.Adapter<SelectFieldsAdapter.ViewHolder>() {
 
     // A view holder for holding the individual select input fields
     inner class ViewHolder(val binding: SelectFieldBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(selectComponent: SelectComponent) {
-            binding.selectComponent = selectComponent
-            binding.selectFieldCard.setNavigateOnClickListener(navAction(selectComponent.selectArgs))
+        fun bind(selectFieldArgs: SelectFieldArgs) {
+            binding.selectFieldArgs = selectFieldArgs
+
+            // Clicking a select field opens a dialog with the appropriate options
+            binding.selectFieldCard.setNavigateOnClickListener(navAction(selectFieldArgs.selectOptionArgs))
             binding.executePendingBindings()
         }
     }
 
-    // Create a view holder with the binding specific to the select fields
+    // Create a view holder with the binding specific to select fields
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(viewGroup.context)
         val binding = SelectFieldBinding.inflate(inflater, viewGroup, false)
@@ -43,10 +52,10 @@ class SelectFieldsAdapter(
         return ViewHolder(binding)
     }
 
-    // Bind the select field at the given position to the view holder
+    // Bind the layout variables of the select field at the given position
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(selectComponents[position])
+        viewHolder.bind(selectFieldArgs[position])
     }
 
-    override fun getItemCount() = selectComponents.size
+    override fun getItemCount() = selectFieldArgs.size
 }

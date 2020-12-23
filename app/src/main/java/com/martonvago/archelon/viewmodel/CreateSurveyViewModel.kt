@@ -18,6 +18,11 @@ import kotlinx.coroutines.launch
 import org.threeten.bp.Clock
 import org.threeten.bp.LocalDateTime
 
+/**
+ * This is the viewmodel scoped to create_survey_nav_graph. It is a [FormViewModel]
+ * with a list of [FormField]s, one for each input field. It is responsible for managing the
+ * state of the form and submitting the completed survey.
+ */
 class CreateSurveyViewModel @ViewModelInject constructor(
     private val archelonRepository: ArchelonRepository,
     val clock: Clock
@@ -38,6 +43,7 @@ class CreateSurveyViewModel @ViewModelInject constructor(
     val hatchingEvents: MutableList<Hatching> = mutableListOf()
 
     init {
+        // We start observing the validity of the fields when the viewmodel is created
         observeFieldValidity(listOf(
             beach,
             dateTime,
@@ -90,6 +96,7 @@ class CreateSurveyViewModel @ViewModelInject constructor(
             hatchingEvents
         )
 
+        // GlobalScope is used because we switch viewmodels when the survey is submitted
         GlobalScope.launch {
             archelonRepository.saveSurveyWithEvents(surveyWithEvents)
         }

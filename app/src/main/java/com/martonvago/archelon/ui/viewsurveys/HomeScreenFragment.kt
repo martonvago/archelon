@@ -7,14 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentHomeScreenBinding
-import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.hilt.hiltNavGraphViewModels
 import com.martonvago.archelon.ui.shared.setNavigateOnClickListener
 import com.martonvago.archelon.viewmodel.ViewSurveysViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home_screen.*
 
 /**
- * A simple [Fragment] subclass.
+ * A fragment for displaying the main menu on the home screen. This currently contains 2 options:
+ * 'Add new morning survey' and 'View your morning surveys'.
  */
 @AndroidEntryPoint
 class HomeScreenFragment : Fragment() {

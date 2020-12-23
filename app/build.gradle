@@ -62,76 +62,38 @@ android {
 }
 
 dependencies {
-    def fragment_version = '1.2.5'
-    def espresso_version = '3.3.0'
-    def truth_version = '1.1'
-    def room_version = '2.2.5'
-    def androidx_hilt_version = '1.0.0-alpha02'
-    def threetenabp_version = '1.3.0'
-    def threetenbp_version = '1.5.0'
-    def material_version = '1.2.1'
-    def mockk_version = '1.10.3-jdk8'
-    def coroutines_test_version = '1.3.2'
-    def core_testing_version = '2.1.0'
-    def roboelectric_version = '4.3.1'
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.legacy:legacy-support-v4:$legacy_support_version"
     implementation "com.google.android.material:material:$material_version"
 
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+    // Core
+    implementation "androidx.core:core-ktx:$core_version"
+    androidTestImplementation "androidx.arch.core:core-testing:$core_testing_version"
+    testImplementation "androidx.arch.core:core-testing:$core_testing_version"
 
-    // Exclude conflicting transitive dependency
-    androidTestImplementation("com.google.truth:truth:$truth_version") {
-        exclude group: "com.google.code.findbugs", module: "jsr305"
-    }
-    testImplementation("com.google.truth:truth:$truth_version") {
-        exclude group: "com.google.code.findbugs", module: "jsr305"
-    }
-    // Exclude conflicting transitive dependency
+    // Fragment
     debugImplementation("androidx.fragment:fragment-testing:$fragment_version") {
+        // Exclude conflicting transitive dependency
         exclude group: 'androidx.test', module: 'core'
     }
 
+    // Coroutines
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
-    androidTestImplementation "androidx.arch.core:core-testing:$core_testing_version"
-    testImplementation "androidx.arch.core:core-testing:$core_testing_version"
 
     // Room
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-    // ThreeTenABP added to be able to use java.time without bumping the minSdkVersion
-    // or the gradle plugin version (gradle plugin 4.0.0+ needed for desugaring).
-    implementation "com.jakewharton.threetenabp:threetenabp:$threetenabp_version"
-    // https://github.com/JakeWharton/ThreeTenABP/issues/14
-    androidTestImplementation("org.threeten:threetenbp:$threetenbp_version") {
-        exclude group: 'com.jakewharton.threetenabp', module:'threetenabp'
-    }
-    testImplementation("org.threeten:threetenbp:$threetenbp_version") {
-        exclude group: 'com.jakewharton.threetenabp', module:'threetenabp'
-    }
-
-    // JUnit 4
-    testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation "androidx.test.ext:junit:1.1.2"
-
-    // MockK
-    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
-    testImplementation "io.mockk:mockk:$mockk_version"
-
-    // Navigation dependencies
+    // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
 
-    // Hilt dependencies
+    // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$androidx_hilt_version"
@@ -142,6 +104,37 @@ dependencies {
     testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 
+    // ThreeTenABP
+    implementation "com.jakewharton.threetenabp:threetenabp:$threetenabp_version"
+    androidTestImplementation("org.threeten:threetenbp:$threetenbp_version") {
+        // https://github.com/JakeWharton/ThreeTenABP/issues/14
+        exclude group: 'com.jakewharton.threetenabp', module:'threetenabp'
+    }
+    testImplementation("org.threeten:threetenbp:$threetenbp_version") {
+        exclude group: 'com.jakewharton.threetenabp', module:'threetenabp'
+    }
+
+    // JUnit 4
+    testImplementation "junit:junit:$junit4_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_junit4_version"
+
+    // MockK
+    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
+    testImplementation "io.mockk:mockk:$mockk_version"
+
     // Roboelectric
     testImplementation "org.robolectric:robolectric:$roboelectric_version"
+
+    // Espresso
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+
+    // Truth
+    androidTestImplementation("com.google.truth:truth:$truth_version") {
+        // Exclude conflicting transitive dependency
+        exclude group: "com.google.code.findbugs", module: "jsr305"
+    }
+    testImplementation("com.google.truth:truth:$truth_version") {
+        exclude group: "com.google.code.findbugs", module: "jsr305"
+    }
 }

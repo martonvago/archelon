@@ -21,7 +21,7 @@ open class FormField<T>(
 
     init {
         valid.addSource(content) {
-            valid.value = checkIfValid()
+            valid.value = !required || checkIfValid()
         }
     }
 
@@ -34,23 +34,25 @@ open class FormField<T>(
     }
 
     open fun checkIfValid(): Boolean {
-        return !required || content.value != null
+        return content.value != null
     }
 }
 
 /**
- * A subclass of [FormField] specifically for select fields, which we can pass in the [SelectArgs]
- * navarg between navigation components.
+ * A subclass of [FormField] specifically for select fields, which we can pass in the
+ * [com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs] navarg between
+ * navigation components.
  */
 @Parcelize
 class SelectField(val default: Displayable): FormField<Displayable>(default), Parcelable
 
 /**
- * A subclass of [FormField] specifically for text input fields, which we can pass to included
- * XML layouts while preserving two-way data binding.
+ * A subclass of [FormField] specifically for text input fields, which we can pass to
+ * [com.martonvago.archelon.ui.createsurvey.observers.TextInputFieldsAdapter] and XML layouts
+ * while preserving two-way data binding.
  */
-class TextInputField(default: String, private val required: Boolean = true): FormField<String>(default, required) {
+class TextInputField(default: String, required: Boolean = true): FormField<String>(default, required) {
     override fun checkIfValid(): Boolean {
-        return !required || content.value != ""
+        return super.checkIfValid() && content.value != ""
     }
 }

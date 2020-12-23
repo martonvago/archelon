@@ -6,6 +6,10 @@ import com.martonvago.archelon.util.toEnum
 import com.martonvago.archelon.util.toName
 import org.threeten.bp.LocalDateTime
 
+/**
+ * These converters are used by [ArchelonDatabase] to convert between custom data types and types
+ * that Room can persist.
+ */
 class Converters {
     @TypeConverter fun strListToString(value: List<String>): String = value.joinToString(",")
     @TypeConverter fun stringToStrList(value: String): List<String> = value.split(",")

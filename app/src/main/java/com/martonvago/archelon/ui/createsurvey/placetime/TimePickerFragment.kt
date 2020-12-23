@@ -7,10 +7,13 @@ import android.text.format.DateFormat.is24HourFormat
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import com.martonvago.archelon.R
-import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.hilt.hiltNavGraphViewModels
 import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * A dialog fragment for picking a time, which uses the native Android time picker.
+ */
 @AndroidEntryPoint
 class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 

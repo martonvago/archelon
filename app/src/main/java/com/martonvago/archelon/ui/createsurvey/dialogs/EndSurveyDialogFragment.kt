@@ -5,6 +5,9 @@ import com.martonvago.archelon.databinding.FragmentSurveyDialogBinding
 import com.martonvago.archelon.util.displayTime
 import org.threeten.bp.LocalTime
 
+/**
+ * The user submits the completed survey via this dialog.
+ */
 class EndSurveyDialogFragment: SurveyDialogFragment(
     R.id.endSurveyDialogFragment_to_homeScreenFragment,
     R.string.endSurveyDialogTitle

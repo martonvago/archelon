@@ -4,7 +4,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 
 /**
- * A class for keeping track of the validity of a set of [FormField]s.
+ * An abstract viewmodel for keeping track of the validity of a set of [FormField]s.
  */
 abstract class FormViewModel: ViewModel() {
     val formValid = MediatorLiveData<Boolean>()

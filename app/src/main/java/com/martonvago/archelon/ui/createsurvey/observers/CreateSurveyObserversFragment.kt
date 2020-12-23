@@ -4,22 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentCreateSurveyObserversBinding
 import com.martonvago.archelon.entity.enumValuesAsDisplayable
 import com.martonvago.archelon.entity.enums.*
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
-import com.martonvago.archelon.ui.createsurvey.SelectArgs
-import com.martonvago.archelon.ui.createsurvey.SelectComponent
-import com.martonvago.archelon.ui.createsurvey.TextInputComponent
+import com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs
+import com.martonvago.archelon.ui.createsurvey.SelectFieldArgs
 import com.martonvago.archelon.ui.shared.setUpSelectAdapter
 import com.martonvago.archelon.ui.shared.setUpTextInputAdapter
 import com.martonvago.archelon.util.asEnglishOrdinal
 import kotlinx.android.synthetic.main.fragment_create_survey_observers.*
 
 /**
- * A simple [Fragment] subclass.
+ * This fragment is where the user enters the leader, observers and weather conditions.
  */
 class CreateSurveyObserversFragment: CreateSurveyBaseFragment(
     true,
@@ -39,25 +37,26 @@ class CreateSurveyObserversFragment: CreateSurveyBaseFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val selectComponents = listOf(
-            SelectComponent(viewModel.sky, R.string.sky, R.string.skySelectTitle, Sky.enumValuesAsDisplayable()),
-            SelectComponent(viewModel.precipitation, R.string.precipitation, R.string.precipitationSelectTitle, Precipitation.enumValuesAsDisplayable()),
-            SelectComponent(viewModel.windDirection, R.string.windDirection, R.string.windDirectionSelectTitle, CompassDirection.enumValuesAsDisplayable()),
-            SelectComponent(viewModel.windIntensity, R.string.windIntensity, R.string.windIntensitySelectTitle, WindIntensity.enumValuesAsDisplayable()),
-            SelectComponent(viewModel.surf, R.string.surf, R.string.surfSelectTitle, Surf.enumValuesAsDisplayable())
+        val selectFields = listOf(
+            SelectFieldArgs(viewModel.sky, R.string.sky, R.string.skySelectTitle, Sky.enumValuesAsDisplayable()),
+            SelectFieldArgs(viewModel.precipitation, R.string.precipitation, R.string.precipitationSelectTitle, Precipitation.enumValuesAsDisplayable()),
+            SelectFieldArgs(viewModel.windDirection, R.string.windDirection, R.string.windDirectionSelectTitle, CompassDirection.enumValuesAsDisplayable()),
+            SelectFieldArgs(viewModel.windIntensity, R.string.windIntensity, R.string.windIntensitySelectTitle, WindIntensity.enumValuesAsDisplayable()),
+            SelectFieldArgs(viewModel.surf, R.string.surf, R.string.surfSelectTitle, Surf.enumValuesAsDisplayable())
         )
 
-        val inputComponents = listOf(TextInputComponent(viewModel.leader, resources.getString(R.string.leader))) +
+        val inputComponents = listOf(TextInputFieldArgs(viewModel.leader, resources.getString(R.string.leader))) +
                 viewModel.observers.mapIndexed { i, field ->
                     // The leader counts as the first observer
                     val ordinalStr = (i + 2).asEnglishOrdinal()
-                    TextInputComponent(field, resources.getString(R.string.observer, ordinalStr))
+                    TextInputFieldArgs(field, resources.getString(R.string.observer, ordinalStr))
                 }
 
         inputFieldsContainer.setUpTextInputAdapter(inputComponents, viewLifecycleOwner)
 
-        selectFieldsContainer.setUpSelectAdapter(selectComponents, viewLifecycleOwner) { selectArgs: SelectArgs ->
-            CreateSurveyObserversFragmentDirections.actionCreateSurveyObserversFragmentToSelectBottomSheetDialogFragment(selectArgs)
+        selectFieldsContainer.setUpSelectAdapter(selectFields, viewLifecycleOwner) { selectOptionArgs: SelectOptionArgs ->
+            CreateSurveyObserversFragmentDirections
+                .actionCreateSurveyObserversFragmentToSelectBottomSheetDialogFragment(selectOptionArgs)
         }
     }
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="selectComponent" type="com.martonvago.archelon.ui.createsurvey.SelectComponent" />
+        <variable name="selectFieldArgs" type="com.martonvago.archelon.ui.createsurvey.SelectFieldArgs" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -23,7 +23,7 @@
             <TextView
                 style="@style/LabelStyle"
                 android:layout_width="match_parent"
-                android:text="@{selectComponent.label}"
+                android:text="@{selectFieldArgs.label}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,7 @@
             <TextView
                 style="@style/EditTextStyle"
                 android:layout_width="wrap_content"
-                android:text="@{selectComponent.targetField.content.displayName}"
+                android:text="@{selectFieldArgs.targetField.content.displayName}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/selectArrow"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -6,10 +6,15 @@ import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import com.martonvago.archelon.R
-import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.hilt.hiltNavGraphViewModels
 import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * A dialog fragment for picking a date, which uses the native Android date picker.
+ * The Calendar's month value is between 0 and 11, but LocalDate's monthValue gives values
+ * from 1 to 12, so we correct for this when sending data to and from the picker.
+ */
 @AndroidEntryPoint
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 

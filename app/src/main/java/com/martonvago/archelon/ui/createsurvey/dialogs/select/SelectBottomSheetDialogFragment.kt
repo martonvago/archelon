@@ -1,4 +1,4 @@
-package com.martonvago.archelon.ui.createsurvey
+package com.martonvago.archelon.ui.createsurvey.dialogs.select
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,9 @@ import com.martonvago.archelon.databinding.FragmentSelectBottomSheetDialogBindin
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_select_bottom_sheet_dialog.*
 
+/**
+ * A bottom sheet dialog for displaying select options.
+ */
 @AndroidEntryPoint
 class SelectBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
@@ -23,13 +26,13 @@ class SelectBottomSheetDialogFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentSelectBottomSheetDialogBinding.inflate(inflater, container, false)
-        binding.selectTitle = args.selectContent.title
+        binding.selectTitle = args.selectOptionArgs.title
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        optionsContainer.adapter = OptionsAdapter(args.selectContent, findNavController())
+        optionsContainer.adapter = OptionsAdapter(args.selectOptionArgs, findNavController())
 
         closeSelect.setOnClickListener {
             findNavController().navigateUp()
@@ -39,7 +42,7 @@ class SelectBottomSheetDialogFragment : BottomSheetDialogFragment() {
     override fun onStart() {
         super.onStart()
         // Forces the sheet to appear at max height even on landscape
-        val behavior = BottomSheetBehavior.from(requireView().parent as View)
-        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        val behaviour = BottomSheetBehavior.from(requireView().parent as View)
+        behaviour.state = BottomSheetBehavior.STATE_EXPANDED
     }
 }

@@ -7,9 +7,12 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.martonvago.archelon.ui.createsurvey.*
+import com.martonvago.archelon.ui.createsurvey.SelectFieldArgs
+import com.martonvago.archelon.ui.createsurvey.SelectFieldsAdapter
+import com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs
+import com.martonvago.archelon.ui.createsurvey.observers.TextInputFieldArgs
+import com.martonvago.archelon.ui.createsurvey.observers.TextInputFieldsAdapter
 
 fun View.setNavigateOnClickListener(directions: NavDirections, doBeforeNavigate: () -> Unit = {}) {
     this.setOnClickListener {
@@ -55,15 +58,15 @@ fun View.configureOptionalNavButton(@IdRes navigationActionId: Int?) {
 }
 
 fun RecyclerView.setUpSelectAdapter(
-    selectFields: List<SelectComponent>,
+    selectFields: List<SelectFieldArgs>,
     lifecycleOwner: LifecycleOwner,
-    navActionToSelectDialog: (SelectArgs) -> NavDirections
+    navActionToSelectDialog: (SelectOptionArgs) -> NavDirections
 ) {
     this.adapter = SelectFieldsAdapter(selectFields, navActionToSelectDialog, lifecycleOwner)
 }
 
 fun RecyclerView.setUpTextInputAdapter(
-    textInputFields: List<TextInputComponent>,
+    textInputFields: List<TextInputFieldArgs>,
     lifecycleOwner: LifecycleOwner,
 ) {
     this.adapter = TextInputFieldsAdapter(textInputFields, lifecycleOwner)

@@ -4,21 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentCreateSurveyPlaceTimeBinding
 import com.martonvago.archelon.entity.enumValuesAsDisplayable
 import com.martonvago.archelon.entity.enums.Beach
 import com.martonvago.archelon.entity.enums.CompassDirection
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
-import com.martonvago.archelon.ui.createsurvey.SelectArgs
-import com.martonvago.archelon.ui.createsurvey.SelectComponent
+import com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs
+import com.martonvago.archelon.ui.createsurvey.SelectFieldArgs
 import com.martonvago.archelon.ui.shared.setNavigateOnClickListener
 import com.martonvago.archelon.ui.shared.setUpSelectAdapter
 import kotlinx.android.synthetic.main.fragment_create_survey_place_time.*
 
 /**
- * A simple [Fragment] subclass.
+ * This fragment is where the user enters the beach, beach sector, time and date.
  */
 class CreateSurveyPlaceTimeFragment : CreateSurveyBaseFragment(false) {
     lateinit var binding: FragmentCreateSurveyPlaceTimeBinding
@@ -35,13 +34,14 @@ class CreateSurveyPlaceTimeFragment : CreateSurveyBaseFragment(false) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val selectComponents = listOf(
-            SelectComponent(viewModel.beach, R.string.beach, R.string.beachSelectTitle, Beach.enumValuesAsDisplayable()),
-            SelectComponent(viewModel.beachSector, R.string.beachSector, R.string.beachSectorSelectTitle, CompassDirection.enumValuesAsDisplayable())
+        val selectFields = listOf(
+            SelectFieldArgs(viewModel.beach, R.string.beach, R.string.beachSelectTitle, Beach.enumValuesAsDisplayable()),
+            SelectFieldArgs(viewModel.beachSector, R.string.beachSector, R.string.beachSectorSelectTitle, CompassDirection.enumValuesAsDisplayable())
         )
 
-        selectFieldsContainer.setUpSelectAdapter(selectComponents, viewLifecycleOwner) { selectArgs: SelectArgs ->
-            CreateSurveyPlaceTimeFragmentDirections.actionCreateSurveyPlaceTimeFragmentToSelectBottomSheetDialogFragment(selectArgs)
+        selectFieldsContainer.setUpSelectAdapter(selectFields, viewLifecycleOwner) { selectOptionArgs: SelectOptionArgs ->
+            CreateSurveyPlaceTimeFragmentDirections
+                .actionCreateSurveyPlaceTimeFragmentToSelectBottomSheetDialogFragment(selectOptionArgs)
         }
 
         dateField.setNavigateOnClickListener(R.id.action_createSurveyPlaceTimeFragment_to_datePickerFragment)

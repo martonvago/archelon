@@ -2,7 +2,7 @@ package com.martonvago.archelon.navigation
 
 import com.martonvago.archelon.R
 import com.martonvago.archelon.builders.SurveyWithEventsBuilder
-import com.martonvago.archelon.di.RepositoryModule
+import com.martonvago.archelon.hilt.RepositoryModule
 import com.martonvago.archelon.repository.ArchelonRepository
 import com.martonvago.archelon.ui.viewsurveys.HomeScreenFragment
 import dagger.hilt.android.testing.BindValue

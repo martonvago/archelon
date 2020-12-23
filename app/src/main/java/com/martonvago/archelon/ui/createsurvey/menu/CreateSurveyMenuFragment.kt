@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentCreateSurveyMenuBinding
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
@@ -12,7 +11,8 @@ import com.martonvago.archelon.ui.shared.setNavigateOnClickListener
 import kotlinx.android.synthetic.main.fragment_create_survey_menu.*
 
 /**
- * A simple [Fragment] subclass.
+ * This fragment holds the main menu of the create survey journey. Currently, only the
+ * 'Add New Event' and 'End Survey' behaviours are implemented.
  */
 class CreateSurveyMenuFragment: CreateSurveyBaseFragment(true) {
 

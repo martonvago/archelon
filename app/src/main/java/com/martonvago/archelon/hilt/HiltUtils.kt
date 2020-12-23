@@ -1,4 +1,4 @@
-package com.martonvago.archelon.di
+package com.martonvago.archelon.hilt
 
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
