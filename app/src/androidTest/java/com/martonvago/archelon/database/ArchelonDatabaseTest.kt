@@ -59,12 +59,14 @@ class ArchelonDatabaseTest {
     @Test
     fun save_savesSurvey() = runBlocking {
         // when
-        val surveyId = surveyDao.save(surveyBuilder.build())
+        val survey = surveyBuilder.observers(listOf("A", "B")).build()
+        val surveyId = surveyDao.save(survey)
 
         // then
         val surveys = surveyDao.getSurveysWithEvents().getOrAwaitValue()
         assertThat(surveys.size).isEqualTo(1)
         assertThat(surveys[0].survey.id).isEqualTo(surveyId)
+        assertThat(surveys[0].survey).isEqualTo(survey)
     }
 
     @Test
