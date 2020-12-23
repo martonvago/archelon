@@ -5,8 +5,8 @@ import androidx.room.Ignore
 import androidx.room.Relation
 
 /**
- * Class to set up one-to-many relationship between a survey and events. Only a few events
- * are included for demonstration purposes.
+ * A class to set up a one-to-many relationship between a [Survey] and [ArchelonEvent]s.
+ * Only two types of events are included for demonstration purposes.
  */
 data class SurveyWithEvents(
     @Embedded val survey: Survey,

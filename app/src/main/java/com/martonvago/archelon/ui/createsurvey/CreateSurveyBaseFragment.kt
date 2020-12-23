@@ -8,7 +8,7 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.CreateSurveyWrapperBinding
-import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.hilt.hiltNavGraphViewModels
 import com.martonvago.archelon.ui.shared.configureOptionalNavButton
 import com.martonvago.archelon.ui.shared.setNavigateUpOnClickListener
 import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
@@ -41,8 +41,10 @@ abstract class CreateSurveyBaseFragment(
         return binding.root
     }
 
+    // Subclasses are responsible for inflating their own layout and setting their binding's lifecycleOwner
     abstract fun initialiseContentBinding(inflater: LayoutInflater, wrapper: ViewGroup, attachToRoot: Boolean)
 
+    // Subclasses are responsible for binding values to their layout variables
     abstract fun populateContentBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

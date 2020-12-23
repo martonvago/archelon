@@ -12,7 +12,7 @@ import com.martonvago.archelon.R
 import com.martonvago.archelon.entity.Displayable
 import com.martonvago.archelon.entity.enumValuesAsDisplayable
 import com.martonvago.archelon.entity.enums.*
-import com.martonvago.archelon.ui.createsurvey.SelectArgs
+import com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs
 import com.martonvago.archelon.ui.createsurvey.SelectFieldsAdapter
 import com.martonvago.archelon.ui.createsurvey.eventsmenu.CreateSurveyEventsMenuFragment
 import com.martonvago.archelon.ui.createsurvey.menu.CreateSurveyMenuFragment
@@ -21,7 +21,6 @@ import com.martonvago.archelon.ui.createsurvey.placetime.CreateSurveyPlaceTimeFr
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.BeforeClass
-import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 
@@ -245,10 +244,10 @@ class CreateSurveyNavigationTest: NavigationTestBase() {
     private fun assertThatSelectDialogOpenedCorrectly(@StringRes titleId: Int, options: List<Displayable>) {
         val args = navController.backStack.last().arguments
         assertThat(args).isNotNull()
-        val selectArgs: SelectArgs = args!!.get("selectContent") as SelectArgs
-        assertThat(selectArgs).isNotNull()
-        assertThat(selectArgs.title).isEqualTo(titleId)
-        assertThat(selectArgs.selectOptions).isEqualTo(options)
+        val selectOptionArgs: SelectOptionArgs = args!!.get("selectOptionArgs") as SelectOptionArgs
+        assertThat(selectOptionArgs).isNotNull()
+        assertThat(selectOptionArgs.title).isEqualTo(titleId)
+        assertThat(selectOptionArgs.selectOptions).isEqualTo(options)
         assertThatCurrentDestinationIs(R.id.selectBottomSheetDialogFragment)
     }
 }

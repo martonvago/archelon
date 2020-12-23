@@ -14,10 +14,13 @@ class ArchelonRepository @Inject constructor(
 ) {
     fun getAllSurveys() = surveyDao.getSurveysWithEvents()
 
+    // The survey and events are saved as one transaction
     @Transaction
     suspend fun saveSurveyWithEvents(surveyWithEvents: SurveyWithEvents) {
+        // Save the survey and keep the id
         val surveyId = surveyDao.save(surveyWithEvents.survey)
 
+        // Save each event with their surveyId set to the id of the survey just saved
         surveyWithEvents.events.forEach {
             it.surveyId = surveyId
         }

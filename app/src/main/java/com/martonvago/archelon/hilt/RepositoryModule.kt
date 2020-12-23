@@ -1,4 +1,4 @@
-package com.martonvago.archelon.di
+package com.martonvago.archelon.hilt
 
 import com.martonvago.archelon.dao.local.AdultEmergenceDao
 import com.martonvago.archelon.dao.local.HatchingDao

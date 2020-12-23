@@ -85,11 +85,11 @@
         android:label="DatePickerFragment" />
     <dialog
         android:id="@+id/selectBottomSheetDialogFragment"
-        android:name="com.martonvago.archelon.ui.createsurvey.SelectBottomSheetDialogFragment"
+        android:name="com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectBottomSheetDialogFragment"
         android:label="SelectBottomSheetDialogFragment" >
         <argument
-            android:name="selectContent"
-            app:argType="com.martonvago.archelon.ui.createsurvey.SelectArgs" />
+            android:name="selectOptionArgs"
+            app:argType="com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs" />
     </dialog>
 
 </navigation>

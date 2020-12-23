@@ -1,4 +1,4 @@
-package com.martonvago.archelon.di
+package com.martonvago.archelon.hilt
 
 import dagger.Module
 import dagger.Provides
@@ -7,7 +7,8 @@ import dagger.hilt.android.components.ApplicationComponent
 import org.threeten.bp.Clock
 
 /**
- * Object to provide clock dependency for viewmodels.
+ * Object to provide [Clock] dependency for viewmodels. This makes it easier to test time-dependent
+ * functionality.
  */
 @Module
 @InstallIn(ApplicationComponent::class)

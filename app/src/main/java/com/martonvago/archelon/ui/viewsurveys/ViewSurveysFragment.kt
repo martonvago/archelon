@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.FragmentViewSurveysBinding
-import com.martonvago.archelon.di.hiltNavGraphViewModels
+import com.martonvago.archelon.hilt.hiltNavGraphViewModels
 import com.martonvago.archelon.viewmodel.ViewSurveysViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * A simple [Fragment] subclass.
+ * A fragment displaying the user's saved morning surveys.
  */
 @AndroidEntryPoint
 class ViewSurveysFragment : Fragment() {
     private val viewModel by hiltNavGraphViewModels<ViewSurveysViewModel>(R.id.mainNavGraph)
     lateinit var binding: FragmentViewSurveysBinding
-    private val adapter = SavedSurveysAdapter(emptyList())
+    private val adapter = SavedSurveysAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +37,8 @@ class ViewSurveysFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
         binding.savedSurveysContainer.adapter = adapter
+
+        // Whenever the value of surveys changes we update the data in the adapter
         viewModel.surveys.observe(viewLifecycleOwner) {
             adapter.setSurveys(it)
         }

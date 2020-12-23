@@ -1,4 +1,4 @@
-package com.martonvago.archelon.ui.createsurvey
+package com.martonvago.archelon.ui.createsurvey.dialogs.select
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,19 +7,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.martonvago.archelon.databinding.SelectOptionBinding
 import com.martonvago.archelon.entity.Displayable
 
+/**
+ * A [RecyclerView] adapter for displaying a list of options for a select field, where the
+ * options are [Displayable] enums.
+ */
 class OptionsAdapter(
-    val selectArgs: SelectArgs,
+    val selectOptionArgs: SelectOptionArgs,
     val navController: NavController
 ): RecyclerView.Adapter<OptionsAdapter.ViewHolder>() {
 
-    // A view holder for holding the individual select options
+    // A view holder for holding individual select options
     inner class ViewHolder(val binding: SelectOptionBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.selectItem.setOnClickListener {
                 val newOption = binding.option
                 if (newOption != null) {
-                    selectArgs.targetField.setContentValue(newOption)
+                    selectOptionArgs.targetField.setContentValue(newOption)
                     navController.navigateUp()
                 }
             }
@@ -38,10 +42,10 @@ class OptionsAdapter(
         return ViewHolder(binding)
     }
 
-    // Bind the option at the given position to the view holder
+    // Bind the layout variables of the option at the given position
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(selectArgs.selectOptions[position])
+        viewHolder.bind(selectOptionArgs.selectOptions[position])
     }
 
-    override fun getItemCount() = selectArgs.selectOptions.size
+    override fun getItemCount() = selectOptionArgs.selectOptions.size
 }

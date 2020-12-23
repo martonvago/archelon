@@ -5,9 +5,7 @@ import org.threeten.bp.LocalTime
 import org.threeten.bp.format.DateTimeFormatter
 import kotlin.math.abs
 
-/**
- * Adapted from: https://stackoverflow.com/questions/51102431/android-room-type-convert-multiple-enum-types
- */
+// Adapted from: https://stackoverflow.com/questions/51102431/android-room-type-convert-multiple-enum-types
 @Suppress("NOTHING_TO_INLINE")
 inline fun <T : Enum<T>> T.toName(): String = this.name
 

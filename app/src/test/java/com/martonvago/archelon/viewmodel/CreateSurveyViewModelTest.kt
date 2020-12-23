@@ -3,8 +3,8 @@ package com.martonvago.archelon.viewmodel
 import android.os.Build
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
-import com.martonvago.archelon.di.ClockModule
-import com.martonvago.archelon.di.RepositoryModule
+import com.martonvago.archelon.hilt.ClockModule
+import com.martonvago.archelon.hilt.RepositoryModule
 import com.martonvago.archelon.entity.enums.*
 import com.martonvago.archelon.repository.ArchelonRepository
 import dagger.hilt.android.testing.*

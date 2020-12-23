@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.martonvago.archelon.databinding.SavedSurveyBinding
 import com.martonvago.archelon.entity.SurveyWithEvents
 
+/**
+ * A [RecyclerView] adapter for displaying a list of saved surveys.
+ */
 class SavedSurveysAdapter(
     private var surveys: List<SurveyWithEvents>? = emptyList(),
 ): RecyclerView.Adapter<SavedSurveysAdapter.ViewHolder>() {
@@ -26,8 +29,9 @@ class SavedSurveysAdapter(
         return ViewHolder(binding)
     }
 
-    // Bind the survey at the given position to the view holder
+    // Bind the layout variables of the survey at the given position
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        // Only bind variables if we have surveys
         surveys?.get(position)?.let { viewHolder.bind(it) }
     }
 

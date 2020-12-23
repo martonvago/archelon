@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="textInputComponent" type="com.martonvago.archelon.ui.createsurvey.TextInputComponent" />
+        <variable name="textInputFieldArgs" type="com.martonvago.archelon.ui.createsurvey.observers.TextInputFieldArgs" />
     </data>
 
     <LinearLayout
@@ -17,7 +17,7 @@
 
         <TextView
             style="@style/LabelStyle"
-            android:text="@{textInputComponent.label}"/>
+            android:text="@{textInputFieldArgs.label}"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/EditTextStyle"
-                android:text="@={textInputComponent.targetField.content}"
+                android:text="@={textInputFieldArgs.targetField.content}"
                 android:imeOptions="actionDone"
                 android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>

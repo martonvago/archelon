@@ -5,8 +5,8 @@ import com.martonvago.archelon.entity.DisplayableCompanion
 import kotlinx.android.parcel.Parcelize
 
 /**
- * We use an enum to store the beaches, but they may be moved into their own table
- * if we need more flexibility.
+ * We use an enum to store the beaches, but they can be moved into their own table if it turns out
+ * that they need to be updated by users or if we need to store more complex information about them.
  */
 @Parcelize
 enum class Beach(override val displayName: String): Displayable {
