@@ -5,7 +5,7 @@ import com.martonvago.archelon.entity.enums.*
 import org.threeten.bp.LocalDateTime
 
 data class SurveyBuilder (
-    private var datetime: LocalDateTime = LocalDateTime.now(),
+    private var datetime: LocalDateTime = LocalDateTime.of(2020, 12, 14, 13, 20),
     private var beach: Beach = Beach.MAVROVOUNI,
     private var beachSector: CompassDirection = CompassDirection.EAST,
     private var sky: Sky = Sky.SUNNY,

@@ -7,7 +7,7 @@ import com.martonvago.archelon.util.toName
 import org.threeten.bp.LocalDateTime
 
 class Converters {
-    @TypeConverter fun strListToString(value: List<String>): String = value.joinToString()
+    @TypeConverter fun strListToString(value: List<String>): String = value.joinToString(",")
     @TypeConverter fun stringToStrList(value: String): List<String> = value.split(",")
 
     @TypeConverter fun datetimeToString(value: LocalDateTime): String = value.toString()
