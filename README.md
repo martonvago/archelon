@@ -17,7 +17,7 @@ The user can also view a list of saved surveys where summary information is disp
 - LiveData
 - Coroutines
 
-### Test tools
+### Test tools:
 - Truth
 - JUnit 4
   - We have decided not to use JUnitParams because those tests can't be run in isolation. Instead of `@Parameterised` tests, we loop over test scenarios to cut down on code repetition when appropriate.
