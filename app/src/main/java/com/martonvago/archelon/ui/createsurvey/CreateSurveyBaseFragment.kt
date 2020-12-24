@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import com.martonvago.archelon.R
 import com.martonvago.archelon.databinding.CreateSurveyWrapperBinding
 import com.martonvago.archelon.hilt.hiltNavGraphViewModels
+import com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs
 import com.martonvago.archelon.ui.shared.configureOptionalNavButton
 import com.martonvago.archelon.ui.shared.setNavigateUpOnClickListener
 import com.martonvago.archelon.viewmodel.CreateSurveyViewModel
@@ -46,6 +48,16 @@ abstract class CreateSurveyBaseFragment(
 
     // Subclasses are responsible for binding values to their layout variables
     abstract fun populateContentBinding()
+
+    fun createSelectFieldsAdapter(
+        selectFieldArgs: List<SelectFieldArgs>,
+        navAction: (SelectOptionArgs) -> NavDirections
+    ) = SelectFieldsAdapter(
+        selectFieldArgs,
+        viewLifecycleOwner,
+        { activity?.currentFocus?.clearFocus() },
+        navAction
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

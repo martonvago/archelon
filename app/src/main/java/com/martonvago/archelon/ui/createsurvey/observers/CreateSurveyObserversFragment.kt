@@ -9,10 +9,8 @@ import com.martonvago.archelon.databinding.FragmentCreateSurveyObserversBinding
 import com.martonvago.archelon.entity.enumValuesAsDisplayable
 import com.martonvago.archelon.entity.enums.*
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
-import com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs
 import com.martonvago.archelon.ui.createsurvey.SelectFieldArgs
-import com.martonvago.archelon.ui.shared.setUpSelectAdapter
-import com.martonvago.archelon.ui.shared.setUpTextInputAdapter
+import com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs
 import com.martonvago.archelon.util.asEnglishOrdinal
 import kotlinx.android.synthetic.main.fragment_create_survey_observers.*
 
@@ -52,9 +50,8 @@ class CreateSurveyObserversFragment: CreateSurveyBaseFragment(
                     TextInputFieldArgs(field, resources.getString(R.string.observer, ordinalStr))
                 }
 
-        inputFieldsContainer.setUpTextInputAdapter(inputComponents, viewLifecycleOwner)
-
-        selectFieldsContainer.setUpSelectAdapter(selectFields, viewLifecycleOwner) { selectOptionArgs: SelectOptionArgs ->
+        inputFieldsContainer.adapter = TextInputFieldsAdapter(inputComponents, viewLifecycleOwner)
+        selectFieldsContainer.adapter = createSelectFieldsAdapter(selectFields) { selectOptionArgs: SelectOptionArgs ->
             CreateSurveyObserversFragmentDirections
                 .actionCreateSurveyObserversFragmentToSelectBottomSheetDialogFragment(selectOptionArgs)
         }

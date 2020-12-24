@@ -10,10 +10,9 @@ import com.martonvago.archelon.entity.enumValuesAsDisplayable
 import com.martonvago.archelon.entity.enums.Beach
 import com.martonvago.archelon.entity.enums.CompassDirection
 import com.martonvago.archelon.ui.createsurvey.CreateSurveyBaseFragment
-import com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs
 import com.martonvago.archelon.ui.createsurvey.SelectFieldArgs
+import com.martonvago.archelon.ui.createsurvey.dialogs.select.SelectOptionArgs
 import com.martonvago.archelon.ui.shared.setNavigateOnClickListener
-import com.martonvago.archelon.ui.shared.setUpSelectAdapter
 import kotlinx.android.synthetic.main.fragment_create_survey_place_time.*
 
 /**
@@ -39,7 +38,7 @@ class CreateSurveyPlaceTimeFragment : CreateSurveyBaseFragment(false) {
             SelectFieldArgs(viewModel.beachSector, R.string.beachSector, R.string.beachSectorSelectTitle, CompassDirection.enumValuesAsDisplayable())
         )
 
-        selectFieldsContainer.setUpSelectAdapter(selectFields, viewLifecycleOwner) { selectOptionArgs: SelectOptionArgs ->
+        selectFieldsContainer.adapter = createSelectFieldsAdapter(selectFields) { selectOptionArgs: SelectOptionArgs ->
             CreateSurveyPlaceTimeFragmentDirections
                 .actionCreateSurveyPlaceTimeFragmentToSelectBottomSheetDialogFragment(selectOptionArgs)
         }
