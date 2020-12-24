@@ -28,8 +28,9 @@ data class SelectFieldArgs(
  */
 class SelectFieldsAdapter(
     private val selectFieldArgs: List<SelectFieldArgs>,
+    private val lifecycleOwner: LifecycleOwner,
+    val clearFocus: () -> Unit,
     val navAction: (SelectOptionArgs) -> NavDirections,
-    private val lifecycleOwner: LifecycleOwner
 ): RecyclerView.Adapter<SelectFieldsAdapter.ViewHolder>() {
 
     // A view holder for holding the individual select input fields
@@ -39,7 +40,12 @@ class SelectFieldsAdapter(
             binding.selectFieldArgs = selectFieldArgs
 
             // Clicking a select field opens a dialog with the appropriate options
-            binding.selectFieldCard.setNavigateOnClickListener(navAction(selectFieldArgs.selectOptionArgs))
+            binding.selectFieldCard.setNavigateOnClickListener(navAction(selectFieldArgs.selectOptionArgs)) {
+                // Prevent the screen from scrolling back to the currently focused element in the background.
+                // This improves the behaviour of the create survey form, but for more complex forms
+                // this will need to be replaced by an actual focus management system
+                clearFocus()
+            }
             binding.executePendingBindings()
         }
     }

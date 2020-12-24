@@ -57,5 +57,10 @@
     <string name="startMorningSurvey">Start</string>
     <string name="adult_emergence_events_title">Adult Emergence events: %1$d</string>
     <string name="hatching_events_title">Hatching events: %1$d</string>
-    <string name="savedSurveys">You have %1$d morning surveys</string>
+
+    <!--View surveys screen-->
+    <plurals name="savedSurveys">
+        <item quantity="one">You have %1$d morning survey</item>
+        <item quantity="other">You have %1$d morning surveys</item>
+    </plurals>
 </resources>

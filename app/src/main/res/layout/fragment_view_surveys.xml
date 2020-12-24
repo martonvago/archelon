@@ -27,7 +27,7 @@
             android:layout_marginTop="@dimen/margin_extra_extra_large"
             android:textSize="@dimen/text_size_extra_large"
             android:textColor="@color/colorTextWhite"
-            android:text="@{@string/savedSurveys(viewModel.surveys.size())}" />
+            android:text="@{@plurals/savedSurveys(viewModel.surveys.size(), viewModel.surveys.size())}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:paddingBottom="@dimen/padding_giant"
